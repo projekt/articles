@@ -243,6 +243,14 @@ Declarative programming is particularly powerful for UI development, database qu
 
 ---
 
+## 👤 About the Author
+
+**Srđan Ljustina** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
+
+---
+
 **Series Navigation:** [← Functional Programming](04_functional_programming.md) | Article 5 of 7 | Next: [Procedural Programming →](06_procedural_programming.md)
 
 **Other Articles in This Series:**

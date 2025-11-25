@@ -145,6 +145,14 @@ Imperative programming gives you explicit control over the execution flow, makin
 
 ---
 
+## 👤 About the Author
+
+**Srđan Ljustina** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
+
+---
+
 **Series Navigation:** [← What Are Programming Paradigms?](01_what_are_programming_paradigms.md) | Article 2 of 7 | Next: [Object-Oriented Programming →](03_oop.md)
 
 **Other Articles in This Series:**

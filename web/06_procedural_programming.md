@@ -256,6 +256,14 @@ Procedural programming provides a natural way to organize sequential tasks into 
 
 ---
 
+## 👤 About the Author
+
+**Srđan Ljustina** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
+
+---
+
 **Series Navigation:** [← Declarative Programming](05_declarative_programming.md) | Article 6 of 7 | Next: [Summary and Best Practices →](07_summary.md)
 
 **Other Articles in This Series:**
