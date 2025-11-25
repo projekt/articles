@@ -129,6 +129,22 @@ Imperative programming gives you explicit control over the execution flow, makin
 
 ---
 
+## Further Reading
+
+**Imperative Programming:**
+- [Imperative vs Declarative Programming](https://ui.dev/imperative-vs-declarative-programming) - Clear comparison
+- [Control Flow in Dart](https://dart.dev/guides/language/language-tour#control-flow-statements) - Official guide
+
+**Algorithms and Control Flow:**
+- [Introduction to Algorithms](https://mitpress.mit.edu/books/introduction-algorithms-third-edition) - Classic reference
+- [Big-O Notation](https://www.bigocheatsheet.com/) - Algorithm complexity
+
+**Practice:**
+- [LeetCode](https://leetcode.com/) - Algorithm practice problems
+- [HackerRank](https://www.hackerrank.com/domains/algorithms) - Coding challenges
+
+---
+
 **Series Navigation:** [← What Are Programming Paradigms?](01_what_are_programming_paradigms.md) | Article 2 of 7 | Next: [Object-Oriented Programming →](03_oop.md)
 
 **Other Articles in This Series:**

@@ -246,6 +246,27 @@ Functional programming shines in data processing and transformation tasks. Its e
 
 ---
 
+## Further Reading
+
+**Functional Programming:**
+- [Functional Programming in Dart](https://dart.dev/guides/language/effective-dart/usage#prefer-using-higher-order-methods) - Official guidelines
+- [Functional Programming Principles](https://www.freecodecamp.org/news/functional-programming-principles-in-javascript-1b8fc6c3563f/) - Core concepts
+- [Why Functional Programming Matters](https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf) - Classic paper
+
+**Dart Functional Features:**
+- [Iterable Collections](https://dart.dev/codelabs/iterables) - map, where, reduce
+- [Functions in Dart](https://dart.dev/guides/language/language-tour#functions) - First-class functions
+
+**Advanced Topics:**
+- [Immutability in Practice](https://www.sitepoint.com/immutability-javascript/) - Benefits and techniques
+- [Function Composition](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0) - Building complex functions
+
+**Books:**
+- [Functional Programming in JavaScript](https://www.manning.com/books/functional-programming-in-javascript) - Practical approach
+- [Professor Frisby's Mostly Adequate Guide to FP](https://mostly-adequate.gitbook.io/mostly-adequate-guide/) - Free online book
+
+---
+
 **Series Navigation:** [← Object-Oriented Programming](03_oop.md) | Article 4 of 7 | Next: [Declarative Programming →](05_declarative_programming.md)
 
 **Other Articles in This Series:**

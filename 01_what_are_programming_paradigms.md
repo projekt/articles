@@ -95,6 +95,22 @@ Each paradigm offers a unique perspective on how to structure and solve problems
 
 ---
 
+## Further Reading
+
+**Dart Language Resources:**
+- [Dart Language Tour](https://dart.dev/guides/language/language-tour) - Official Dart documentation
+- [Effective Dart](https://dart.dev/guides/language/effective-dart) - Best practices for Dart code
+
+**Programming Paradigms:**
+- [Wikipedia: Programming Paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) - Comprehensive overview
+- [Paradigms of Computer Programming](https://www.info.ucl.ac.be/~pvr/book.html) - Academic perspective
+
+**Community:**
+- [Dart subreddit](https://www.reddit.com/r/dartlang/) - Community discussions
+- [Dart on Stack Overflow](https://stackoverflow.com/questions/tagged/dart) - Q&A
+
+---
+
 **Series Navigation:** Article 1 of 7 | Next: [Imperative Programming →](02_imperative_programming.md)
 
 **Other Articles in This Series:**

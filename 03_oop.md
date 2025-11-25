@@ -197,6 +197,23 @@ Object-Oriented Programming excels at modeling complex systems with many interre
 
 ---
 
+## Further Reading
+
+**Object-Oriented Programming:**
+- [Object-Oriented Programming in Dart](https://dart.dev/guides/language/language-tour#classes) - Official documentation
+- [Design Patterns](https://refactoring.guru/design-patterns) - Gang of Four patterns explained
+- [SOLID Principles](https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) - OOP best practices
+
+**Dart OOP Features:**
+- [Mixins in Dart](https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins) - Code reuse technique
+- [Extension Methods](https://dart.dev/guides/language/extension-methods) - Extending existing classes
+
+**Books:**
+- [Head First Design Patterns](https://www.oreilly.com/library/view/head-first-design/0596007124/) - Beginner-friendly approach
+- [Clean Code](https://www.oreilly.com/library/view/clean-code-a/9780136083238/) - Robert C. Martin
+
+---
+
 **Series Navigation:** [← Imperative Programming](02_imperative_programming.md) | Article 3 of 7 | Next: [Functional Programming →](04_functional_programming.md)
 
 **Other Articles in This Series:**
