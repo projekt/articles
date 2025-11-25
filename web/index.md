@@ -16,13 +16,13 @@ A comprehensive 7-part series exploring different programming paradigms with pra
 
 |  #  | Article Title                                                                          | Time  | Description                                               |
 |:---:|:---------------------------------------------------------------------------------------|:-----:|:----------------------------------------------------------|
-|  1  | [What Are Programming Paradigms?](web/01_what_are_programming_paradigms.md)               | 4 min | Introduction to programming paradigms with overview and characteristics |
-|  2  | [Imperative Programming](web/02_imperative_programming.md)                                | 4 min | Step-by-step programming with explicit control flow      |
-|  3  | [Object-Oriented Programming (OOP)](web/03_oop.md)                                        | 5 min | Classes, objects, and the four pillars of OOP            |
-|  4  | [Functional Programming](web/04_functional_programming.md)                                | 7 min | Pure functions, immutability, and higher-order functions |
-|  5  | [Declarative Programming](web/05_declarative_programming.md)                              | 6 min | Focus on what you want, not how to get it                |
-|  6  | [Procedural Programming](web/06_procedural_programming.md)                                | 6 min | Organizing code into reusable procedures                 |
-|  7  | [Summary & Best Practices](web/07_summary.md)                                             | 10 min | Choosing the right paradigm and multi-paradigm development |
+|  1  | [What Are Programming Paradigms?](01_what_are_programming_paradigms.md)               | 4 min | Introduction to programming paradigms with overview and characteristics |
+|  2  | [Imperative Programming](02_imperative_programming.md)                                | 4 min | Step-by-step programming with explicit control flow      |
+|  3  | [Object-Oriented Programming (OOP)](03_oop.md)                                        | 5 min | Classes, objects, and the four pillars of OOP            |
+|  4  | [Functional Programming](04_functional_programming.md)                                | 7 min | Pure functions, immutability, and higher-order functions |
+|  5  | [Declarative Programming](05_declarative_programming.md)                              | 6 min | Focus on what you want, not how to get it                |
+|  6  | [Procedural Programming](06_procedural_programming.md)                                | 6 min | Organizing code into reusable procedures                 |
+|  7  | [Summary & Best Practices](07_summary.md)                                             | 10 min | Choosing the right paradigm and multi-paradigm development |
 
 **What You'll Learn:**
 - ✅ Core concepts of each programming paradigm
@@ -38,11 +38,11 @@ A comprehensive 7-part series exploring different programming paradigms with pra
 
 ### Dart Null Safety
 
-- **[Building Robust and High-Performance Applications](web/dart_null_safety_FINAL_with_TOC.md)** - A comprehensive guide to Dart's sound null safety system, covering non-nullable types, flow analysis, migration strategies, and real-world implementation examples.
+- **[Building Robust and High-Performance Applications](dart_null_safety_FINAL_with_TOC.md)** - A comprehensive guide to Dart's sound null safety system, covering non-nullable types, flow analysis, migration strategies, and real-world implementation examples.
 
 ### Programming Paradigms (Original)
 
-- **[Programming Paradigms: A Comprehensive Guide](web/programming_paradigms_article.md)** - The original comprehensive article covering all paradigms in one document.
+- **[Programming Paradigms: A Comprehensive Guide](programming_paradigms_article.md)** - The original comprehensive article covering all paradigms in one document.
 
 ---
 
@@ -60,9 +60,9 @@ A comprehensive 7-part series exploring different programming paradigms with pra
 Each article is self-contained and can be read independently, but for the Programming Paradigms series, reading them in order provides the best learning experience.
 
 **Quick Start:**
-1. Begin with [What Are Programming Paradigms?](web/01_what_are_programming_paradigms.md)
+1. Begin with [What Are Programming Paradigms?](01_what_are_programming_paradigms.md)
 2. Explore specific paradigms that interest you
-3. Finish with the [Summary & Best Practices](web/07_summary.md) to understand how to combine approaches
+3. Finish with the [Summary & Best Practices](07_summary.md) to understand how to combine approaches
 
 ---
 
