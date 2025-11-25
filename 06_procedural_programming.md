@@ -1,0 +1,246 @@
+# Programming Paradigms Series - Article 6: Procedural Programming
+
+**Series Navigation:** [← Declarative Programming](05_declarative_programming.md) | Article 6 of 7 | Next: [Summary and Best Practices →](07_summary.md)
+
+---
+
+**About This Series**
+
+This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.
+
+---
+
+## Table of Contents
+
+1. [Concept](#concept)
+2. [Real-Life Analogy](#real-life-analogy)
+3. [Dart Example](#dart-example)
+4. [Procedural Programming Flow](#procedural-programming-flow)
+5. [Procedural vs OOP Comparison](#procedural-vs-oop-comparison)
+
+---
+
+## Concept
+
+Procedural programming is a subset of imperative programming where you organize code into procedures (functions) that operate on data. It emphasizes a step-by-step approach but with reusable blocks of code.
+
+## Real-Life Analogy
+
+Think of an assembly line in a factory. Each station (procedure) performs a specific task:
+- Station 1: Cut metal
+- Station 2: Bend metal
+- Station 3: Weld parts
+- Station 4: Paint product
+- Station 5: Package
+
+Each station is independent but contributes to the final product.
+
+## Dart Example
+
+```dart
+// Procedural approach to processing student grades
+
+void main() {
+  List<int> grades = [85, 92, 78, 95, 88, 73, 90];
+
+  displayGrades(grades);
+  double avg = calculateAverage(grades);
+  print('\nAverage grade: ${avg.toStringAsFixed(2)}');
+
+  int highest = findHighest(grades);
+  int lowest = findLowest(grades);
+  print('Highest: $highest, Lowest: $lowest');
+
+  String letterGrade = getLetterGrade(avg);
+  print('Class average letter grade: $letterGrade');
+}
+
+// Procedure 1: Display all grades
+void displayGrades(List<int> grades) {
+  print('Student Grades:');
+  for (int i = 0; i < grades.length; i++) {
+    print('Student ${i + 1}: ${grades[i]}');
+  }
+}
+
+// Procedure 2: Calculate average
+double calculateAverage(List<int> grades) {
+  int sum = 0;
+  for (int grade in grades) {
+    sum += grade;
+  }
+  return sum / grades.length;
+}
+
+// Procedure 3: Find highest grade
+int findHighest(List<int> grades) {
+  int highest = grades[0];
+  for (int grade in grades) {
+    if (grade > highest) {
+      highest = grade;
+    }
+  }
+  return highest;
+}
+
+// Procedure 4: Find lowest grade
+int findLowest(List<int> grades) {
+  int lowest = grades[0];
+  for (int grade in grades) {
+    if (grade < lowest) {
+      lowest = grade;
+    }
+  }
+  return lowest;
+}
+
+// Procedure 5: Convert to letter grade
+String getLetterGrade(double average) {
+  if (average >= 90) return 'A';
+  if (average >= 80) return 'B';
+  if (average >= 70) return 'C';
+  if (average >= 60) return 'D';
+  return 'F';
+}
+```
+
+## Procedural Programming Flow
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║            📊 PROCEDURAL PROGRAM FLOW 📊                     ║
+╚═══════════════════════════════════════════════════════════════╝
+
+                    ┌────────────┐
+                    │  🎯 main() │
+                    │   (Entry)  │
+                    └─────┬──────┘
+                          │
+        ┌─────────────────┼─────────────────┐
+        │                 │                 │
+        ▼                 ▼                 ▼
+┌───────────────┐  ┌──────────────┐  ┌─────────────┐
+│ 🖨️ display   │  │ 🧮 calculate │  │ 📈 find     │
+│   Grades()    │  │   Average()  │  │   Highest() │
+│ ─────────     │  │ ────────     │  │ ─────────   │
+│ Print all     │  │ Sum & divide │  │ Compare all │
+└───────────────┘  └──────┬───────┘  └─────────────┘
+                          │
+                          ▼
+                   ┌──────────────┐
+                   │ 🎓 getLetter │
+                   │   Grade()    │
+                   │ ────────     │
+                   │ A, B, C, D, F│
+                   └──────────────┘
+
+🔑 Key: Each procedure is a reusable unit that:
+   ✓ Performs one specific task
+   ✓ Can be called multiple times
+   ✓ Operates on shared data (grades list)
+   ✓ Returns a result or performs action
+```
+
+### Procedural Program Structure
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║              🏗️ PROCEDURAL STRUCTURE 🏗️                     ║
+╚═══════════════════════════════════════════════════════════════╝
+
+main()
+  │
+  ├─► 📞 Call procedure_1(data)
+  │     │
+  │     └─► ⚙️ Process data
+  │         └─► 📤 Return result
+  │
+  ├─► 📞 Call procedure_2(data)
+  │     │
+  │     └─► ⚙️ Process data
+  │         └─► 📤 Return result
+  │
+  └─► 📞 Call procedure_3(data)
+        │
+        └─► ⚙️ Process data
+            └─► 📤 Return result
+
+Key Characteristics:
+┌─────────────────────────────────────────────┐
+│ 📐 Top-down design                          │
+│ 🔄 Structured programming                   │
+│ 📊 Data passed between procedures           │
+│ 🔧 Procedures are independent units         │
+│ ♻️ Code reusability through functions       │
+│ 📝 Sequential execution flow                │
+└─────────────────────────────────────────────┘
+
+Real-World Analogy: 🏭 Assembly Line
+┌──────────┐    ┌──────────┐    ┌──────────┐
+│ Station 1│───►│ Station 2│───►│ Station 3│
+│   Cut    │    │   Bend   │    │   Weld   │
+└──────────┘    └──────────┘    └──────────┘
+Each station = One procedure with one job
+```
+
+## Procedural vs OOP Comparison
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║             📊 PROCEDURAL PROGRAMMING 📊                     ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║  📦 Data: [grades list] ◄────┐                               ║
+║                               │                               ║
+║  ⚙️ Procedures:               │ (All procedures access        ║
+║  ┌──────────────┐            │  the same data)               ║
+║  │ displayGrades│────────────┤                               ║
+║  └──────────────┘            │                               ║
+║  ┌──────────────┐            │                               ║
+║  │ calcAverage  │────────────┤                               ║
+║  └──────────────┘            │                               ║
+║  ┌──────────────┐            │                               ║
+║  │ findHighest  │────────────┘                               ║
+║  └──────────────┘                                            ║
+║                                                               ║
+║  🎯 Separation: Data and functions are separate              ║
+║  📊 Structure: Top-down design                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+Compare with:
+
+╔═══════════════════════════════════════════════════════════════╗
+║              🏛️ OBJECT-ORIENTED 🏛️                         ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║  ┌────────────────────────────┐                              ║
+║  │  📚 GradeBook (Object)     │                              ║
+║  ├────────────────────────────┤                              ║
+║  │ 📦 Data:                   │                              ║
+║  │  • grades: List<int>       │                              ║
+║  ├────────────────────────────┤                              ║
+║  │ ⚙️ Methods:                │                              ║
+║  │  • display()               │                              ║
+║  │  • calcAverage()           │                              ║
+║  │  • findHighest()           │                              ║
+║  └────────────────────────────┘                              ║
+║                                                               ║
+║  🎯 Encapsulation: Data and methods bundled together         ║
+║  📦 Structure: Object-based design                           ║
+╚═══════════════════════════════════════════════════════════════╝
+```
+
+Procedural programming provides a natural way to organize sequential tasks into reusable procedures. It's particularly effective for utilities, scripts, and algorithms where data processing follows a clear sequence of steps. While simpler than OOP for small projects, it can become harder to manage as complexity grows, since data and operations on that data are kept separate.
+
+---
+
+**Series Navigation:** [← Declarative Programming](05_declarative_programming.md) | Article 6 of 7 | Next: [Summary and Best Practices →](07_summary.md)
+
+**Other Articles in This Series:**
+- [Article 1: What Are Programming Paradigms?](01_what_are_programming_paradigms.md)
+- [Article 2: Imperative Programming](02_imperative_programming.md)
+- [Article 3: Object-Oriented Programming (OOP)](03_oop.md)
+- [Article 4: Functional Programming](04_functional_programming.md)
+- [Article 5: Declarative Programming](05_declarative_programming.md)
+- **Article 6: Procedural Programming** (Current)
+- [Article 7: Choosing the Right Paradigm - Summary and Best Practices](07_summary.md)
