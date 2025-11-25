@@ -1,5 +1,7 @@
 # Programming Paradigms Series - Article 7: Choosing the Right Paradigm - Summary and Best Practices
 
+**⏱️ 10-Minute Deep Dive**
+
 **Series Navigation:** [← Procedural Programming](06_procedural_programming.md) | Article 7 of 7
 
 ---

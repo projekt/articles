@@ -1,5 +1,7 @@
 # Programming Paradigms Series - Article 4: Functional Programming
 
+**⏱️ 7-Minute Read**
+
 **Series Navigation:** [← Object-Oriented Programming](03_oop.md) | Article 4 of 7 | Next: [Declarative Programming →](05_declarative_programming.md)
 
 ---
