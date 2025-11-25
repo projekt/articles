@@ -1,5 +1,7 @@
 # Programming Paradigms Series - Article 6: Procedural Programming
 
+**⏱️ 6-Minute Read**
+
 **Series Navigation:** [← Declarative Programming](05_declarative_programming.md) | Article 6 of 7 | Next: [Summary and Best Practices →](07_summary.md)
 
 ---

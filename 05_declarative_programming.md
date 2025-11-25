@@ -1,5 +1,7 @@
 # Programming Paradigms Series - Article 5: Declarative Programming
 
+**⏱️ 6-Minute Read**
+
 **Series Navigation:** [← Functional Programming](04_functional_programming.md) | Article 5 of 7 | Next: [Procedural Programming →](06_procedural_programming.md)
 
 ---

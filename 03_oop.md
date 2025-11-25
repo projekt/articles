@@ -1,5 +1,7 @@
 # Programming Paradigms Series - Article 3: Object-Oriented Programming (OOP)
 
+**⏱️ 5-Minute Read**
+
 **Series Navigation:** [← Imperative Programming](02_imperative_programming.md) | Article 3 of 7 | Next: [Functional Programming →](04_functional_programming.md)
 
 ---

@@ -1,5 +1,7 @@
 # Programming Paradigms Series - Article 1: What Are Programming Paradigms?
 
+**⏱️ Quick 4-Minute Read**
+
 **Series Navigation:** Article 1 of 7 | Next: [Imperative Programming →](02_imperative_programming.md)
 
 ---
