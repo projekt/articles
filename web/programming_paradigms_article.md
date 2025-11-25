@@ -2,7 +2,7 @@
 title: "Programming Paradigms: Complete Guide with Dart Examples"
 description: "Master all programming paradigms with Dart: imperative, OOP, functional, declarative, procedural. Comprehensive guide with real-world examples and comparisons."
 keywords: "programming paradigms, Dart programming, imperative OOP functional declarative procedural, software development, coding paradigms"
-author: "Srđan Ljustina"
+author: "Srđan Ljuština"
 date: "2024-11-26"
 reading_time: "40 minutes"
 canonical_url: "https://projekt.github.io/articles/programming_paradigms_article.html"
@@ -1555,6 +1555,6 @@ Remember: the best code is not the one that rigidly follows a single paradigm, b
 
 ## 👤 About the Author
 
-**Srđan Ljustina** - Software Developer & Technical Writer
+**Srđan Ljuština** - Software Developer & Technical Writer
 
 🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)

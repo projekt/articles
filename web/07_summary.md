@@ -2,7 +2,7 @@
 title: "Choosing the Right Programming Paradigm | Best Practices & Summary"
 description: "Complete guide to selecting programming paradigms. Compare imperative, OOP, functional, declarative approaches with decision trees and real-world examples."
 keywords: "programming paradigms comparison, multi-paradigm programming, software architecture, best practices, Dart programming"
-author: "Srđan Ljustina"
+author: "Srđan Ljuština"
 date: "2024-11-26"
 article_series: "Programming Paradigms"
 article_number: 7
@@ -537,7 +537,7 @@ Remember: the best code is not the one that rigidly follows a single paradigm, b
 
 ## 👤 About the Author
 
-**Srđan Ljustina** - Software Developer & Technical Writer
+**Srđan Ljuština** - Software Developer & Technical Writer
 
 🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
 
