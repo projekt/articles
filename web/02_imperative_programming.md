@@ -2,7 +2,7 @@
 title: "Imperative Programming in Dart | Programming Paradigms Series"
 description: "Master imperative programming in Dart with step-by-step control flow, loops, and explicit state management. Practical examples and best practices."
 keywords: "imperative programming, Dart programming, control flow, loops, state management, programming tutorial"
-author: "Srđan Ljustina"
+author: "Srđan Ljuština"
 date: "2024-11-26"
 article_series: "Programming Paradigms"
 article_number: 2
@@ -159,7 +159,7 @@ Imperative programming gives you explicit control over the execution flow, makin
 
 ## 👤 About the Author
 
-**Srđan Ljustina** - Software Developer & Technical Writer
+**Srđan Ljuština** - Software Developer & Technical Writer
 
 🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
 

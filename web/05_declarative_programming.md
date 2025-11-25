@@ -2,7 +2,7 @@
 title: "Declarative Programming in Dart & Flutter | UI Development Guide"
 description: "Learn declarative programming with Flutter and Dart. Build UIs declaratively, understand the what vs how approach with practical examples."
 keywords: "declarative programming, Flutter, Dart UI, Flutter widgets, declarative UI, programming paradigms"
-author: "Srđan Ljustina"
+author: "Srđan Ljuština"
 date: "2024-11-26"
 article_series: "Programming Paradigms"
 article_number: 5
@@ -257,7 +257,7 @@ Declarative programming is particularly powerful for UI development, database qu
 
 ## 👤 About the Author
 
-**Srđan Ljustina** - Software Developer & Technical Writer
+**Srđan Ljuština** - Software Developer & Technical Writer
 
 🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
 

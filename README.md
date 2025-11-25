@@ -8,7 +8,7 @@ Welcome to my collection of technical articles focused on Dart programming and s
 
 ## 👤 Author
 
-**Srđan Ljustina**
+**Srđan Ljuština**
 
 🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
 

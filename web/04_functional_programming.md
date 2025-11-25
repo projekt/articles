@@ -2,7 +2,7 @@
 title: "Functional Programming in Dart | Complete Guide with Examples"
 description: "Master functional programming in Dart: pure functions, immutability, higher-order functions, map, filter, reduce. Transform your coding style."
 keywords: "functional programming, Dart functional, pure functions, immutability, higher-order functions, map filter reduce"
-author: "Srđan Ljustina"
+author: "Srđan Ljuština"
 date: "2024-11-26"
 article_series: "Programming Paradigms"
 article_number: 4
@@ -281,7 +281,7 @@ Functional programming shines in data processing and transformation tasks. Its e
 
 ## 👤 About the Author
 
-**Srđan Ljustina** - Software Developer & Technical Writer
+**Srđan Ljuština** - Software Developer & Technical Writer
 
 🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
 
