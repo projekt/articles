@@ -79,12 +79,6 @@ Each article includes:
 
 ---
 
-## 🤝 Contributing
-
-These are personal learning notes, but if you find errors or have suggestions for improvement, feel free to open an issue or submit a pull request.
-
----
-
 ## 📄 License
 
 This repository is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
