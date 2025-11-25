@@ -434,34 +434,33 @@ realistic scenarios demonstrates its practical value.
 
 An online shopping application must handle various optional data safely:
 
-class ShoppingCart { List\<Product\> items = \[\]; String? promoCode;
-Address? shippingAddress; 
-
 ```dart
-double calculateTotal() {
-  double subtotal =
-items.fold(0, (sum, item) =\> sum + item.price);
-  // Apply discount if
-promo code exists double discount = promoCode != null ?
-calculateDiscount(promoCode, subtotal) : 0;
-  // Add shipping based on
-address double shipping = shippingAddress?.country == 'US' ? 5.99 :
-12.99;
-  return subtotal - discount + shipping;
- 
+class ShoppingCart {
+  List<Product> items = [];
+  String? promoCode;
+  Address? shippingAddress;
+
+  double calculateTotal() {
+    double subtotal = items.fold(0, (sum, item) => sum + item.price);
+
+    // Apply discount if promo code exists
+    double discount = promoCode != null
+        ? calculateDiscount(promoCode, subtotal)
+        : 0;
+
+    // Add shipping based on address
+    double shipping = shippingAddress?.country == 'US' ? 5.99 : 12.99;
+
+    return subtotal - discount + shipping;
+  }
+
+  String getDeliveryMessage() {
+    return shippingAddress != null
+        ? 'Delivering to ${shippingAddress.street}'
+        : 'Please add a delivery address';
+  }
 }
 ```
-
- 
-
-```dart
-String
-getDeliveryMessage() {
-  return shippingAddress != null ? 'Delivering to
-\${shippingAddress.street}
-```
-
-' : 'Please add a delivery address'; } }
 
 This design makes optional data explicit. The compiler prevents
 accessing nullable properties without checks, eliminating entire classes
@@ -471,32 +470,34 @@ of bugs where missing addresses or promo codes cause crashes.
 
 Authentication systems commonly deal with optional user states:
 
-class AuthenticationService { User? \_currentUser; bool get
-isAuthenticated =\> \_currentUser != null; User get currentUser { final
-user = \_currentUser; if (user == null) { throw StateError('No
-authenticated user'); } return user; } Future\<void\> login(String
-email, String password) async { final user = await
-authApi.authenticate(email, password); \_currentUser = user; } 
-
 ```dart
-void
-logout() {
-  \_currentUser = null;
- 
+class AuthenticationService {
+  User? _currentUser;
+
+  bool get isAuthenticated => _currentUser != null;
+
+  User get currentUser {
+    final user = _currentUser;
+    if (user == null) {
+      throw StateError('No authenticated user');
+    }
+    return user;
+  }
+
+  Future<void> login(String email, String password) async {
+    final user = await authApi.authenticate(email, password);
+    _currentUser = user;
+  }
+
+  void logout() {
+    _currentUser = null;
+  }
+
+  String getUserDisplayName() {
+    return _currentUser?.fullName ?? 'Guest User';
+  }
 }
 ```
-
- 
-
-```dart
-String getUserDisplayName() {
-  return
-\_currentUser?.fullName ?? 'Guest User';
- 
-}
-```
-
- }
 
 The nullable currentUser field makes the authentication state explicit.
 The getter provides safe access by throwing a clear error when accessed
@@ -507,38 +508,37 @@ states with a default value.
 
 Network APIs often return partial or optional data:
 
-class UserProfile { final String id; final String username; final
-String? bio; // Optional biography final String? avatarUrl; // Optional
-profile picture final DateTime? lastActive; // May not be available
-UserProfile({ required this.id, required this.username, this.bio,
-this.avatarUrl, this.lastActive, }); 
-
 ```dart
-String getDisplayBio() {
-  return bio
-?? 'No bio available';
- 
+class UserProfile {
+  final String id;
+  final String username;
+  final String? bio;          // Optional biography
+  final String? avatarUrl;    // Optional profile picture
+  final DateTime? lastActive; // May not be available
+
+  UserProfile({
+    required this.id,
+    required this.username,
+    this.bio,
+    this.avatarUrl,
+    this.lastActive,
+  });
+
+  String getDisplayBio() {
+    return bio ?? 'No bio available';
+  }
+
+  String getActivityStatus() {
+    final lastSeen = lastActive;
+    if (lastSeen == null) return 'Activity unknown';
+
+    final difference = DateTime.now().difference(lastSeen);
+    if (difference.inMinutes < 5) return 'Active now';
+    if (difference.inHours < 1) return 'Active recently';
+    return 'Last seen ${difference.inDays} days ago';
+  }
 }
 ```
-
- 
-
-```dart
-String getActivityStatus() {
-  final lastSeen =
-lastActive;
-  if (lastSeen == null) return 'Activity unknown';
-  final
-difference = DateTime.now().difference(lastSeen);
-  if
-(difference.inMinutes \< 5) return 'Active now';
-  if
-(difference.inHours \< 1) return 'Active recently';
-  return 'Last seen
-\${difference.inDays}
-```
-
- days ago'; } }
 
 This pattern clearly documents which fields are optional in the API
 contract. The type system ensures every access to optional data includes
@@ -660,57 +660,58 @@ and avoiding common pitfalls.
 Repeated use of the null assertion operator throughout code indicates
 design problems:
 
-// Poor design - repeated assertions 
-
 ```dart
+// Poor design - repeated assertions
 void processOrder() {
-print(auth.user!.name);
+  print(auth.user!.name);
   sendEmail(auth.user!.email);
-logActivity(auth.user!.id);
- 
+  logActivity(auth.user!.id);
 }
 ```
-
-
 
 Better approach using local variable with type promotion:
 
-// Good design - single check with promotion 
-
 ```dart
+// Good design - single check with promotion
 void processOrder() {
-  final
-user = auth.user;
+  final user = auth.user;
   if (user == null) {
-  showLoginPrompt();
-  return;
- 
+    showLoginPrompt();
+    return;
+  }
+
+  // user is now promoted to non-nullable
+  print(user.name);
+  sendEmail(user.email);
+  logActivity(user.id);
 }
 ```
-
- //
-user is now promoted to non-nullable print(user.name);
-sendEmail(user.email); logActivity(user.id); }
 
 ## Design Clear API Contracts
 
 Consider whether accessing a property when null should be fatal or fail
 gracefully:
 
-// Option 1: Individual nullable properties class Auth { User? user;
-String? token; 
-
 ```dart
-String getUserId() {
-  return user?.id ?? 'anonymous';
- 
+// Option 1: Individual nullable properties
+class Auth {
+  User? user;
+  String? token;
+
+  String getUserId() {
+    return user?.id ?? 'anonymous';
+  }
 }
-```
 
+// Option 2: Entire object nullable
+class Auth {
+  final User user;
+  final String token;
 
-} // Option 2: Entire object nullable class Auth { final User user;
-final String token; Auth({required this.user, required this.token}); }
+  Auth({required this.user, required this.token});
+}
 Auth? currentAuth; // null when not authenticated
+```
 
 Choose option 1 when partial states are valid. Choose option 2 when
 authentication is all-or-nothing. The second approach provides stronger
@@ -721,11 +722,20 @@ guarantees but less flexibility.
 When a nullable value must produce a non-null result, the
 null-coalescing operator is the safest and most idiomatic choice:
 
-// Clear intent, safe, and concise String title = article.customTitle ??
-article.generatedTitle ?? 'Untitled'; // Equivalent but verbose String
-title; if (article.customTitle != null) { title = article.customTitle; }
-else if (article.generatedTitle != null) { title =
-article.generatedTitle; } else { title = 'Untitled'; }
+```dart
+// Clear intent, safe, and concise
+String title = article.customTitle ?? article.generatedTitle ?? 'Untitled';
+
+// Equivalent but verbose
+String title;
+if (article.customTitle != null) {
+  title = article.customTitle;
+} else if (article.generatedTitle != null) {
+  title = article.generatedTitle;
+} else {
+  title = 'Untitled';
+}
+```
 
 The null-coalescing operator chains elegantly and evaluates
 left-to-right, stopping at the first non-null value.
@@ -735,11 +745,23 @@ left-to-right, stopping at the first non-null value.
 Rather than suppressing null safety with assertions, handle edge cases
 with clear logic:
 
-class PaymentProcessor { Future\<void\> processPayment(Order order)
-async { final paymentMethod = order.paymentMethod; if (paymentMethod ==
-null) { throw PaymentException('Payment method required'); } if
-(!paymentMethod.isValid()) { throw PaymentException('Invalid payment
-method'); } await paymentMethod.charge(order.total); } }
+```dart
+class PaymentProcessor {
+  Future<void> processPayment(Order order) async {
+    final paymentMethod = order.paymentMethod;
+
+    if (paymentMethod == null) {
+      throw PaymentException('Payment method required');
+    }
+
+    if (!paymentMethod.isValid()) {
+      throw PaymentException('Invalid payment method');
+    }
+
+    await paymentMethod.charge(order.total);
+  }
+}
+```
 
 This approach documents assumptions, provides clear error messages, and
 maintains null safety without assertions.
@@ -775,32 +797,37 @@ transition to a fully sound language.
 
 Several patterns require special attention during migration:
 
-// Before null safety class Configuration { String serverUrl; int
-timeout; Configuration() { loadFromFile(); } 
-
 ```dart
-void loadFromFile() {
-serverUrl = readConfig('server');
-  timeout =
-int.parse(readConfig('timeout'));
- 
+// Before null safety
+class Configuration {
+  String serverUrl;
+  int timeout;
+
+  Configuration() {
+    loadFromFile();
+  }
+
+  void loadFromFile() {
+    serverUrl = readConfig('server');
+    timeout = int.parse(readConfig('timeout'));
+  }
+}
+
+// After null safety - late keyword required
+class Configuration {
+  late String serverUrl;
+  late int timeout;
+
+  Configuration() {
+    loadFromFile();
+  }
+
+  void loadFromFile() {
+    serverUrl = readConfig('server');
+    timeout = int.parse(readConfig('timeout'));
+  }
 }
 ```
-
- } // After null safety - late
-keyword required class Configuration { late String serverUrl; late int
-timeout; Configuration() { loadFromFile(); } 
-
-```dart
-void loadFromFile() {
-serverUrl = readConfig('server');
-  timeout =
-int.parse(readConfig('timeout'));
- 
-}
-```
-
- }
 
 The late keyword bridges scenarios where initialization happens in
 helper methods rather than at declaration. However, consider refactoring
@@ -817,30 +844,23 @@ execution, especially in performance-critical code paths.
 Without null safety, every property access potentially requires a null
 check:
 
-// Without null safety - implicit null checks 
-
 ```dart
-String processName(User
-user) {
-  // Runtime must verify user is not null // Runtime must verify
-user.name is not null return user.name.toUpperCase();
- 
-}
-```
-
- // With null
-safety - checks eliminated 
-
-```dart
+// Without null safety - implicit null checks
 String processName(User user) {
-  // Compiler
-guarantees both user and user.name are non-null // Generated code skips
-null checks entirely return user.name.toUpperCase();
- 
+  // Runtime must verify user is not null
+  // Runtime must verify user.name is not null
+  return user.name.toUpperCase();
 }
 ```
 
-
+```dart
+// With null safety - checks eliminated
+String processName(User user) {
+  // Compiler guarantees both user and user.name are non-null
+  // Generated code skips null checks entirely
+  return user.name.toUpperCase();
+}
+```
 
 In tight loops or frequently-called methods, eliminating these checks
 produces measurable performance improvements through reduced instruction
