@@ -555,6 +555,8 @@ system.
 The following diagram illustrates the decision-making process when
 working with Dart's null safety system:
 
+![Null Safety Decision Flow](diagram1_decision_flow.png)
+
 This flowchart shows how to determine the appropriate approach based on
 whether a value can be absent and how you need to access it. Green boxes
 indicate compile-time safe paths, while yellow boxes indicate approaches
@@ -565,6 +567,8 @@ requiring extra caution.
 This comparison demonstrates the fundamental difference between
 traditional null handling and Dart's null safety approach:
 
+![Before and After Null Safety Comparison](diagram2_before_after.png)
+
 Notice how runtime crashes on the left are transformed into compile-time
 guarantees on the right, with the added benefit of faster execution
 through eliminated runtime checks.
@@ -574,6 +578,8 @@ through eliminated runtime checks.
 Understanding Dart's type hierarchy is essential for working
 effectively with null safety:
 
+![Dart Type System Hierarchy](diagram3_type_hierarchy.png)
+
 This diagram illustrates how nullable types are unions of their base
 type and Null, and how type promotion allows safe conversion from
 nullable to non-nullable types after null checks.
@@ -581,6 +587,8 @@ nullable to non-nullable types after null checks.
 ## Diagram 4: Flow Analysis and Compilation
 
 The compilation process with flow analysis ensures type safety:
+
+![Flow Analysis and Compilation Process](diagram4_flow_analysis.png)
 
 This process diagram shows how Dart's analyzer uses flow analysis to
 track variable states, promote types, and generate optimized code.
