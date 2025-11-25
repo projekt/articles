@@ -214,6 +214,14 @@ Object-Oriented Programming excels at modeling complex systems with many interre
 
 ---
 
+## 👤 About the Author
+
+**Srđan Ljustina** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
+
+---
+
 **Series Navigation:** [← Imperative Programming](02_imperative_programming.md) | Article 3 of 7 | Next: [Functional Programming →](04_functional_programming.md)
 
 **Other Articles in This Series:**

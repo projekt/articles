@@ -1540,3 +1540,11 @@ Just as a craftsperson needs different tools for different jobs, a skilled progr
 The key to mastery is not choosing one paradigm over others, but understanding the strengths of each and knowing when to apply them. As you continue your programming journey, experiment with different paradigms, recognize patterns in successful code, and develop an intuition for which approach will serve your specific needs best.
 
 Remember: the best code is not the one that rigidly follows a single paradigm, but the one that is clear, maintainable, and solves the problem effectively using the right combination of approaches.
+
+---
+
+## 👤 About the Author
+
+**Srđan Ljustina** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)

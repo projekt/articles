@@ -523,6 +523,14 @@ Remember: the best code is not the one that rigidly follows a single paradigm, b
 
 ---
 
+## 👤 About the Author
+
+**Srđan Ljustina** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
+
+---
+
 **Series Navigation:** [← Procedural Programming](06_procedural_programming.md) | Article 7 of 7
 
 **Other Articles in This Series:**
