@@ -1,3 +1,13 @@
+---
+title: "Mastering Dart's Sound Null Safety | Complete Guide with Examples"
+description: "Comprehensive guide to Dart null safety: non-nullable types, flow analysis, migration strategies, and real-world implementation. Build robust Flutter apps."
+keywords: "Dart null safety, sound null safety, Flutter null safety, Dart programming, null safety migration, nullable types, non-nullable"
+author: "Srđan Ljustina"
+date: "2024-11-26"
+reading_time: "20 minutes"
+canonical_url: "https://projekt.github.io/articles/dart_null_safety_FINAL_with_TOC.html"
+---
+
 # Mastering Dart's Sound Null Safety: Building Robust and High-Performance Applications
 
 **⏱️ 20-Minute Deep Dive**

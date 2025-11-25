@@ -1,3 +1,15 @@
+---
+title: "Choosing the Right Programming Paradigm | Best Practices & Summary"
+description: "Complete guide to selecting programming paradigms. Compare imperative, OOP, functional, declarative approaches with decision trees and real-world examples."
+keywords: "programming paradigms comparison, multi-paradigm programming, software architecture, best practices, Dart programming"
+author: "Srđan Ljustina"
+date: "2024-11-26"
+article_series: "Programming Paradigms"
+article_number: 7
+reading_time: "10 minutes"
+canonical_url: "https://projekt.github.io/articles/07_summary.html"
+---
+
 # Programming Paradigms Series - Article 7: Choosing the Right Paradigm - Summary and Best Practices
 
 **⏱️ 10-Minute Deep Dive**

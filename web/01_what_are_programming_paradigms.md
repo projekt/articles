@@ -1,3 +1,15 @@
+---
+title: "What Are Programming Paradigms? | Dart Programming Series"
+description: "Learn programming paradigms fundamentals in Dart. Understand imperative, OOP, functional, declarative, and procedural approaches with practical examples."
+keywords: "programming paradigms, Dart programming, software development, coding paradigms, programming concepts"
+author: "Srđan Ljustina"
+date: "2024-11-26"
+article_series: "Programming Paradigms"
+article_number: 1
+reading_time: "4 minutes"
+canonical_url: "https://projekt.github.io/articles/01_what_are_programming_paradigms.html"
+---
+
 # Programming Paradigms Series - Article 1: What Are Programming Paradigms?
 
 **⏱️ Quick 4-Minute Read**
