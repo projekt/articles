@@ -1,3 +1,15 @@
+---
+title: "Object-Oriented Programming (OOP) in Dart | Programming Paradigms"
+description: "Learn OOP in Dart: classes, objects, encapsulation, inheritance, polymorphism, and abstraction. Complete guide with real-world examples."
+keywords: "OOP, object-oriented programming, Dart OOP, classes, inheritance, polymorphism, encapsulation, abstraction"
+author: "Srđan Ljustina"
+date: "2024-11-26"
+article_series: "Programming Paradigms"
+article_number: 3
+reading_time: "5 minutes"
+canonical_url: "https://projekt.github.io/articles/03_oop.html"
+---
+
 # Programming Paradigms Series - Article 3: Object-Oriented Programming (OOP)
 
 **⏱️ 5-Minute Read**

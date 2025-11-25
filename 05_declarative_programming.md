@@ -1,3 +1,15 @@
+---
+title: "Declarative Programming in Dart & Flutter | UI Development Guide"
+description: "Learn declarative programming with Flutter and Dart. Build UIs declaratively, understand the what vs how approach with practical examples."
+keywords: "declarative programming, Flutter, Dart UI, Flutter widgets, declarative UI, programming paradigms"
+author: "Srđan Ljustina"
+date: "2024-11-26"
+article_series: "Programming Paradigms"
+article_number: 5
+reading_time: "6 minutes"
+canonical_url: "https://projekt.github.io/articles/05_declarative_programming.html"
+---
+
 # Programming Paradigms Series - Article 5: Declarative Programming
 
 **⏱️ 6-Minute Read**

@@ -1,3 +1,13 @@
+---
+title: "Programming Articles & Learning Notes | Dart & Software Development"
+description: "Comprehensive guides on Dart programming, null safety, and programming paradigms. Learn OOP, functional programming, declarative programming with practical examples."
+keywords: "Dart programming, null safety, programming paradigms, OOP, functional programming, declarative programming, Flutter, software development"
+author: "Srđan Ljustina"
+og:type: "website"
+og:image: "/articles/assets/og-image.png"
+canonical_url: "https://projekt.github.io/articles/"
+---
+
 # Programming Articles & Learning Notes
 
 Welcome to my collection of technical articles focused on Dart programming and software development concepts. This repository represents my learning journey, documenting insights and principles as I explore various programming topics.
