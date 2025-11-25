@@ -222,6 +222,27 @@ Declarative programming is particularly powerful for UI development, database qu
 
 ---
 
+## Further Reading
+
+**Declarative Programming:**
+- [Declarative UI](https://docs.flutter.dev/get-started/flutter-for/declarative) - Flutter's approach
+- [Declarative vs Imperative](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2) - Detailed comparison
+
+**Flutter & Dart:**
+- [Building Layouts in Flutter](https://docs.flutter.dev/development/ui/layout) - Declarative UI tutorial
+- [Widget Catalog](https://docs.flutter.dev/development/ui/widgets) - Flutter widgets reference
+- [State Management](https://docs.flutter.dev/development/data-and-backend/state-mgmt/intro) - Managing app state
+
+**Related Technologies:**
+- [SwiftUI](https://developer.apple.com/xcode/swiftui/) - Apple's declarative UI framework
+- [React](https://reactjs.org/) - Declarative UI for web
+- [SQL Tutorial](https://www.sqltutorial.org/) - Declarative query language
+
+**Articles:**
+- [The Case for Declarative Programming](https://increment.com/frontend/case-for-declarative-programming/) - Benefits explained
+
+---
+
 **Series Navigation:** [← Functional Programming](04_functional_programming.md) | Article 5 of 7 | Next: [Procedural Programming →](06_procedural_programming.md)
 
 **Other Articles in This Series:**

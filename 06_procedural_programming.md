@@ -236,6 +236,26 @@ Procedural programming provides a natural way to organize sequential tasks into 
 
 ---
 
+## Further Reading
+
+**Procedural Programming:**
+- [Structured Programming](https://en.wikipedia.org/wiki/Structured_programming) - Historical context and principles
+- [Functions in Dart](https://dart.dev/guides/language/language-tour#functions) - Official guide
+
+**Code Organization:**
+- [Clean Code: Functions](https://medium.com/@sheyiogundijo/clean-code-in-a-nutshell-ac7aa5f80a99) - Writing good procedures
+- [Modular Programming](https://en.wikipedia.org/wiki/Modular_programming) - Organizing code into modules
+
+**Related Concepts:**
+- [Top-Down Design](https://www.cs.uic.edu/~jbell/CourseNotes/OO_SoftwareEngineering/TopDownDesign.html) - Procedural design approach
+- [DRY Principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) - Don't Repeat Yourself
+
+**Languages:**
+- [C Programming](https://www.learn-c.org/) - Classic procedural language
+- [Pascal](https://www.freepascal.org/) - Structured procedural language
+
+---
+
 **Series Navigation:** [← Declarative Programming](05_declarative_programming.md) | Article 6 of 7 | Next: [Summary and Best Practices →](07_summary.md)
 
 **Other Articles in This Series:**
