@@ -1347,4 +1347,12 @@ maintaining the expressiveness that makes Dart productive and enjoyable.
 
 ---
 
+## 👤 About the Author
+
+**Srđan Ljustina** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
+
+---
+
 **Happy coding with null safety! 🎯✨**

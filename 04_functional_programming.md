@@ -267,6 +267,14 @@ Functional programming shines in data processing and transformation tasks. Its e
 
 ---
 
+## 👤 About the Author
+
+**Srđan Ljustina** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
+
+---
+
 **Series Navigation:** [← Object-Oriented Programming](03_oop.md) | Article 4 of 7 | Next: [Declarative Programming →](05_declarative_programming.md)
 
 **Other Articles in This Series:**

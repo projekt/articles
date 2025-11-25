@@ -111,6 +111,14 @@ Each paradigm offers a unique perspective on how to structure and solve problems
 
 ---
 
+## 👤 About the Author
+
+**Srđan Ljustina** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
+
+---
+
 **Series Navigation:** Article 1 of 7 | Next: [Imperative Programming →](02_imperative_programming.md)
 
 **Other Articles in This Series:**
