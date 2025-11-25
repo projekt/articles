@@ -1,0 +1,207 @@
+# Programming Paradigms Series - Article 3: Object-Oriented Programming (OOP)
+
+**Series Navigation:** [← Imperative Programming](02_imperative_programming.md) | Article 3 of 7 | Next: [Functional Programming →](04_functional_programming.md)
+
+---
+
+**About This Series**
+
+This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.
+
+---
+
+## Table of Contents
+
+1. [Concept](#concept)
+2. [Real-Life Analogy](#real-life-analogy)
+3. [Dart Example](#dart-example)
+4. [OOP Class Hierarchy Diagram](#oop-class-hierarchy-diagram)
+5. [OOP Core Principles](#oop-core-principles)
+
+---
+
+## Concept
+
+Object-Oriented Programming organizes code around objects that bundle data (properties) and behavior (methods) together. It's based on concepts like encapsulation, inheritance, and polymorphism.
+
+## Real-Life Analogy
+
+Think of a car manufacturing plant. Each car is an object with:
+- **Properties**: color, model, speed, fuel level
+- **Methods**: accelerate(), brake(), refuel()
+- **Encapsulation**: The driver doesn't need to know how the engine works internally
+- **Inheritance**: A SportsCar inherits features from Car but adds turbo boost
+- **Polymorphism**: Both Car and Motorcycle can move(), but they do it differently
+
+## Dart Example
+
+```dart
+// Base class
+class Vehicle {
+  String brand;
+  int speed;
+
+  Vehicle(this.brand, this.speed);
+
+  void move() {
+    print('$brand is moving at $speed km/h');
+  }
+
+  void stop() {
+    speed = 0;
+    print('$brand has stopped');
+  }
+}
+
+// Inheritance
+class Car extends Vehicle {
+  int numberOfDoors;
+
+  Car(String brand, int speed, this.numberOfDoors) : super(brand, speed);
+
+  // Method overriding (Polymorphism)
+  @override
+  void move() {
+    print('$brand car with $numberOfDoors doors is driving at $speed km/h');
+  }
+
+  void honk() {
+    print('Beep beep!');
+  }
+}
+
+class Motorcycle extends Vehicle {
+  bool hasSidecar;
+
+  Motorcycle(String brand, int speed, this.hasSidecar) : super(brand, speed);
+
+  @override
+  void move() {
+    String sidecarInfo = hasSidecar ? 'with sidecar' : 'without sidecar';
+    print('$brand motorcycle $sidecarInfo is riding at $speed km/h');
+  }
+}
+
+void main() {
+  Car myCar = Car('Toyota', 80, 4);
+  Motorcycle myBike = Motorcycle('Harley', 100, false);
+
+  myCar.move();      // Toyota car with 4 doors is driving at 80 km/h
+  myCar.honk();      // Beep beep!
+  myBike.move();     // Harley motorcycle without sidecar is riding at 100 km/h
+
+  // Polymorphism in action
+  List<Vehicle> vehicles = [myCar, myBike];
+  for (var vehicle in vehicles) {
+    vehicle.move();  // Each calls its own version of move()
+  }
+}
+```
+
+## OOP Class Hierarchy Diagram
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║              🏛️ OOP CLASS HIERARCHY 🏛️                      ║
+╚═══════════════════════════════════════════════════════════════╝
+
+                    ┌─────────────────────────┐
+                    │    🚗 Vehicle           │
+                    │  (Parent/Base Class)    │
+                    ╞═════════════════════════╡
+                    │ 📦 PROPERTIES:          │
+                    │   • brand: String       │
+                    │   • speed: int          │
+                    ╞═════════════════════════╡
+                    │ ⚙️ METHODS:             │
+                    │   • move(): void        │
+                    │   • stop(): void        │
+                    └───────────┬─────────────┘
+                                │
+                    ┌───────────┴───────────┐
+                    │    🔗 INHERITANCE     │
+                    │      (extends)        │
+                    └───────────┬───────────┘
+                                │
+                ┌───────────────┴───────────────┐
+                │                               │
+        ┌───────▼──────────┐          ┌────────▼─────────┐
+        │   🚙 Car         │          │  🏍️ Motorcycle   │
+        │  (Child Class)   │          │  (Child Class)   │
+        ╞══════════════════╡          ╞══════════════════╡
+        │ 📦 PROPERTIES:   │          │ 📦 PROPERTIES:   │
+        │  • numberOfDoors │          │  • hasSidecar    │
+        ╞══════════════════╡          ╞══════════════════╡
+        │ ⚙️ METHODS:      │          │ ⚙️ METHODS:      │
+        │  • move() ✨     │          │  • move() ✨     │
+        │  • honk()        │          └──────────────────┘
+        └──────────────────┘
+
+   ✨ = Polymorphism: Same method name, different implementation
+```
+
+## OOP Core Principles
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                🎯 OOP FOUR PILLARS 🎯                        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 1️⃣ ENCAPSULATION 📦   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━┛
+   ┌─────────────────────┐
+   │   ┌─────────────┐   │  Bundle data and methods
+   │   │ 🔒 Private  │   │  Hide internal details
+   │   │    Data     │   │  Show only what's needed
+   │   └──────┬──────┘   │
+   │          │          │
+   │   ┌──────▼──────┐   │
+   │   │ 🔓 Public   │   │
+   │   │   Methods   │   │  ← External access point
+   │   └─────────────┘   │
+   └─────────────────────┘
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 2️⃣ INHERITANCE 🧬      ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━┛
+        👨 Parent Class
+        ↓ (DNA passed down)
+        ├──► 👦 Child 1 (inherits properties)
+        │
+        └──► 👧 Child 2 (inherits properties)
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 3️⃣ POLYMORPHISM 🎭     ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━┛
+   Same Interface → Different Implementations
+
+   vehicle.move()
+        ├─► Car.move()        → 🚗 "Driving..."
+        └─► Motorcycle.move() → 🏍️ "Riding..."
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 4️⃣ ABSTRACTION 🎨      ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━┛
+   User sees:  drive() 🚗
+              ↓ (Simple interface)
+   Hidden:    ⚙️ Engine
+              🔧 Transmission
+              ⛽ Fuel injection
+              🔩 Internal mechanics
+```
+
+Object-Oriented Programming excels at modeling complex systems with many interrelated components. By organizing code around objects that represent real-world entities, OOP makes large codebases more maintainable, reusable, and easier to understand.
+
+---
+
+**Series Navigation:** [← Imperative Programming](02_imperative_programming.md) | Article 3 of 7 | Next: [Functional Programming →](04_functional_programming.md)
+
+**Other Articles in This Series:**
+- [Article 1: What Are Programming Paradigms?](01_what_are_programming_paradigms.md)
+- [Article 2: Imperative Programming](02_imperative_programming.md)
+- **Article 3: Object-Oriented Programming (OOP)** (Current)
+- [Article 4: Functional Programming](04_functional_programming.md)
+- [Article 5: Declarative Programming](05_declarative_programming.md)
+- [Article 6: Procedural Programming](06_procedural_programming.md)
+- [Article 7: Choosing the Right Paradigm - Summary and Best Practices](07_summary.md)
