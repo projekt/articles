@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Programming Paradigms: A Comprehensive Guide with Dart Examples</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+line-height: 1.8;
+background: #f9f9f9;
+color: #333;
+}
+h1 {
+color: #2c3e50;
+border-bottom: 3px solid #3498db;
+padding-bottom: 10px;
+}
+h2 {
+color: #34495e;
+border-bottom: 2px solid #95a5a6;
+padding-bottom: 8px;
+margin-top: 30px;
+}
+h3 {
+color: #555;
+margin-top: 25px;
+}
+pre {
+background: #2c3e50;
+color: #ecf0f1;
+padding: 20px;
+border-radius: 8px;
+overflow-x: auto;
+border-left: 4px solid #3498db;
+font-size: 14px;
+line-height: 1.5;
+}
+code {
+background: #ecf0f1;
+color: #e74c3c;
+padding: 3px 6px;
+border-radius: 4px;
+font-family: 'Courier New', monospace;
+font-size: 0.9em;
+}
+pre code {
+background: transparent;
+color: #ecf0f1;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+width: 100%;
+margin: 25px 0;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+background: white;
+}
+th {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+padding: 15px;
+text-align: left;
+font-weight: 600;
+}
+td {
+border: 1px solid #ddd;
+padding: 12px 15px;
+}
+tr:nth-child(even) {
+background: #f8f9fa;
+}
+tr:hover {
+background: #e9ecef;
+}
+blockquote {
+border-left: 4px solid #3498db;
+padding-left: 20px;
+margin-left: 0;
+color: #555;
+font-style: italic;
+background: #f0f0f0;
+padding: 15px 20px;
+border-radius: 4px;
+}
+a {
+color: #3498db;
+text-decoration: none;
+border-bottom: 1px dotted #3498db;
+}
+a:hover {
+color: #2980b9;
+border-bottom: 1px solid #2980b9;
+}
+ul, ol {
+padding-left: 30px;
+}
+li {
+margin: 8px 0;
+}
+.table-of-contents {
+background: white;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+margin-bottom: 30px;
+}
+hr {
+border: none;
+border-top: 2px solid #ddd;
+margin: 40px 0;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Programming Paradigms: A Comprehensive Guide with Dart
+Examples</h1>
+</header>
+<h1 id="programming-paradigms-a-comprehensive-guide-with-dart-examples">Programming
+Paradigms: A Comprehensive Guide with Dart Examples</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#executive-summary">Executive Summary</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#what-are-programming-paradigms">What Are Programming
+Paradigms?</a></li>
+<li><a href="#1-imperative-programming">Imperative Programming</a>
+<ul>
+<li>Concept</li>
+<li>Real-Life Analogy</li>
+<li>Dart Example</li>
+</ul></li>
+<li><a href="#2-object-oriented-programming-oop">Object-Oriented
+Programming (OOP)</a>
+<ul>
+<li>Concept</li>
+<li>Real-Life Analogy</li>
+<li>Dart Example</li>
+</ul></li>
+<li><a href="#3-functional-programming">Functional Programming</a>
+<ul>
+<li>Concept</li>
+<li>Real-Life Analogy</li>
+<li>Dart Example</li>
+</ul></li>
+<li><a href="#4-declarative-programming">Declarative Programming</a>
+<ul>
+<li>Concept</li>
+<li>Real-Life Analogy</li>
+<li>Dart Example</li>
+</ul></li>
+<li><a href="#5-procedural-programming">Procedural Programming</a>
+<ul>
+<li>Concept</li>
+<li>Real-Life Analogy</li>
+<li>Dart Example</li>
+</ul></li>
+<li><a href="#comparing-paradigms-same-problem-different-approaches">Comparing
+Paradigms: Same Problem, Different Approaches</a>
+<ul>
+<li>Imperative Approach</li>
+<li>Object-Oriented Approach</li>
+<li>Functional Approach</li>
+</ul></li>
+<li><a href="#multi-paradigm-programming-in-dart">Multi-Paradigm
+Programming in Dart</a></li>
+<li><a href="#choosing-the-right-paradigm">Choosing the Right
+Paradigm</a></li>
+<li><a href="#best-practices-for-multi-paradigm-development">Best
+Practices for Multi-Paradigm Development</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<hr />
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Programming paradigms are fundamental approaches to writing software
+that shape how developers think about and solve problems. This
+comprehensive guide explores five major paradigms—Imperative,
+Object-Oriented (OOP), Functional, Declarative, and Procedural—with
+practical examples in Dart and real-world analogies.</p>
+<p><strong>Key Takeaways:</strong></p>
+<ul>
+<li><strong>Imperative Programming</strong> focuses on <em>how</em> to
+achieve results through explicit step-by-step instructions, like
+following a recipe</li>
+<li><strong>Object-Oriented Programming (OOP)</strong> organizes code
+around objects that bundle data and behavior, ideal for modeling
+real-world entities and complex systems</li>
+<li><strong>Functional Programming</strong> treats computation as
+mathematical functions with immutable data, excellent for data
+processing and parallel tasks</li>
+<li><strong>Declarative Programming</strong> emphasizes <em>what</em>
+you want to achieve rather than how, commonly used in UI development and
+database queries</li>
+<li><strong>Procedural Programming</strong> structures code into
+reusable procedures, suitable for sequential tasks and utilities</li>
+</ul>
+<p>Modern languages like Dart support multiple paradigms, allowing
+developers to choose the best approach for each problem. The article
+demonstrates how to combine paradigms effectively: using OOP for
+structure, functional programming for data transformation, declarative
+style for UI, and imperative approaches for precise control.</p>
+<p><strong>Who Should Read This:</strong> - Developers learning Dart or
+transitioning from other languages - Programmers wanting to understand
+different problem-solving approaches - Students studying software design
+and architecture - Anyone seeking to write more effective, maintainable
+code</p>
+<p><strong>What You’ll Learn:</strong> - Clear explanations of each
+paradigm with real-life analogies - Complete Dart code examples
+demonstrating each approach - Visual diagrams illustrating concepts and
+workflows - Practical guidance on when to use each paradigm - Best
+practices for multi-paradigm development</p>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Programming paradigms are fundamental approaches to writing software
+that shape how developers think about and solve problems. Just as
+architects might approach building design differently depending on
+whether they’re creating a skyscraper, a bridge, or a home, programmers
+use different paradigms based on the problem at hand. This article
+explores the major programming paradigms with practical examples in Dart
+and relatable real-world analogies.</p>
+<h2 id="what-are-programming-paradigms">What Are Programming
+Paradigms?</h2>
+<p>A programming paradigm is a style or methodology for structuring and
+organizing code. It provides a framework for thinking about program
+design, determining how you express logic, manage data, and handle the
+flow of execution. Understanding these paradigms helps you choose the
+right tool for each job and write more effective, maintainable code.</p>
+<h3 id="programming-paradigms-overview">Programming Paradigms
+Overview</h3>
+<pre><code>╔═══════════════════════════════════════════════════════════╗
+║          🎯 PROGRAMMING PARADIGMS UNIVERSE 🎯            ║
+╚═══════════════════════════════════════════════════════════╝
+                            │
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+   ┌────▼────┐         ┌────▼────┐        ┌────▼────┐
+   │💡IMPERATIVE│       │  🏛️ OOP   │        │🧮FUNCTIONAL│
+   │  ═══════  │       │  ═══════  │        │  ═══════   │
+   │ Focus:    │       │ Focus:    │        │ Focus:     │
+   │   HOW     │       │ OBJECTS   │        │ FUNCTIONS  │
+   │ Tell me   │       │ Model     │        │ Transform  │
+   │ the steps │       │ entities  │        │ data       │
+   └────┬────┘         └────┬────┘        └─────────┘
+        │                   │
+   ┌────▼────┐         ┌────▼────┐
+   │📊PROCEDURAL│       │📋DECLARATIVE│
+   │  ═══════  │       │   ═══════   │
+   │ Focus:    │       │  Focus:     │
+   │PROCEDURES │       │   WHAT      │
+   │ Reusable  │       │ Describe    │
+   │ routines  │       │ the result  │
+   └─────────┘         └──────────┘</code></pre>
+<p><strong>Key Characteristics:</strong></p>
+<pre><code>╔════════════╦════════════╦═════════════╦══════════════╦═════════════╗
+║ Paradigm   ║ Main Focus ║ Data        ║ Control Flow ║ Best For    ║
+║            ║            ║ Handling    ║              ║             ║
+╠════════════╬════════════╬═════════════╬══════════════╬═════════════╣
+║            ║            ║             ║              ║             ║
+║ IMPERATIVE ║    HOW     ║   Mutable   ║   Explicit   ║ Algorithms, ║
+║     💡     ║  (Steps)   ║    state    ║    steps     ║   scripts   ║
+║            ║            ║             ║              ║             ║
+╠════════════╬════════════╬═════════════╬══════════════╬═════════════╣
+║            ║            ║             ║              ║             ║
+║    OOP     ║  OBJECTS   ║ Encapsulated║   Method     ║  Complex    ║
+║    🏛️     ║ (Entities) ║    state    ║    calls     ║  systems    ║
+║            ║            ║             ║              ║             ║
+╠════════════╬════════════╬═════════════╬══════════════╬═════════════╣
+║            ║            ║             ║              ║             ║
+║ FUNCTIONAL ║ FUNCTIONS  ║  Immutable  ║   Function   ║    Data     ║
+║     🧮     ║(Transform) ║    data     ║ composition  ║ processing  ║
+║            ║            ║             ║              ║             ║
+╠════════════╬════════════╬═════════════╬══════════════╬═════════════╣
+║            ║            ║             ║              ║             ║
+║DECLARATIVE ║    WHAT    ║  Abstract   ║   Implicit   ║ UI, queries,║
+║     📋     ║  (Result)  ║             ║              ║   configs   ║
+║            ║            ║             ║              ║             ║
+╠════════════╬════════════╬═════════════╬══════════════╬═════════════╣
+║            ║            ║             ║              ║             ║
+║PROCEDURAL  ║ PROCEDURES ║   Shared    ║   Function   ║ Sequential  ║
+║     📊     ║ (Routines) ║    state    ║    calls     ║    tasks    ║
+║            ║            ║             ║              ║             ║
+╚════════════╩════════════╩═════════════╩══════════════╩═════════════╝</code></pre>
+<h2 id="imperative-programming">1. Imperative Programming</h2>
+<h3 id="concept">Concept</h3>
+<p>Imperative programming is like following a recipe step-by-step. You
+give the computer explicit instructions about what to do and in what
+order, focusing on <em>how</em> to achieve a result.</p>
+<h3 id="real-life-analogy">Real-Life Analogy</h3>
+<p>Imagine you’re teaching someone to make a sandwich: 1. Get two slices
+of bread 2. Spread butter on one slice 3. Add cheese on the buttered
+slice 4. Place the second slice on top 5. Cut the sandwich
+diagonally</p>
+<p>Each step modifies the state (the sandwich being built) until you
+reach the final result.</p>
+<h3 id="dart-example">Dart Example</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode dart"><code class="sourceCode dart"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> main() {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Imperative approach to calculate sum of squares</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> numbers <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span>];</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span>;</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Step-by-step instructions</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span>; i <span class="op">&lt;</span> numbers<span class="op">.</span>length; i<span class="op">++</span>) {</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> square <span class="op">=</span> numbers[i] <span class="op">*</span> numbers[i];</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    sum <span class="op">=</span> sum <span class="op">+</span> square;</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Sum of squares: $sum&#39;</span>); <span class="co">// Output: 55</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>In this example, we explicitly tell the computer to: - Initialize a
+sum variable - Loop through each number - Calculate the square - Add it
+to the sum</p>
+<p><strong>Imperative Flow Diagram:</strong></p>
+<pre><code>╔══════════════════════════════════════════════════════════╗
+║         🔄 IMPERATIVE EXECUTION FLOW 🔄                 ║
+╚══════════════════════════════════════════════════════════╝
+
+                        START 🚀
+                          │
+                          ▼
+                ┌─────────────────────┐
+                │  📋 INITIALIZE      │
+                │  ─────────────────  │
+                │  sum = 0            │
+                │  i = 0              │
+                │  numbers = [1..5]   │
+                └──────────┬──────────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+              ┌─────┤ ❓ CONDITION │
+              │     │  i &lt; length? │
+              │     └──────┬───────┘
+              │         YES│  │NO
+              │            │  └─────────────┐
+              │            ▼                │
+              │     ┌──────────────┐        │
+              │     │ 🔢 CALCULATE │        │
+              │     │  ──────────  │        │
+              │     │  square =    │        │
+              │     │  numbers[i]² │        │
+              │     └──────┬───────┘        │
+              │            │                │
+              │            ▼                │
+              │     ┌──────────────┐        │
+              │     │ ➕ ADD       │        │
+              │     │  ──────────  │        │
+              │     │  sum = sum + │        │
+              │     │     square   │        │
+              │     └──────┬───────┘        │
+              │            │                │
+              │            ▼                │
+              │     ┌──────────────┐        │
+              │     │ 🔄 INCREMENT │        │
+              │     │  ──────────  │        │
+              │     │  i = i + 1   │        │
+              │     └──────┬───────┘        │
+              │            │                │
+              └────────────┘                │
+                                           │
+                           ┌───────────────┘
+                           ▼
+                    ┌──────────────┐
+                    │ 🖨️ OUTPUT   │
+                    │  ──────────  │
+                    │ Print result │
+                    │  sum = 55    │
+                    └──────────────┘
+                           │
+                           ▼
+                        END 🏁
+
+Legend: 📋 Init | ❓ Decision | 🔢 Compute | ➕ Update | 🔄 Loop | 🖨️ Output</code></pre>
+<h2 id="object-oriented-programming-oop">2. Object-Oriented Programming
+(OOP)</h2>
+<h3 id="concept-1">Concept</h3>
+<p>Object-Oriented Programming organizes code around objects that bundle
+data (properties) and behavior (methods) together. It’s based on
+concepts like encapsulation, inheritance, and polymorphism.</p>
+<h3 id="real-life-analogy-1">Real-Life Analogy</h3>
+<p>Think of a car manufacturing plant. Each car is an object with: -
+<strong>Properties</strong>: color, model, speed, fuel level -
+<strong>Methods</strong>: accelerate(), brake(), refuel() -
+<strong>Encapsulation</strong>: The driver doesn’t need to know how the
+engine works internally - <strong>Inheritance</strong>: A SportsCar
+inherits features from Car but adds turbo boost -
+<strong>Polymorphism</strong>: Both Car and Motorcycle can move(), but
+they do it differently</p>
+<h3 id="dart-example-1">Dart Example</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode dart"><code class="sourceCode dart"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Base class</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Vehicle {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">String</span> brand;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> speed;</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  Vehicle(<span class="kw">this</span><span class="op">.</span>brand<span class="op">,</span> <span class="kw">this</span><span class="op">.</span>speed);</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> move() {</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;$brand is moving at $speed km/h&#39;</span>);</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> stop() {</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    speed <span class="op">=</span> <span class="dv">0</span>;</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;$brand has stopped&#39;</span>);</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Inheritance</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Car <span class="kw">extends</span> Vehicle {</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> numberOfDoors;</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  Car(<span class="dt">String</span> brand<span class="op">,</span> <span class="dt">int</span> speed<span class="op">,</span> <span class="kw">this</span><span class="op">.</span>numberOfDoors) <span class="op">:</span> <span class="kw">super</span>(brand<span class="op">,</span> speed);</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Method overriding (Polymorphism)</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">@override</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> move() {</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;$brand car with $numberOfDoors doors is driving at $speed km/h&#39;</span>);</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> honk() {</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;Beep beep!&#39;</span>);</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Motorcycle <span class="kw">extends</span> Vehicle {</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> hasSidecar;</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  Motorcycle(<span class="dt">String</span> brand<span class="op">,</span> <span class="dt">int</span> speed<span class="op">,</span> <span class="kw">this</span><span class="op">.</span>hasSidecar) <span class="op">:</span> <span class="kw">super</span>(brand<span class="op">,</span> speed);</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="kw">@override</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> move() {</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    <span class="dt">String</span> sidecarInfo <span class="op">=</span> hasSidecar <span class="op">?</span> <span class="st">&#39;with sidecar&#39;</span> <span class="op">:</span> <span class="st">&#39;without sidecar&#39;</span>;</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;$brand motorcycle $sidecarInfo is riding at $speed km/h&#39;</span>);</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> main() {</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  Car myCar <span class="op">=</span> Car(<span class="st">&#39;Toyota&#39;</span><span class="op">,</span> <span class="dv">80</span><span class="op">,</span> <span class="dv">4</span>);</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  Motorcycle myBike <span class="op">=</span> Motorcycle(<span class="st">&#39;Harley&#39;</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="cn">false</span>);</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  myCar<span class="op">.</span>move();      <span class="co">// Toyota car with 4 doors is driving at 80 km/h</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  myCar<span class="op">.</span>honk();      <span class="co">// Beep beep!</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  myBike<span class="op">.</span>move();     <span class="co">// Harley motorcycle without sidecar is riding at 100 km/h</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Polymorphism in action</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span>Vehicle<span class="op">&gt;</span> vehicles <span class="op">=</span> [myCar<span class="op">,</span> myBike];</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="dt">var</span> vehicle <span class="kw">in</span> vehicles) {</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    vehicle<span class="op">.</span>move();  <span class="co">// Each calls its own version of move()</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>OOP Class Hierarchy Diagram:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║              🏛️ OOP CLASS HIERARCHY 🏛️                      ║
+╚═══════════════════════════════════════════════════════════════╝
+
+                    ┌─────────────────────────┐
+                    │    🚗 Vehicle           │
+                    │  (Parent/Base Class)    │
+                    ╞═════════════════════════╡
+                    │ 📦 PROPERTIES:          │
+                    │   • brand: String       │
+                    │   • speed: int          │
+                    ╞═════════════════════════╡
+                    │ ⚙️ METHODS:             │
+                    │   • move(): void        │
+                    │   • stop(): void        │
+                    └───────────┬─────────────┘
+                                │
+                    ┌───────────┴───────────┐
+                    │    🔗 INHERITANCE     │
+                    │      (extends)        │
+                    └───────────┬───────────┘
+                                │
+                ┌───────────────┴───────────────┐
+                │                               │
+        ┌───────▼──────────┐          ┌────────▼─────────┐
+        │   🚙 Car         │          │  🏍️ Motorcycle   │
+        │  (Child Class)   │          │  (Child Class)   │
+        ╞══════════════════╡          ╞══════════════════╡
+        │ 📦 PROPERTIES:   │          │ 📦 PROPERTIES:   │
+        │  • numberOfDoors │          │  • hasSidecar    │
+        ╞══════════════════╡          ╞══════════════════╡
+        │ ⚙️ METHODS:      │          │ ⚙️ METHODS:      │
+        │  • move() ✨     │          │  • move() ✨     │
+        │  • honk()        │          └──────────────────┘
+        └──────────────────┘
+        
+   ✨ = Polymorphism: Same method name, different implementation</code></pre>
+<p><strong>OOP Core Principles Illustrated:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║                🎯 OOP FOUR PILLARS 🎯                        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 1️⃣ ENCAPSULATION 📦   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━┛
+   ┌─────────────────────┐
+   │   ┌─────────────┐   │  Bundle data and methods
+   │   │ 🔒 Private  │   │  Hide internal details
+   │   │    Data     │   │  Show only what&#39;s needed
+   │   └──────┬──────┘   │
+   │          │          │
+   │   ┌──────▼──────┐   │
+   │   │ 🔓 Public   │   │
+   │   │   Methods   │   │  ← External access point
+   │   └─────────────┘   │
+   └─────────────────────┘
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 2️⃣ INHERITANCE 🧬      ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━┛
+        👨 Parent Class
+        ↓ (DNA passed down)
+        ├──► 👦 Child 1 (inherits properties)
+        │
+        └──► 👧 Child 2 (inherits properties)
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 3️⃣ POLYMORPHISM 🎭     ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━┛
+   Same Interface → Different Implementations
+   
+   vehicle.move()
+        ├─► Car.move()        → 🚗 &quot;Driving...&quot;
+        └─► Motorcycle.move() → 🏍️ &quot;Riding...&quot;
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 4️⃣ ABSTRACTION 🎨      ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━┛
+   User sees:  drive() 🚗
+              ↓ (Simple interface)
+   Hidden:    ⚙️ Engine
+              🔧 Transmission
+              ⛽ Fuel injection
+              🔩 Internal mechanics</code></pre>
+<h2 id="functional-programming">3. Functional Programming</h2>
+<h3 id="concept-2">Concept</h3>
+<p>Functional programming treats computation as the evaluation of
+mathematical functions. It emphasizes immutability (data that doesn’t
+change) and avoids side effects (changes to state outside the
+function).</p>
+<h3 id="real-life-analogy-2">Real-Life Analogy</h3>
+<p>Think of a vending machine for drinks. You put in money and a
+selection code, and you get a drink out. The machine doesn’t remember
+your previous purchases or change its behavior based on past
+interactions. Each transaction is independent: - <strong>Input</strong>:
+money + selection - <strong>Output</strong>: drink - <strong>No side
+effects</strong>: The machine’s core function doesn’t change based on
+history</p>
+<h3 id="dart-example-2">Dart Example</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode dart"><code class="sourceCode dart"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> main() {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Functional approach to calculate sum of squares</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> numbers <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span>];</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Using functional methods: map and reduce</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> sum <span class="op">=</span> numbers</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span>map((n) <span class="op">=&gt;</span> n <span class="op">*</span> n)           <span class="co">// Transform each number to its square</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span>reduce((a<span class="op">,</span> b) <span class="op">=&gt;</span> a <span class="op">+</span> b);    <span class="co">// Combine all squares into sum</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Sum of squares: $sum&#39;</span>);   <span class="co">// Output: 55</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Pure function example</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> multiply(<span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b) {</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> a <span class="op">*</span> b;  <span class="co">// Always returns same output for same input</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Higher-order function (function that takes functions as parameters)</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> applyOperation(<span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> numbers<span class="op">,</span> <span class="dt">int</span> <span class="kw">Function</span>(<span class="dt">int</span>) operation) {</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> numbers<span class="op">.</span>map(operation)<span class="op">.</span>toList();</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> doubled <span class="op">=</span> applyOperation(numbers<span class="op">,</span> (n) <span class="op">=&gt;</span> n <span class="op">*</span> <span class="dv">2</span>);</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Doubled: $doubled&#39;</span>);  <span class="co">// [2, 4, 6, 8, 10]</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Immutability example</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">final</span> originalList <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>];</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">final</span> newList <span class="op">=</span> [<span class="op">...</span>originalList<span class="op">,</span> <span class="dv">4</span>];  <span class="co">// Create new list instead of modifying</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Original: $originalList&#39;</span>);  <span class="co">// [1, 2, 3] - unchanged</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;New: $newList&#39;</span>);            <span class="co">// [1, 2, 3, 4]</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co">// Pure function - no side effects</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> calculateDiscount(<span class="dt">int</span> price<span class="op">,</span> <span class="dt">double</span> discountRate) {</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span> (price <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> discountRate))<span class="op">.</span>round();</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co">// Impure function - has side effects (modifies external state)</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> counter <span class="op">=</span> <span class="dv">0</span>;</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> incrementCounter() {</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>  counter<span class="op">++</span>;  <span class="co">// Side effect: modifies external variable</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Functional Programming Pipeline:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════╗
+║         🧮 FUNCTIONAL TRANSFORMATION PIPELINE 🧮         ║
+╚═══════════════════════════════════════════════════════════╝
+
+Input Data: [1, 2, 3, 4, 5] 📥
+     │
+     │ map(n =&gt; n²)
+     ▼
+┌─────────────────────┐
+│  🔄 TRANSFORM       │
+│  ───────────────    │
+│  [1, 4, 9, 16, 25]  │  ← Each element squared
+└──────────┬──────────┘
+           │
+           │ reduce((a, b) =&gt; a + b)
+           ▼
+┌─────────────────────┐
+│  ➕ AGGREGATE       │
+│  ───────────────    │
+│  1 + 4 = 5          │
+│  5 + 9 = 14         │
+│  14 + 16 = 30       │
+│  30 + 25 = 55       │
+└──────────┬──────────┘
+           │
+           ▼
+    Result: 55 ✨ 📤
+
+🎯 Pure functions → Predictable results → No side effects</code></pre>
+<p><strong>Pure vs Impure Functions:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║                  ✅ PURE FUNCTION ✅                         ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║  int add(int a, int b) {                                      ║
+║    return a + b;     // Same input → Same output ✓           ║
+║  }                   // No side effects ✓                    ║
+║                                                               ║
+║  📊 Properties:                                               ║
+║  ✓ Deterministic (100% predictable)                          ║
+║  ✓ No side effects (doesn&#39;t change external state)           ║
+║  ✓ Easy to test (input → output, that&#39;s it!)                ║
+║  ✓ Can be cached (memoization works perfectly)               ║
+║  ✓ Thread-safe (parallel execution friendly)                 ║
+║                                                               ║
+║  Example: add(2, 3) ALWAYS returns 5                          ║
+╚═══════════════════════════════════════════════════════════════╝
+
+╔═══════════════════════════════════════════════════════════════╗
+║                  ❌ IMPURE FUNCTION ❌                        ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║  int counter = 0;                                             ║
+║  void increment() {                                           ║
+║    counter++;        // Modifies external state ✗            ║
+║    print(counter);   // Has side effect (I/O) ✗             ║
+║  }                                                            ║
+║                                                               ║
+║  ⚠️ Issues:                                                   ║
+║  ✗ Unpredictable results (depends on external state)         ║
+║  ✗ Hard to test (need to set up external state)             ║
+║  ✗ Can cause bugs in concurrent code (race conditions)       ║
+║  ✗ Difficult to reason about (hidden dependencies)           ║
+║  ✗ Cannot be safely cached                                   ║
+║                                                               ║
+║  Example: increment() returns different values each time      ║
+╚═══════════════════════════════════════════════════════════════╝</code></pre>
+<p><strong>Immutability Concept:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║           🔄 MUTABLE vs 🔒 IMMUTABLE 🔒                      ║
+╚═══════════════════════════════════════════════════════════════╝
+
+🔴 Mutable Approach (Imperative):
+┌──────────────────┐
+│ List: [1, 2, 3]  │ ← Original object
+│ Memory: 0x1000   │
+└────────┬─────────┘
+         │ .add(4)  ← Modifies in place
+         ▼
+┌──────────────────┐
+│ List: [1,2,3,4]  │ ← Same object, changed! ⚠️
+│ Memory: 0x1000   │ ← Same memory address
+└──────────────────┘
+
+⚠️ Problem: Other references are affected!
+   If someone else had a reference to this list,
+   they&#39;ll see the change unexpectedly.
+
+🟢 Immutable Approach (Functional):
+┌──────────────────┐
+│ List: [1, 2, 3]  │ ─────────► Still [1, 2, 3] ✓
+│ Memory: 0x1000   │            Original unchanged!
+└────────┬─────────┘
+         │ [...list, 4]  ← Creates new
+         ▼
+┌──────────────────┐
+│ New: [1,2,3,4]   │ ← New object created ✓
+│ Memory: 0x2000   │ ← Different memory address
+└──────────────────┘
+
+✅ Benefit: Predictable, safe, no surprises!
+   Original data is preserved, easier to reason about.</code></pre>
+<p><strong>Higher-Order Functions:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║            🎯 HIGHER-ORDER FUNCTIONS 🎯                      ║
+╚═══════════════════════════════════════════════════════════════╝
+
+A Higher-Order Function is a function that:
+  1️⃣ Takes functions as parameters, OR
+  2️⃣ Returns a function as a result
+
+┌─────────────────────────────────────────────────────────┐
+│         Higher-Order Function Example                   │
+│                                                          │
+│  applyOperation(numbers, operation)                      │
+│         │              │                                 │
+│    📦 Data         🔧 Function                           │
+│    to process      to apply                              │
+└─────────┬───────────────┬──────────────────────────────┘
+          │               │
+          ▼               ▼
+    [1,2,3,4,5]      (n) =&gt; n * 2
+          │               │
+          └───────┬───────┘
+                  │
+                  ▼
+          ┌───────────────┐
+          │  🔄 Apply to  │
+          │  all elements │
+          └───────┬───────┘
+                  │
+                  ▼
+         [2, 4, 6, 8, 10] ✨
+
+Benefits:
+✓ Code reusability (same function, different operations)
+✓ Abstraction (separate &quot;what to do&quot; from &quot;how to do it&quot;)
+✓ Composability (combine functions to build complex logic)
+
+Example operations you can pass:
+• (n) =&gt; n * 2        (double)
+• (n) =&gt; n * n        (square)
+• (n) =&gt; n + 10       (add 10)</code></pre>
+<h2 id="declarative-programming">4. Declarative Programming</h2>
+<h3 id="concept-3">Concept</h3>
+<p>Declarative programming focuses on <em>what</em> you want to achieve
+rather than <em>how</em> to achieve it. You describe the desired result,
+and the system figures out the steps.</p>
+<h3 id="real-life-analogy-3">Real-Life Analogy</h3>
+<p>When you order food at a restaurant, you use declarative style: -
+<strong>Declarative</strong>: “I want a medium pepperoni pizza” -
+<strong>Imperative</strong>: “Take dough, spread sauce, add cheese, add
+pepperoni, bake at 450°F for 12 minutes”</p>
+<p>You declare what you want; the chef handles the how.</p>
+<h3 id="dart-example-3">Dart Example</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode dart"><code class="sourceCode dart"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> main() {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">Map</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">,</span> <span class="at">dynamic</span><span class="op">&gt;&gt;</span> users <span class="op">=</span> [</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Alice&#39;</span><span class="op">,</span> <span class="st">&#39;age&#39;</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span> <span class="st">&#39;country&#39;</span><span class="op">:</span> <span class="st">&#39;USA&#39;</span>}<span class="op">,</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Bob&#39;</span><span class="op">,</span> <span class="st">&#39;age&#39;</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="st">&#39;country&#39;</span><span class="op">:</span> <span class="st">&#39;UK&#39;</span>}<span class="op">,</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Charlie&#39;</span><span class="op">,</span> <span class="st">&#39;age&#39;</span><span class="op">:</span> <span class="dv">22</span><span class="op">,</span> <span class="st">&#39;country&#39;</span><span class="op">:</span> <span class="st">&#39;USA&#39;</span>}<span class="op">,</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Diana&#39;</span><span class="op">,</span> <span class="st">&#39;age&#39;</span><span class="op">:</span> <span class="dv">28</span><span class="op">,</span> <span class="st">&#39;country&#39;</span><span class="op">:</span> <span class="st">&#39;Canada&#39;</span>}<span class="op">,</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  ];</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Declarative approach: describe what you want</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">var</span> usersOver25InUSA <span class="op">=</span> users</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span>where((user) <span class="op">=&gt;</span> user[<span class="st">&#39;age&#39;</span>] <span class="op">&gt;</span> <span class="dv">25</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span>where((user) <span class="op">=&gt;</span> user[<span class="st">&#39;country&#39;</span>] <span class="op">==</span> <span class="st">&#39;USA&#39;</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span>toList();</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Users over 25 in USA: $usersOver25InUSA&#39;</span>);</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Compare with imperative approach</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">Map</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">,</span> <span class="at">dynamic</span><span class="op">&gt;&gt;</span> result <span class="op">=</span> [];</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="dt">var</span> user <span class="kw">in</span> users) {</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (user[<span class="st">&#39;age&#39;</span>] <span class="op">&gt;</span> <span class="dv">25</span> <span class="op">&amp;&amp;</span> user[<span class="st">&#39;country&#39;</span>] <span class="op">==</span> <span class="st">&#39;USA&#39;</span>) {</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>      result<span class="op">.</span>add(user);</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Imperative result: $result&#39;</span>);</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co">// Declarative widget building in Flutter (Dart&#39;s UI framework)</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UserProfile <span class="kw">extends</span> StatelessWidget {</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">final</span> <span class="dt">String</span> name;</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">final</span> <span class="dt">int</span> age;</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  UserProfile({required <span class="kw">this</span><span class="op">.</span>name<span class="op">,</span> required <span class="kw">this</span><span class="op">.</span>age});</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  <span class="kw">@override</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  Widget build(BuildContext context) {</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">// We declare what the UI should look like</span></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> Column(</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>      children<span class="op">:</span> [</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>        Text(<span class="st">&#39;Name: $name&#39;</span>)<span class="op">,</span></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>        Text(<span class="st">&#39;Age: $age&#39;</span>)<span class="op">,</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>        ElevatedButton(</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>          onPressed<span class="op">:</span> () {}<span class="op">,</span></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>          child<span class="op">:</span> Text(<span class="st">&#39;View Profile&#39;</span>)<span class="op">,</span></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>        )<span class="op">,</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>      ]<span class="op">,</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Declarative vs Imperative Comparison:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║           💡 IMPERATIVE (How to do it) 💡                    ║
+╠═══════════════════════════════════════════════════════════════╣
+║  &quot;Tell me HOW to make coffee step by step&quot; ☕                ║
+║                                                               ║
+║  1. 🥤 Get a cup                                              ║
+║  2. ☕ Put coffee grounds in filter                           ║
+║  3. 💧 Add water to machine                                   ║
+║  4. 🔌 Turn on machine                                        ║
+║  5. ⏰ Wait for brewing                                       ║
+║  6. 🫗 Pour into cup                                          ║
+║                                                               ║
+║  🎯 Focus: Explicit control flow and state changes            ║
+║  📝 You specify: Every single step                            ║
+║  ⚙️ Control: High (you manage everything)                     ║
+╚═══════════════════════════════════════════════════════════════╝
+
+╔═══════════════════════════════════════════════════════════════╗
+║          📋 DECLARATIVE (What you want) 📋                   ║
+╠═══════════════════════════════════════════════════════════════╣
+║  &quot;I want a cup of coffee&quot; ☕                                  ║
+║                                                               ║
+║  Result: You get coffee ☕✨                                   ║
+║  (Implementation details are abstracted away)                 ║
+║                                                               ║
+║  🎯 Focus: Desired outcome, not the process                   ║
+║  📝 You specify: What you want (the result)                   ║
+║  ⚙️ Control: Low (system handles the &quot;how&quot;)                   ║
+╚═══════════════════════════════════════════════════════════════╝</code></pre>
+<p><strong>Code Comparison:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║                    💡 IMPERATIVE CODE 💡                     ║
+╚═══════════════════════════════════════════════════════════════╝
+
+┌───────────────────────────────────────────┐
+│ List result = [];                         │  📝 Create empty list
+│ for (user in users) {                     │  🔄 Manual iteration
+│   if (user.age &gt; 25 &amp;&amp;                    │  ❓ Explicit conditions
+│       user.country == &#39;USA&#39;) {            │  
+│     result.add(user);                     │  ➕ Manual addition
+│   }                                       │
+│ }                                         │
+│                                           │
+│ ⚙️ Manual iteration, explicit conditions   │
+│ 📊 ~7 lines of code                       │
+│ 🎯 You control: Loop, conditions, updates │
+└───────────────────────────────────────────┘
+              │
+              ▼
+     🔧 Steps clearly defined
+     🎮 Full control over process
+
+╔═══════════════════════════════════════════════════════════════╗
+║                   📋 DECLARATIVE CODE 📋                     ║
+╚═══════════════════════════════════════════════════════════════╝
+
+┌───────────────────────────────────────────┐
+│ users                                     │  📦 Start with data
+│   .where(age &gt; 25)                        │  🔍 Filter by age
+│   .where(country == &#39;USA&#39;)                │  🔍 Filter by country
+│                                           │
+│ 🎨 Describe the criteria, not the process │
+│ 📊 ~2 lines of code                       │
+│ 🎯 System handles: How to iterate/filter  │
+└───────────────────────────────────────────┘
+              │
+              ▼
+     ✨ What we want, not how
+     🎪 System handles implementation</code></pre>
+<p><strong>Real-World Examples:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║         🌍 DECLARATIVE EXAMPLES IN DAILY LIFE 🌍             ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📝 HTML:
+┌─────────────────────────────────────┐
+│ &lt;button&gt;Click Me&lt;/button&gt;           │
+│                                     │
+│ ↑ What you want (a button)          │
+│   Not how to draw it                │
+└─────────────────────────────────────┘
+
+🗄️ SQL:
+┌─────────────────────────────────────┐
+│ SELECT * FROM users WHERE age &gt; 25  │
+│                                     │
+│ ↑ What data you want                │
+│   Not how to retrieve it            │
+└─────────────────────────────────────┘
+
+🎨 CSS:
+┌─────────────────────────────────────┐
+│ .button { color: blue; }            │
+│                                     │
+│ ↑ What style you want               │
+│   Not how to apply it               │
+└─────────────────────────────────────┘
+
+📱 React/Flutter:
+┌─────────────────────────────────────┐
+│ Widget build() {                    │
+│   return Text(&#39;Hello&#39;);             │
+│ }                                   │
+│                                     │
+│ ↑ What UI you want                  │
+│   Not how to render it              │
+└─────────────────────────────────────┘
+
+🍕 Restaurant Analogy:
+┌─────────────────────────────────────┐
+│ DECLARATIVE:                        │
+│ &quot;I want a pepperoni pizza&quot; 🍕       │
+│                                     │
+│ IMPERATIVE:                         │
+│ &quot;Take dough, roll it flat, spread   │
+│  sauce, add cheese, add pepperoni,  │
+│  bake at 450°F for 12 minutes&quot; 🍕  │
+└─────────────────────────────────────┘</code></pre>
+<h2 id="procedural-programming">5. Procedural Programming</h2>
+<h3 id="concept-4">Concept</h3>
+<p>Procedural programming is a subset of imperative programming where
+you organize code into procedures (functions) that operate on data. It
+emphasizes a step-by-step approach but with reusable blocks of code.</p>
+<h3 id="real-life-analogy-4">Real-Life Analogy</h3>
+<p>Think of an assembly line in a factory. Each station (procedure)
+performs a specific task: - Station 1: Cut metal - Station 2: Bend metal
+- Station 3: Weld parts - Station 4: Paint product - Station 5:
+Package</p>
+<p>Each station is independent but contributes to the final product.</p>
+<h3 id="dart-example-4">Dart Example</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode dart"><code class="sourceCode dart"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Procedural approach to processing student grades</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> main() {</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> grades <span class="op">=</span> [<span class="dv">85</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">78</span><span class="op">,</span> <span class="dv">95</span><span class="op">,</span> <span class="dv">88</span><span class="op">,</span> <span class="dv">73</span><span class="op">,</span> <span class="dv">90</span>];</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  displayGrades(grades);</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> avg <span class="op">=</span> calculateAverage(grades);</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;</span><span class="sc">\n</span><span class="st">Average grade: ${avg.toStringAsFixed(2)}&#39;</span>);</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> highest <span class="op">=</span> findHighest(grades);</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> lowest <span class="op">=</span> findLowest(grades);</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Highest: $highest, Lowest: $lowest&#39;</span>);</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">String</span> letterGrade <span class="op">=</span> getLetterGrade(avg);</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Class average letter grade: $letterGrade&#39;</span>);</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Procedure 1: Display all grades</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> displayGrades(<span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> grades) {</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Student Grades:&#39;</span>);</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span>; i <span class="op">&lt;</span> grades<span class="op">.</span>length; i<span class="op">++</span>) {</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;Student ${i + 1}: ${grades[i]}&#39;</span>);</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="co">// Procedure 2: Calculate average</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> calculateAverage(<span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> grades) {</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span>;</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="dt">int</span> grade <span class="kw">in</span> grades) {</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    sum <span class="op">+=</span> grade;</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span> sum <span class="op">/</span> grades<span class="op">.</span>length;</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="co">// Procedure 3: Find highest grade</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> findHighest(<span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> grades) {</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> highest <span class="op">=</span> grades[<span class="dv">0</span>];</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="dt">int</span> grade <span class="kw">in</span> grades) {</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (grade <span class="op">&gt;</span> highest) {</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>      highest <span class="op">=</span> grade;</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span> highest;</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a><span class="co">// Procedure 4: Find lowest grade</span></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> findLowest(<span class="dt">List</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> grades) {</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> lowest <span class="op">=</span> grades[<span class="dv">0</span>];</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="dt">int</span> grade <span class="kw">in</span> grades) {</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (grade <span class="op">&lt;</span> lowest) {</span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>      lowest <span class="op">=</span> grade;</span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span> lowest;</span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a><span class="co">// Procedure 5: Convert to letter grade</span></span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span> getLetterGrade(<span class="dt">double</span> average) {</span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (average <span class="op">&gt;=</span> <span class="dv">90</span>) <span class="kw">return</span> <span class="st">&#39;A&#39;</span>;</span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (average <span class="op">&gt;=</span> <span class="dv">80</span>) <span class="kw">return</span> <span class="st">&#39;B&#39;</span>;</span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (average <span class="op">&gt;=</span> <span class="dv">70</span>) <span class="kw">return</span> <span class="st">&#39;C&#39;</span>;</span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (average <span class="op">&gt;=</span> <span class="dv">60</span>) <span class="kw">return</span> <span class="st">&#39;D&#39;</span>;</span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span> <span class="st">&#39;F&#39;</span>;</span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Procedural Programming Flow:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║            📊 PROCEDURAL PROGRAM FLOW 📊                     ║
+╚═══════════════════════════════════════════════════════════════╝
+
+                    ┌────────────┐
+                    │  🎯 main() │
+                    │   (Entry)  │
+                    └─────┬──────┘
+                          │
+        ┌─────────────────┼─────────────────┐
+        │                 │                 │
+        ▼                 ▼                 ▼
+┌───────────────┐  ┌──────────────┐  ┌─────────────┐
+│ 🖨️ display   │  │ 🧮 calculate │  │ 📈 find     │
+│   Grades()    │  │   Average()  │  │   Highest() │
+│ ─────────     │  │ ────────     │  │ ─────────   │
+│ Print all     │  │ Sum &amp; divide │  │ Compare all │
+└───────────────┘  └──────┬───────┘  └─────────────┘
+                          │
+                          ▼
+                   ┌──────────────┐
+                   │ 🎓 getLetter │
+                   │   Grade()    │
+                   │ ────────     │
+                   │ A, B, C, D, F│
+                   └──────────────┘
+
+🔑 Key: Each procedure is a reusable unit that:
+   ✓ Performs one specific task
+   ✓ Can be called multiple times
+   ✓ Operates on shared data (grades list)
+   ✓ Returns a result or performs action</code></pre>
+<p><strong>Procedural vs Other Paradigms:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║             📊 PROCEDURAL PROGRAMMING 📊                     ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║  📦 Data: [grades list] ◄────┐                               ║
+║                               │                               ║
+║  ⚙️ Procedures:               │ (All procedures access        ║
+║  ┌──────────────┐            │  the same data)               ║
+║  │ displayGrades│────────────┤                               ║
+║  └──────────────┘            │                               ║
+║  ┌──────────────┐            │                               ║
+║  │ calcAverage  │────────────┤                               ║
+║  └──────────────┘            │                               ║
+║  ┌──────────────┐            │                               ║
+║  │ findHighest  │────────────┘                               ║
+║  └──────────────┘                                            ║
+║                                                               ║
+║  🎯 Separation: Data and functions are separate              ║
+║  📊 Structure: Top-down design                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+Compare with:
+
+╔═══════════════════════════════════════════════════════════════╗
+║              🏛️ OBJECT-ORIENTED 🏛️                         ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║  ┌────────────────────────────┐                              ║
+║  │  📚 GradeBook (Object)     │                              ║
+║  ├────────────────────────────┤                              ║
+║  │ 📦 Data:                   │                              ║
+║  │  • grades: List&lt;int&gt;       │                              ║
+║  ├────────────────────────────┤                              ║
+║  │ ⚙️ Methods:                │                              ║
+║  │  • display()               │                              ║
+║  │  • calcAverage()           │                              ║
+║  │  • findHighest()           │                              ║
+║  └────────────────────────────┘                              ║
+║                                                               ║
+║  🎯 Encapsulation: Data and methods bundled together         ║
+║  📦 Structure: Object-based design                           ║
+╚═══════════════════════════════════════════════════════════════╝</code></pre>
+<p><strong>Procedural Program Structure:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║              🏗️ PROCEDURAL STRUCTURE 🏗️                     ║
+╚═══════════════════════════════════════════════════════════════╝
+
+main()
+  │
+  ├─► 📞 Call procedure_1(data)
+  │     │
+  │     └─► ⚙️ Process data
+  │         └─► 📤 Return result
+  │
+  ├─► 📞 Call procedure_2(data)
+  │     │
+  │     └─► ⚙️ Process data
+  │         └─► 📤 Return result
+  │
+  └─► 📞 Call procedure_3(data)
+        │
+        └─► ⚙️ Process data
+            └─► 📤 Return result
+
+Key Characteristics:
+┌─────────────────────────────────────────────┐
+│ 📐 Top-down design                          │
+│ 🔄 Structured programming                   │
+│ 📊 Data passed between procedures           │
+│ 🔧 Procedures are independent units         │
+│ ♻️ Code reusability through functions       │
+│ 📝 Sequential execution flow                │
+└─────────────────────────────────────────────┘
+
+Real-World Analogy: 🏭 Assembly Line
+┌──────────┐    ┌──────────┐    ┌──────────┐
+│ Station 1│───►│ Station 2│───►│ Station 3│
+│   Cut    │    │   Bend   │    │   Weld   │
+└──────────┘    └──────────┘    └──────────┘
+Each station = One procedure with one job</code></pre>
+<h2 id="comparing-paradigms-same-problem-different-approaches">Comparing
+Paradigms: Same Problem, Different Approaches</h2>
+<p>Let’s solve the same problem using different paradigms to see how
+they differ.</p>
+<p><strong>Problem</strong>: Filter a list of products to find items
+under $50 and calculate their total price.</p>
+<p><strong>Visual Comparison:</strong></p>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║          🎯 SAME PROBLEM, 3 DIFFERENT SOLUTIONS 🎯          ║
+╚═══════════════════════════════════════════════════════════════╝
+
+🎯 Problem: Find products under $50 and sum their prices
+
+📥 Input: [Book:$25, Laptop:$850, Mouse:$15, Keyboard:$45, Monitor:$200]
+
+╔═══════════════════════════════════════════════════════════════╗
+║            💡 IMPERATIVE APPROACH 💡                         ║
+╠═══════════════════════════════════════════════════════════════╣
+║ Step 1: 📝 Create empty list                                  ║
+║ Step 2: 🔢 Create sum variable = 0                            ║
+║ Step 3: 🔄 Loop through products                              ║
+║   └─► ❓ If price &lt; 50                                        ║
+║       ├─► ➕ Add to list                                      ║
+║       └─► 🧮 Add price to sum                                 ║
+║                                                               ║
+║ 🎯 Focus: HOW to do it (explicit control)                    ║
+║ 📊 Lines of code: ~10                                         ║
+║ ⚙️ Control: 🟢🟢🟢🟢🟢 (Maximum - you control everything)     ║
+║ 📖 Readability: 🟡🟡🟡 (Medium - need to trace logic)        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+╔═══════════════════════════════════════════════════════════════╗
+║         🏛️ OBJECT-ORIENTED APPROACH 🏛️                      ║
+╠═══════════════════════════════════════════════════════════════╣
+║ 📦 Product class with:                                        ║
+║   • Properties: name, price                                   ║
+║   • Method: isAffordable() ✓                                  ║
+║                                                               ║
+║ 🛒 ShoppingCart class with:                                   ║
+║   • Method: getAffordableProducts() 🔍                        ║
+║   • Method: calculateTotal() 🧮                               ║
+║                                                               ║
+║ 🎯 Focus: OBJECTS and their behaviors                        ║
+║ 📊 Lines of code: ~25 (but highly reusable!)                 ║
+║ ⚙️ Control: 🟡🟡🟡 (Medium - encapsulated logic)              ║
+║ 📖 Readability: 🟢🟢🟢🟢 (High - self-documenting)           ║
+║ ♻️ Reusability: 🟢🟢🟢🟢🟢 (Excellent!)                      ║
+╚═══════════════════════════════════════════════════════════════╝
+
+╔═══════════════════════════════════════════════════════════════╗
+║           🧮 FUNCTIONAL APPROACH 🧮                           ║
+╠═══════════════════════════════════════════════════════════════╣
+║ products                                                      ║
+║   .where(price &lt; 50)      ← 🔍 Filter                         ║
+║   .map(get price)         ← 🔄 Transform                      ║
+║   .reduce(sum)            ← ➕ Aggregate                       ║
+║                                                               ║
+║ 🎯 Focus: TRANSFORMATION pipeline                            ║
+║ 📊 Lines of code: ~3 (most concise!)                          ║
+║ ⚙️ Control: 🔵 (Low - declarative style)                      ║
+║ 📖 Readability: 🟢🟢🟢🟢🟢 (Excellent - clear intent)        ║
+║ 🧪 Testability: 🟢🟢🟢🟢🟢 (Perfect - pure functions)        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+┌───────────────────────────────────────────────────────────────┐
+│                    📤 OUTPUT (All Approaches) 📤              │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ✅ Affordable Products:                                      │
+│     • Book: $25 📚                                            │
+│     • Mouse: $15 🖱️                                           │
+│     • Keyboard: $45 ⌨️                                        │
+│                                                               │
+│  💰 Total: $85                                                │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+
+🏆 Winner depends on context:
+  • Need speed? → Imperative
+  • Building a system? → OOP
+  • Processing data? → Functional</code></pre>
+<h3 id="imperative-approach">Imperative Approach</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode dart"><code class="sourceCode dart"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> imperativeExample() {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">Map</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">,</span> <span class="at">dynamic</span><span class="op">&gt;&gt;</span> products <span class="op">=</span> [</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Book&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">25.0</span>}<span class="op">,</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Laptop&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">850.0</span>}<span class="op">,</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Mouse&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">15.0</span>}<span class="op">,</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Keyboard&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">45.0</span>}<span class="op">,</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Monitor&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">200.0</span>}<span class="op">,</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  ];</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Step-by-step instructions</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">Map</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">,</span> <span class="at">dynamic</span><span class="op">&gt;&gt;</span> affordableProducts <span class="op">=</span> [];</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> totalPrice <span class="op">=</span> <span class="fl">0.0</span>;</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span>; i <span class="op">&lt;</span> products<span class="op">.</span>length; i<span class="op">++</span>) {</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (products[i][<span class="st">&#39;price&#39;</span>] <span class="op">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>      affordableProducts<span class="op">.</span>add(products[i]);</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>      totalPrice <span class="op">+=</span> products[i][<span class="st">&#39;price&#39;</span>];</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Affordable products: $affordableProducts&#39;</span>);</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Total: \$${totalPrice}&#39;</span>);</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="object-oriented-approach">Object-Oriented Approach</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode dart"><code class="sourceCode dart"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Product {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">String</span> name;</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> price;</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  Product(<span class="kw">this</span><span class="op">.</span>name<span class="op">,</span> <span class="kw">this</span><span class="op">.</span>price);</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> isAffordable() <span class="op">=&gt;</span> price <span class="op">&lt;</span> <span class="dv">50</span>;</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">@override</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">String</span> toString() <span class="op">=&gt;</span> <span class="st">&#39;$name (\$$price)&#39;</span>;</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ShoppingCart {</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span>Product<span class="op">&gt;</span> products <span class="op">=</span> [];</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> addProduct(Product product) {</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    products<span class="op">.</span>add(product);</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span>Product<span class="op">&gt;</span> getAffordableProducts() {</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> products<span class="op">.</span>where((p) <span class="op">=&gt;</span> p<span class="op">.</span>isAffordable())<span class="op">.</span>toList();</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> calculateTotal(<span class="dt">List</span><span class="op">&lt;</span>Product<span class="op">&gt;</span> items) {</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> items<span class="op">.</span>fold(<span class="fl">0.0</span><span class="op">,</span> (sum<span class="op">,</span> product) <span class="op">=&gt;</span> sum <span class="op">+</span> product<span class="op">.</span>price);</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> ooExample() {</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>  ShoppingCart cart <span class="op">=</span> ShoppingCart();</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>  cart<span class="op">.</span>addProduct(Product(<span class="st">&#39;Book&#39;</span><span class="op">,</span> <span class="fl">25.0</span>));</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>  cart<span class="op">.</span>addProduct(Product(<span class="st">&#39;Laptop&#39;</span><span class="op">,</span> <span class="fl">850.0</span>));</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>  cart<span class="op">.</span>addProduct(Product(<span class="st">&#39;Mouse&#39;</span><span class="op">,</span> <span class="fl">15.0</span>));</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>  cart<span class="op">.</span>addProduct(Product(<span class="st">&#39;Keyboard&#39;</span><span class="op">,</span> <span class="fl">45.0</span>));</span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>  cart<span class="op">.</span>addProduct(Product(<span class="st">&#39;Monitor&#39;</span><span class="op">,</span> <span class="fl">200.0</span>));</span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span>Product<span class="op">&gt;</span> affordable <span class="op">=</span> cart<span class="op">.</span>getAffordableProducts();</span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> total <span class="op">=</span> cart<span class="op">.</span>calculateTotal(affordable);</span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Affordable products: $affordable&#39;</span>);</span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Total: \$${total}&#39;</span>);</span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="functional-approach">Functional Approach</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode dart"><code class="sourceCode dart"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> functionalExample() {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span><span class="dt">Map</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">,</span> <span class="at">dynamic</span><span class="op">&gt;&gt;</span> products <span class="op">=</span> [</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Book&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">25.0</span>}<span class="op">,</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Laptop&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">850.0</span>}<span class="op">,</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Mouse&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">15.0</span>}<span class="op">,</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Keyboard&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">45.0</span>}<span class="op">,</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;name&#39;</span><span class="op">:</span> <span class="st">&#39;Monitor&#39;</span><span class="op">,</span> <span class="st">&#39;price&#39;</span><span class="op">:</span> <span class="fl">200.0</span>}<span class="op">,</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  ];</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Functional pipeline</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">var</span> affordableProducts <span class="op">=</span> products<span class="op">.</span>where((p) <span class="op">=&gt;</span> p[<span class="st">&#39;price&#39;</span>] <span class="op">&lt;</span> <span class="dv">50</span>);</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">var</span> totalPrice <span class="op">=</span> affordableProducts</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span>map((p) <span class="op">=&gt;</span> p[<span class="st">&#39;price&#39;</span>] <span class="kw">as</span> <span class="dt">double</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span>reduce((a<span class="op">,</span> b) <span class="op">=&gt;</span> a <span class="op">+</span> b);</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Affordable products: ${affordableProducts.toList()}&#39;</span>);</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;Total: \$${totalPrice}&#39;</span>);</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="multi-paradigm-programming-in-dart">Multi-Paradigm Programming
+in Dart</h2>
+<p>Dart is a multi-paradigm language, meaning it supports multiple
+programming styles. This flexibility allows you to choose the best
+approach for each situation.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode dart"><code class="sourceCode dart"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Combining paradigms in Dart</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">// OOP: Define classes</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Task {</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">String</span> title;</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> isCompleted;</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> priority;</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  Task(<span class="kw">this</span><span class="op">.</span>title<span class="op">,</span> {<span class="kw">this</span><span class="op">.</span>isCompleted <span class="op">=</span> <span class="cn">false</span><span class="op">,</span> <span class="kw">this</span><span class="op">.</span>priority <span class="op">=</span> <span class="dv">1</span>});</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> complete() {</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    isCompleted <span class="op">=</span> <span class="cn">true</span>;</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TaskManager {</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span>Task<span class="op">&gt;</span> tasks <span class="op">=</span> [];</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> addTask(Task task) {</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    tasks<span class="op">.</span>add(task);</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Functional: Use functional methods</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span>Task<span class="op">&gt;</span> getHighPriorityTasks() {</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> tasks<span class="op">.</span>where((task) <span class="op">=&gt;</span> task<span class="op">.</span>priority <span class="op">&gt;=</span> <span class="dv">3</span>)<span class="op">.</span>toList();</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">List</span><span class="op">&lt;</span>Task<span class="op">&gt;</span> getPendingTasks() {</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> tasks<span class="op">.</span>where((task) <span class="op">=&gt;</span> <span class="op">!</span>task<span class="op">.</span>isCompleted)<span class="op">.</span>toList();</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Declarative: Express what we want</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> displayTaskSummary() {</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> pending <span class="op">=</span> tasks<span class="op">.</span>where((t) <span class="op">=&gt;</span> <span class="op">!</span>t<span class="op">.</span>isCompleted)<span class="op">.</span>length;</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> completed <span class="op">=</span> tasks<span class="op">.</span>where((t) <span class="op">=&gt;</span> t<span class="op">.</span>isCompleted)<span class="op">.</span>length;</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;Tasks Summary:&#39;</span>);</span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;Pending: $pending&#39;</span>);</span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;Completed: $completed&#39;</span>);</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> main() {</span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>  TaskManager manager <span class="op">=</span> TaskManager();</span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Imperative: Step-by-step task creation</span></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>  manager<span class="op">.</span>addTask(Task(<span class="st">&#39;Write article&#39;</span><span class="op">,</span> priority<span class="op">:</span> <span class="dv">3</span>));</span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>  manager<span class="op">.</span>addTask(Task(<span class="st">&#39;Review code&#39;</span><span class="op">,</span> priority<span class="op">:</span> <span class="dv">2</span>));</span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>  manager<span class="op">.</span>addTask(Task(<span class="st">&#39;Deploy app&#39;</span><span class="op">,</span> priority<span class="op">:</span> <span class="dv">4</span>));</span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a>  manager<span class="op">.</span>addTask(Task(<span class="st">&#39;Team meeting&#39;</span><span class="op">,</span> priority<span class="op">:</span> <span class="dv">1</span>));</span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Complete some tasks imperatively</span></span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>  manager<span class="op">.</span>tasks[<span class="dv">0</span>]<span class="op">.</span>complete();</span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>  manager<span class="op">.</span>tasks[<span class="dv">3</span>]<span class="op">.</span>complete();</span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Use functional approach to filter</span></span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;High Priority Tasks:&#39;</span>);</span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>  manager<span class="op">.</span>getHighPriorityTasks()<span class="op">.</span>forEach((task) {</span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">&#39;- ${task.title} (Priority: ${task.priority})&#39;</span>);</span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a>  });</span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a>  print(<span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>);</span>
+<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a>  manager<span class="op">.</span>displayTaskSummary();</span>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="choosing-the-right-paradigm">Choosing the Right Paradigm</h2>
+<h3 id="decision-tree-which-paradigm-should-you-use">Decision Tree:
+Which Paradigm Should You Use?</h3>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║        🤔 PARADIGM DECISION TREE 🤔                          ║
+║        &quot;Which approach should I use?&quot;                         ║
+╚═══════════════════════════════════════════════════════════════╝
+
+                    🎯 Start: Analyze Your Problem
+                              │
+                              ▼
+                  ┌───────────────────────┐
+                  │ ❓ Is it UI-related?  │
+                  │    (Forms, layouts,   │
+                  │     components)       │
+                  └───────┬───────────────┘
+                     YES  │  NO
+                  ┌───────┴──────┐
+                  ▼              ▼
+           ┌──────────┐    ┌─────────────────────┐
+           │📋DECLARATIVE│  │ ❓ Complex system   │
+           │           │    │ with many entities? │
+           │• Flutter  │    │ (Users, products,   │
+           │• HTML/CSS │    │  orders...)         │
+           └──────────┘    └──────┬──────────────┘
+                               YES │  NO
+                            ┌──────┴──────┐
+                            ▼             ▼
+                    ┌────────────┐  ┌──────────────────┐
+                    │ 🏛️ OOP    │  │ ❓ Data processing│
+                    │           │  │ / transformation? │
+                    │• Model    │  │ (Filter, map,     │
+                    │  entities │  │  aggregate)       │
+                    │• Reusable │  └────┬─────────────┘
+                    │  classes  │   YES │  NO
+                    └────────────┘  ┌────┴──────┐
+                                    ▼           ▼
+                              ┌──────────┐  ┌────────────┐
+                              │🧮FUNCTIONAL│ │ ❓ Simple  │
+                              │          │  │ sequential │
+                              │• Pure    │  │ task?      │
+                              │  functions│  └─────┬──────┘
+                              │• Pipelines│   YES │  NO
+                              └──────────┘  ┌─────┴──────┐
+                                            ▼            ▼
+                                     ┌──────────┐  ┌──────────┐
+                                     │📊PROCEDURAL│ │💡IMPERATIVE│
+                                     │          │  │          │
+                                     │• Reusable│  │• Explicit│
+                                     │  routines│  │  control │
+                                     └──────────┘  └──────────┘
+
+Legend: 📋 Declarative | 🏛️ OOP | 🧮 Functional | 📊 Procedural | 💡 Imperative</code></pre>
+<h3 id="when-to-use-object-oriented-programming">When to Use
+Object-Oriented Programming</h3>
+<ul>
+<li>Building complex systems with many interrelated components</li>
+<li>When you need to model real-world entities</li>
+<li>When code reusability through inheritance is beneficial</li>
+<li>Examples: Game development, GUI applications, simulation
+systems</li>
+</ul>
+<h3 id="when-to-use-functional-programming">When to Use Functional
+Programming</h3>
+<ul>
+<li>Data transformation and processing pipelines</li>
+<li>When immutability and predictability are important</li>
+<li>Concurrent or parallel processing</li>
+<li>Examples: Data analysis, stream processing, financial
+calculations</li>
+</ul>
+<h3 id="when-to-use-imperativeprocedural-programming">When to Use
+Imperative/Procedural Programming</h3>
+<ul>
+<li>Simple scripts and utilities</li>
+<li>Performance-critical sections where explicit control is needed</li>
+<li>When the algorithm is naturally sequential</li>
+<li>Examples: System scripts, batch processing, algorithm
+implementation</li>
+</ul>
+<h3 id="when-to-use-declarative-programming">When to Use Declarative
+Programming</h3>
+<ul>
+<li>User interface development</li>
+<li>Database queries</li>
+<li>Configuration and setup</li>
+<li>Examples: Flutter UI, HTML/CSS, SQL queries</li>
+</ul>
+<p><strong>Paradigm Selection Matrix:</strong></p>
+<pre><code>┌─────────────┬────────────┬─────────────┬──────────────┬─────────────┐
+│  Paradigm   │   Focus    │ Complexity  │  Best For    │   Example   │
+├─────────────┼────────────┼─────────────┼──────────────┼─────────────┤
+│             │            │             │              │             │
+│ IMPERATIVE  │    HOW     │    Low      │ Simple       │ Calculate   │
+│     🔧      │  (Steps)   │             │ algorithms   │ factorial   │
+│             │            │             │              │             │
+├─────────────┼────────────┼─────────────┼──────────────┼─────────────┤
+│             │            │             │              │             │
+│    OOP      │  OBJECTS   │    High     │ Complex      │ Game with   │
+│     🏛️      │ (Entities) │             │ systems      │ characters  │
+│             │            │             │              │             │
+├─────────────┼────────────┼─────────────┼──────────────┼─────────────┤
+│             │            │             │              │             │
+│ FUNCTIONAL  │ FUNCTIONS  │   Medium    │ Data         │ Process     │
+│     λ       │ (Transform)│             │ pipelines    │ user list   │
+│             │            │             │              │             │
+├─────────────┼────────────┼─────────────┼──────────────┼─────────────┤
+│             │            │             │              │             │
+│DECLARATIVE  │    WHAT    │    Low      │ UI, queries  │ Build form  │
+│     📋      │  (Result)  │             │              │ interface   │
+│             │            │             │              │             │
+├─────────────┼────────────┼─────────────┼──────────────┼─────────────┤
+│             │            │             │              │             │
+│PROCEDURAL   │ PROCEDURES │   Medium    │ Sequential   │ Process     │
+│     📊      │ (Routines) │             │ tasks        │ CSV file    │
+│             │            │             │              │             │
+└─────────────┴────────────┴─────────────┴──────────────┴─────────────┘</code></pre>
+<p><strong>Real-World Application Mapping:</strong></p>
+<pre><code>Mobile App Development
+┌────────────────────────────────┐
+│ UI Layer      → DECLARATIVE    │ (Flutter widgets)
+│ Business Logic → OOP            │ (Classes &amp; objects)
+│ Data Transform → FUNCTIONAL     │ (Map, filter, reduce)
+│ State Updates  → IMPERATIVE     │ (Explicit changes)
+└────────────────────────────────┘
+
+Data Science Pipeline
+┌────────────────────────────────┐
+│ Data Loading   → PROCEDURAL    │ (Step-by-step)
+│ Data Cleaning  → FUNCTIONAL    │ (Transformations)
+│ Analysis      → FUNCTIONAL     │ (Pipelines)
+│ Visualization → DECLARATIVE    │ (Chart configs)
+└────────────────────────────────┘
+
+Game Development
+┌────────────────────────────────┐
+│ Game Entities  → OOP           │ (Player, Enemy classes)
+│ Game Loop     → IMPERATIVE     │ (Update each frame)
+│ AI Behavior   → FUNCTIONAL     │ (Decision trees)
+│ UI Menus      → DECLARATIVE    │ (Menu layouts)
+└────────────────────────────────┘
+
+Web Backend API
+┌────────────────────────────────┐
+│ Models        → OOP            │ (User, Product classes)
+│ Routes        → DECLARATIVE    │ (Route definitions)
+│ Business Logic → FUNCTIONAL    │ (Pure functions)
+│ Database      → DECLARATIVE    │ (SQL queries)
+└────────────────────────────────┘</code></pre>
+<h2 id="best-practices-for-multi-paradigm-development">Best Practices
+for Multi-Paradigm Development</h2>
+<ol type="1">
+<li><strong>Choose based on the problem</strong>: Don’t force a
+paradigm; let the problem guide you</li>
+<li><strong>Be consistent within a module</strong>: Mixing paradigms in
+the same function can be confusing</li>
+<li><strong>Favor immutability when possible</strong>: It makes code
+easier to reason about</li>
+<li><strong>Use OOP for structure, functional for logic</strong>:
+Combine their strengths</li>
+<li><strong>Keep functions pure when you can</strong>: Pure functions
+are easier to test and debug</li>
+<li><strong>Document paradigm choices</strong>: Help others understand
+your approach</li>
+</ol>
+<p><strong>Best Practice Guidelines:</strong></p>
+<pre><code>✅ DO:
+┌─────────────────────────────────────────────────────┐
+│ • Use OOP to model domain entities (User, Product)  │
+│ • Use functional methods for data transformation    │
+│ • Use declarative style for UI                      │
+│ • Keep functions small and focused                  │
+│ • Choose paradigm based on problem domain           │
+└─────────────────────────────────────────────────────┘
+
+❌ DON&#39;T:
+┌─────────────────────────────────────────────────────┐
+│ • Mix paradigms within a single function            │
+│ • Force OOP when simple functions would work        │
+│ • Make everything mutable in functional code        │
+│ • Create unnecessary class hierarchies              │
+│ • Use imperative style for UI building              │
+└─────────────────────────────────────────────────────┘</code></pre>
+<p><strong>Dart’s Multi-Paradigm Strengths:</strong></p>
+<pre><code>              ┌──────────────────────┐
+              │      DART            │
+              │  Multi-Paradigm      │
+              │     Language         │
+              └──────────┬───────────┘
+                         │
+        ┌────────────────┼────────────────┐
+        │                │                │
+        ▼                ▼                ▼
+┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+│     OOP      │  │  FUNCTIONAL  │  │  DECLARATIVE │
+├──────────────┤  ├──────────────┤  ├──────────────┤
+│• Classes     │  │• map()       │  │• Flutter     │
+│• Inheritance │  │• filter()    │  │  widgets     │
+│• Interfaces  │  │• reduce()    │  │• UI builders │
+│• Mixins      │  │• fold()      │  │              │
+│• Abstract    │  │• where()     │  │              │
+└──────────────┘  └──────────────┘  └──────────────┘
+
+All work together seamlessly in Dart!</code></pre>
+<p><strong>Code Organization Strategy:</strong></p>
+<pre><code>Project Structure Using Multiple Paradigms:
+
+lib/
+├── models/              (OOP)
+│   ├── user.dart       ← Classes with properties/methods
+│   └── product.dart
+│
+├── utils/              (Functional)
+│   ├── validators.dart ← Pure functions
+│   └── formatters.dart
+│
+├── services/           (Mixed)
+│   ├── api_service.dart     ← OOP structure
+│   └── data_processor.dart  ← Functional logic
+│
+├── ui/                 (Declarative)
+│   ├── screens/        ← Flutter widgets
+│   └── components/
+│
+└── main.dart           (Entry point)
+
+Each layer uses the paradigm that fits best!</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>Programming paradigms are not competing philosophies but
+complementary tools in your development toolkit. Modern languages like
+Dart embrace multiple paradigms, allowing you to select the most
+appropriate approach for each challenge.</p>
+<p>Just as a craftsperson needs different tools for different jobs, a
+skilled programmer understands when to use object-oriented design for
+structure, functional programming for data transformation, imperative
+programming for precise control, and declarative programming for
+clarity.</p>
+<p>The key to mastery is not choosing one paradigm over others, but
+understanding the strengths of each and knowing when to apply them. As
+you continue your programming journey, experiment with different
+paradigms, recognize patterns in successful code, and develop an
+intuition for which approach will serve your specific needs best.</p>
+<p>Remember: the best code is not the one that rigidly follows a single
+paradigm, but the one that is clear, maintainable, and solves the
+problem effectively using the right combination of approaches.</p>
+</body>
+</html>
