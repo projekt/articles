@@ -1,3 +1,15 @@
+---
+title: "Imperative Programming in Dart | Programming Paradigms Series"
+description: "Master imperative programming in Dart with step-by-step control flow, loops, and explicit state management. Practical examples and best practices."
+keywords: "imperative programming, Dart programming, control flow, loops, state management, programming tutorial"
+author: "Srđan Ljustina"
+date: "2024-11-26"
+article_series: "Programming Paradigms"
+article_number: 2
+reading_time: "4 minutes"
+canonical_url: "https://projekt.github.io/articles/02_imperative_programming.html"
+---
+
 # Programming Paradigms Series - Article 2: Imperative Programming
 
 **⏱️ Quick 4-Minute Read**
