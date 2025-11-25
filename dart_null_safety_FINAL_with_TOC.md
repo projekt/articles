@@ -1017,66 +1017,39 @@ efficient, runtime-safe code.
 
 ## Summary Tables
 
-  -----------------------------------------------------------------------
-  **Concept**             **Description**         **Example**
-  ----------------------- ----------------------- -----------------------
-  Non-Nullable Type       Default type that       String name = 'John';
-                          cannot hold null values 
+### Core Concepts
 
-  Nullable Type           Type marked with ? that String? nickname =
-                          can hold null           null;
-
-  Type Promotion          Automatic conversion    if (name != null) {
-                          from nullable to        \... }
-                          non-nullable after null 
-                          check                   
-
-  Null Union              A nullable type is a    int? = int \| Null
-                          union of Type and Null  
-  -----------------------------------------------------------------------
+| Concept               | Description                                                          | Example                          |
+|:----------------------|:---------------------------------------------------------------------|:---------------------------------|
+| **Non-Nullable Type** | Default type that cannot hold null values                           | `String name = 'John';`          |
+| **Nullable Type**     | Type marked with `?` that can hold null                             | `String? nickname = null;`       |
+| **Type Promotion**    | Automatic conversion from nullable to non-nullable after null check | `if (name != null) { ... }`      |
+| **Null Union**        | A nullable type is a union of Type and Null                         | `int? = int \| Null`             |
 
 ## Diagram 2: Null Safety Decision Flow
 
-  -----------------------------------------------------------------------
-  **Question**            **Answer**              **Action**
-  ----------------------- ----------------------- -----------------------
-  Can this value be       No                      Use non-nullable type
-  absent?                                         (String)
+### Decision Guide
 
-  Can this value be       Yes                     Use nullable type
-  absent?                                         (String?)
-
-  Need immediate access?  Yes, with check         Use if-null check +
-                                                  promotion
-
-  Need immediate access?  Yes, guaranteed safe    Use null assertion (!)
-
-  Need default value?     Yes                     Use null-coalescing
-                                                  (??)
-
-  Delayed initialization? Yes                     Use late keyword
-  -----------------------------------------------------------------------
+| Question                    | Answer               | Recommended Action                        |
+|:----------------------------|:---------------------|:------------------------------------------|
+| Can this value be absent?   | No                   | Use non-nullable type (`String`)          |
+| Can this value be absent?   | Yes                  | Use nullable type (`String?`)             |
+| Need immediate access?      | Yes, with check      | Use if-null check + promotion             |
+| Need immediate access?      | Yes, guaranteed safe | Use null assertion (`!`)                  |
+| Need default value?         | Yes                  | Use null-coalescing (`??`)                |
+| Delayed initialization?     | Yes                  | Use `late` keyword                        |
 
 ## Diagram 3: Operator Comparison
 
-  -----------------------------------------------------------------------
-  **Operator**      **Usage**         **Safety Level**  **Use Case**
-  ----------------- ----------------- ----------------- -----------------
-  ?                 String? name      Safe              Declare nullable
-                                                        types
+### Null Safety Operators Quick Reference
 
-  !                 name!             Unsafe            Assert non-null
-                                                        (use sparingly)
-
-  ??                name ?? 'Guest' Safe              Provide default
-                                                        values
-
-  ?.                user?.email       Safe              Safe member
-                                                        access
-
-  late              late String       Moderate          Delayed
-                    config                              initialization
-  -----------------------------------------------------------------------
+| Operator   | Example Usage        | Safety Level | Use Case                       |
+|:----------:|:---------------------|:------------:|:-------------------------------|
+| `?`        | `String? name`       | ✅ Safe      | Declare nullable types         |
+| `!`        | `name!`              | ⚠️ Unsafe    | Assert non-null (use sparingly)|
+| `??`       | `name ?? 'Guest'`    | ✅ Safe      | Provide default values         |
+| `?.`       | `user?.email`        | ✅ Safe      | Safe member access             |
+| `late`     | `late String config` | 🟡 Moderate  | Delayed initialization         |
 
 # Best Practices and Design Patterns
 

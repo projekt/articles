@@ -14,15 +14,15 @@ A comprehensive 7-part series exploring different programming paradigms with pra
 
 **⏱️ Total Reading Time: ~40 minutes**
 
-| # | Article | Reading Time | Description |
-|---|---------|--------------|-------------|
-| 1 | [What Are Programming Paradigms?](01_what_are_programming_paradigms.md) | 4 min | Introduction to programming paradigms with overview and characteristics |
-| 2 | [Imperative Programming](02_imperative_programming.md) | 4 min | Step-by-step programming with explicit control flow |
-| 3 | [Object-Oriented Programming (OOP)](03_oop.md) | 5 min | Classes, objects, and the four pillars of OOP |
-| 4 | [Functional Programming](04_functional_programming.md) | 7 min | Pure functions, immutability, and higher-order functions |
-| 5 | [Declarative Programming](05_declarative_programming.md) | 6 min | Focus on what you want, not how to get it |
-| 6 | [Procedural Programming](06_procedural_programming.md) | 6 min | Organizing code into reusable procedures |
-| 7 | [Summary & Best Practices](07_summary.md) | 10 min | Choosing the right paradigm and multi-paradigm development |
+|  #  | Article Title                                                                          | Time  | Description                                               |
+|:---:|:---------------------------------------------------------------------------------------|:-----:|:----------------------------------------------------------|
+|  1  | [What Are Programming Paradigms?](01_what_are_programming_paradigms.md)               | 4 min | Introduction to programming paradigms with overview and characteristics |
+|  2  | [Imperative Programming](02_imperative_programming.md)                                | 4 min | Step-by-step programming with explicit control flow      |
+|  3  | [Object-Oriented Programming (OOP)](03_oop.md)                                        | 5 min | Classes, objects, and the four pillars of OOP            |
+|  4  | [Functional Programming](04_functional_programming.md)                                | 7 min | Pure functions, immutability, and higher-order functions |
+|  5  | [Declarative Programming](05_declarative_programming.md)                              | 6 min | Focus on what you want, not how to get it                |
+|  6  | [Procedural Programming](06_procedural_programming.md)                                | 6 min | Organizing code into reusable procedures                 |
+|  7  | [Summary & Best Practices](07_summary.md)                                             | 10 min | Choosing the right paradigm and multi-paradigm development |
 
 **What You'll Learn:**
 - ✅ Core concepts of each programming paradigm
