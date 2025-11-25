@@ -172,7 +172,11 @@ optimizations.
 Before null safety, attempting to call a method on a null object
 resulted in runtime errors. Consider this traditional Dart code:
 
-String getUserName(User user) { return user.name.toUpperCase(); }
+```dart
+String getUserName(User user) {
+  return user.name.toUpperCase();
+}
+```
 
 If the user parameter is null, this code throws a NoSuchMethodError at
 runtime. The application crashes, potentially losing user data and
@@ -183,8 +187,13 @@ production environments where they're most costly.
 
 Consider a mobile banking application processing a transaction:
 
-void processTransaction(Transaction txn) { double fee =
-txn.account.calculateFee(); txn.account.deduct(fee); txn.complete(); }
+```dart
+void processTransaction(Transaction txn) {
+  double fee = txn.account.calculateFee();
+  txn.account.deduct(fee);
+  txn.complete();
+}
+```
 
 Without null safety, if the transaction account becomes null due to a
 network error or race condition, the application crashes
@@ -205,9 +214,15 @@ otherwise. This design decision stems from research showing that
 non-null values are the most common case in real-world APIs. By making
 non-nullability the default, Dart encourages safer code patterns.
 
-// Non-nullable - cannot be null String name = 'John'; int age = 30;
-// Nullable - explicitly marked with ? String? middleName = null; int?
-optionalAge = null;
+```dart
+// Non-nullable - cannot be null
+String name = 'John';
+int age = 30;
+
+// Nullable - explicitly marked with ?
+String? middleName = null;
+int? optionalAge = null;
+```
 
 This approach forces developers to consciously decide when null is an
 acceptable value, making code intent explicit and reducing accidental
@@ -246,10 +261,15 @@ The question mark operator declares that a variable can hold null
 values. This creates a union type combining the underlying type with the
 Null type.
 
-int? nullableNumber; // Can be int or null String? optionalText; // Can
-be String or null User? currentUser; // Can be User or null // Without
-?, these would be compilation errors: // int number; // Error: must be
-initialized // String text; // Error: must be initialized
+```dart
+int? nullableNumber;    // Can be int or null
+String? optionalText;   // Can be String or null
+User? currentUser;      // Can be User or null
+
+// Without ?, these would be compilation errors:
+// int number;    // Error: must be initialized
+// String text;   // Error: must be initialized
+```
 
 ## The Null Assertion Operator
 
@@ -257,9 +277,17 @@ The exclamation mark operator casts away nullability, asserting that a
 value is definitely not null. Use this operator sparingly and only when
 you can logically guarantee non-nullness.
 
-String? getUserEmail() { return currentUser?.email; } void sendEmail() {
-// Using ! asserts email is not null String email = getUserEmail()!;
-emailService.send(email); }
+```dart
+String? getUserEmail() {
+  return currentUser?.email;
+}
+
+void sendEmail() {
+  // Using ! asserts email is not null
+  String email = getUserEmail()!;
+  emailService.send(email);
+}
+```
 
 **Warning:** If the value is null at runtime, the null assertion
 operator throws a TypeError. Excessive use of this operator often
@@ -267,9 +295,17 @@ indicates poor design and is considered a code smell.
 
 Better approach using proper null checking:
 
-void sendEmail() { String? email = getUserEmail(); if (email != null) {
-// email is automatically promoted to String emailService.send(email); }
-else { showError('No email available'); } }
+```dart
+void sendEmail() {
+  String? email = getUserEmail();
+  if (email != null) {
+    // email is automatically promoted to String
+    emailService.send(email);
+  } else {
+    showError('No email available');
+  }
+}
+```
 
 ## The Null-Coalescing Operator
 
@@ -277,11 +313,19 @@ The double question mark operator provides elegant null checking with
 default values. It returns the left expression unless it's null, in
 which case it returns the right expression.
 
-String displayName = user.nickname ?? user.fullName ?? 'Guest'; //
-Equivalent to: // String displayName; // if (user.nickname != null) { //
-displayName = user.nickname; // } else if (user.fullName != null) { //
-displayName = user.fullName; // } else { // displayName = 'Guest'; //
-}
+```dart
+String displayName = user.nickname ?? user.fullName ?? 'Guest';
+
+// Equivalent to:
+// String displayName;
+// if (user.nickname != null) {
+//   displayName = user.nickname;
+// } else if (user.fullName != null) {
+//   displayName = user.fullName;
+// } else {
+//   displayName = 'Guest';
+// }
+```
 
 This operator is preferred over ternary operators because it clearly
 conveys intent and only evaluates the left expression once, avoiding
@@ -293,9 +337,34 @@ The late modifier enables delayed initialization for non-nullable
 variables, addressing scenarios where immediate initialization isn't
 possible or desirable.
 
-class DatabaseConnection { late Database db; Future\<void\> initialize()
-async { db = await Database.connect(); } void query(String sql) { // db
-must be initialized before use return db.execute(sql); } }
+```dart
+class DatabaseConnection {
+  late Database db;
+
+  
+
+```dart
+Future<void> initialize() async {
+    db = await Database.connect();
+ 
+}
+```
+
+
+
+  
+
+```dart
+void query(String sql) {
+    // db must be initialized before use
+    return db.execute(sql);
+ 
+}
+```
+
+
+}
+```
 
 The late keyword works in three ways:
 
@@ -322,9 +391,15 @@ proven.
 When you check that a nullable variable is not null, Dart promotes it to
 its non-nullable type within that scope:
 
-void processUser(String? name) { if (name != null) { // Inside this
-block, name is promoted to String print(name.toUpperCase());
-print(name.length); } }
+```dart
+void processUser(String? name) {
+  if (name != null) {
+    // Inside this block, name is promoted to String
+    print(name.toUpperCase());
+    print(name.length);
+  }
+}
+```
 
 This promotion works for local variables, parameters, and private final
 fields introduced in Dart version 3.2. The compiler tracks all code
@@ -334,10 +409,17 @@ paths to ensure the variable cannot be null at the point of use.
 
 Flow analysis detects redundant null checks and issues warnings:
 
-void example(String? input) { if (input != null) { // Warning:
-unnecessary null check String? result = input?.toUpperCase(); //
-Correct: input is already promoted String result = input.toUpperCase();
-} }
+```dart
+void example(String? input) {
+  if (input != null) {
+    // Warning: unnecessary null check
+    String? result = input?.toUpperCase();
+
+    // Correct: input is already promoted
+    String result = input.toUpperCase();
+  }
+}
+```
 
 This intelligent analysis transforms dynamic runtime correctness into
 provable static correctness, allowing most existing Dart null-checking
@@ -353,14 +435,33 @@ realistic scenarios demonstrates its practical value.
 An online shopping application must handle various optional data safely:
 
 class ShoppingCart { List\<Product\> items = \[\]; String? promoCode;
-Address? shippingAddress; double calculateTotal() { double subtotal =
-items.fold(0, (sum, item) =\> sum + item.price); // Apply discount if
+Address? shippingAddress; 
+
+```dart
+double calculateTotal() {
+  double subtotal =
+items.fold(0, (sum, item) =\> sum + item.price);
+  // Apply discount if
 promo code exists double discount = promoCode != null ?
-calculateDiscount(promoCode, subtotal) : 0; // Add shipping based on
+calculateDiscount(promoCode, subtotal) : 0;
+  // Add shipping based on
 address double shipping = shippingAddress?.country == 'US' ? 5.99 :
-12.99; return subtotal - discount + shipping; } String
-getDeliveryMessage() { return shippingAddress != null ? 'Delivering to
-\${shippingAddress.street}' : 'Please add a delivery address'; } }
+12.99;
+  return subtotal - discount + shipping;
+ 
+}
+```
+
+ 
+
+```dart
+String
+getDeliveryMessage() {
+  return shippingAddress != null ? 'Delivering to
+\${shippingAddress.street}
+```
+
+' : 'Please add a delivery address'; } }
 
 This design makes optional data explicit. The compiler prevents
 accessing nullable properties without checks, eliminating entire classes
@@ -375,9 +476,27 @@ isAuthenticated =\> \_currentUser != null; User get currentUser { final
 user = \_currentUser; if (user == null) { throw StateError('No
 authenticated user'); } return user; } Future\<void\> login(String
 email, String password) async { final user = await
-authApi.authenticate(email, password); \_currentUser = user; } void
-logout() { \_currentUser = null; } String getUserDisplayName() { return
-\_currentUser?.fullName ?? 'Guest User'; } }
+authApi.authenticate(email, password); \_currentUser = user; } 
+
+```dart
+void
+logout() {
+  \_currentUser = null;
+ 
+}
+```
+
+ 
+
+```dart
+String getUserDisplayName() {
+  return
+\_currentUser?.fullName ?? 'Guest User';
+ 
+}
+```
+
+ }
 
 The nullable currentUser field makes the authentication state explicit.
 The getter provides safe access by throwing a clear error when accessed
@@ -392,13 +511,34 @@ class UserProfile { final String id; final String username; final
 String? bio; // Optional biography final String? avatarUrl; // Optional
 profile picture final DateTime? lastActive; // May not be available
 UserProfile({ required this.id, required this.username, this.bio,
-this.avatarUrl, this.lastActive, }); String getDisplayBio() { return bio
-?? 'No bio available'; } String getActivityStatus() { final lastSeen =
-lastActive; if (lastSeen == null) return 'Activity unknown'; final
-difference = DateTime.now().difference(lastSeen); if
-(difference.inMinutes \< 5) return 'Active now'; if
-(difference.inHours \< 1) return 'Active recently'; return 'Last seen
-\${difference.inDays} days ago'; } }
+this.avatarUrl, this.lastActive, }); 
+
+```dart
+String getDisplayBio() {
+  return bio
+?? 'No bio available';
+ 
+}
+```
+
+ 
+
+```dart
+String getActivityStatus() {
+  final lastSeen =
+lastActive;
+  if (lastSeen == null) return 'Activity unknown';
+  final
+difference = DateTime.now().difference(lastSeen);
+  if
+(difference.inMinutes \< 5) return 'Active now';
+  if
+(difference.inHours \< 1) return 'Active recently';
+  return 'Last seen
+\${difference.inDays}
+```
+
+ days ago'; } }
 
 This pattern clearly documents which fields are optional in the API
 contract. The type system ensures every access to optional data includes
@@ -520,14 +660,35 @@ and avoiding common pitfalls.
 Repeated use of the null assertion operator throughout code indicates
 design problems:
 
-// Poor design - repeated assertions void processOrder() {
-print(auth.user!.name); sendEmail(auth.user!.email);
-logActivity(auth.user!.id); }
+// Poor design - repeated assertions 
+
+```dart
+void processOrder() {
+print(auth.user!.name);
+  sendEmail(auth.user!.email);
+logActivity(auth.user!.id);
+ 
+}
+```
+
+
 
 Better approach using local variable with type promotion:
 
-// Good design - single check with promotion void processOrder() { final
-user = auth.user; if (user == null) { showLoginPrompt(); return; } //
+// Good design - single check with promotion 
+
+```dart
+void processOrder() {
+  final
+user = auth.user;
+  if (user == null) {
+  showLoginPrompt();
+  return;
+ 
+}
+```
+
+ //
 user is now promoted to non-nullable print(user.name);
 sendEmail(user.email); logActivity(user.id); }
 
@@ -537,7 +698,16 @@ Consider whether accessing a property when null should be fatal or fail
 gracefully:
 
 // Option 1: Individual nullable properties class Auth { User? user;
-String? token; String getUserId() { return user?.id ?? 'anonymous'; }
+String? token; 
+
+```dart
+String getUserId() {
+  return user?.id ?? 'anonymous';
+ 
+}
+```
+
+
 } // Option 2: Entire object nullable class Auth { final User user;
 final String token; Auth({required this.user, required this.token}); }
 Auth? currentAuth; // null when not authenticated
@@ -606,13 +776,31 @@ transition to a fully sound language.
 Several patterns require special attention during migration:
 
 // Before null safety class Configuration { String serverUrl; int
-timeout; Configuration() { loadFromFile(); } void loadFromFile() {
-serverUrl = readConfig('server'); timeout =
-int.parse(readConfig('timeout')); } } // After null safety - late
+timeout; Configuration() { loadFromFile(); } 
+
+```dart
+void loadFromFile() {
+serverUrl = readConfig('server');
+  timeout =
+int.parse(readConfig('timeout'));
+ 
+}
+```
+
+ } // After null safety - late
 keyword required class Configuration { late String serverUrl; late int
-timeout; Configuration() { loadFromFile(); } void loadFromFile() {
-serverUrl = readConfig('server'); timeout =
-int.parse(readConfig('timeout')); } }
+timeout; Configuration() { loadFromFile(); } 
+
+```dart
+void loadFromFile() {
+serverUrl = readConfig('server');
+  timeout =
+int.parse(readConfig('timeout'));
+ 
+}
+```
+
+ }
 
 The late keyword bridges scenarios where initialization happens in
 helper methods rather than at declaration. However, consider refactoring
@@ -629,12 +817,30 @@ execution, especially in performance-critical code paths.
 Without null safety, every property access potentially requires a null
 check:
 
-// Without null safety - implicit null checks String processName(User
-user) { // Runtime must verify user is not null // Runtime must verify
-user.name is not null return user.name.toUpperCase(); } // With null
-safety - checks eliminated String processName(User user) { // Compiler
+// Without null safety - implicit null checks 
+
+```dart
+String processName(User
+user) {
+  // Runtime must verify user is not null // Runtime must verify
+user.name is not null return user.name.toUpperCase();
+ 
+}
+```
+
+ // With null
+safety - checks eliminated 
+
+```dart
+String processName(User user) {
+  // Compiler
 guarantees both user and user.name are non-null // Generated code skips
-null checks entirely return user.name.toUpperCase(); }
+null checks entirely return user.name.toUpperCase();
+ 
+}
+```
+
+
 
 In tight loops or frequently-called methods, eliminating these checks
 produces measurable performance improvements through reduced instruction
