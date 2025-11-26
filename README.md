@@ -1,4 +1,4 @@
-# Technical Articles & Learning Notes
+# Programming Articles & Learning Notes
 
 Welcome to my collection of technical articles focused on Dart programming and software development concepts. This repository represents my learning journey, documenting insights and principles as I explore various programming topics.
 
