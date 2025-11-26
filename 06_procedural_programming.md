@@ -2,7 +2,7 @@
 title: "Procedural Programming in Dart | Functions & Code Reusability"
 description: "Master procedural programming in Dart with reusable functions, procedures, and structured code organization. Practical examples included."
 keywords: "procedural programming, Dart functions, code reusability, structured programming, procedures, Dart tutorial"
-author: "Srđan Ljustina"
+author: "Srđan Ljuština"
 date: "2024-11-26"
 article_series: "Programming Paradigms"
 article_number: 6
@@ -270,7 +270,7 @@ Procedural programming provides a natural way to organize sequential tasks into 
 
 ## 👤 About the Author
 
-**Srđan Ljustina** - Software Developer & Technical Writer
+**Srđan Ljuština** - Software Developer & Technical Writer
 
 🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
 
