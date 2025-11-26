@@ -2,7 +2,7 @@
 title: "Object-Oriented Programming (OOP) in Dart | Programming Paradigms"
 description: "Learn OOP in Dart: classes, objects, encapsulation, inheritance, polymorphism, and abstraction. Complete guide with real-world examples."
 keywords: "OOP, object-oriented programming, Dart OOP, classes, inheritance, polymorphism, encapsulation, abstraction"
-author: "Srđan Ljustina"
+author: "Srđan Ljuština"
 date: "2024-11-26"
 article_series: "Programming Paradigms"
 article_number: 3
@@ -228,7 +228,7 @@ Object-Oriented Programming excels at modeling complex systems with many interre
 
 ## 👤 About the Author
 
-**Srđan Ljustina** - Software Developer & Technical Writer
+**Srđan Ljuština** - Software Developer & Technical Writer
 
 🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
 

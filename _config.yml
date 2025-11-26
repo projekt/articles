@@ -1,7 +1,7 @@
 # Site Settings
-title: "Programming Articles by Srđan Ljustina"
+title: "Technical Articles by Srđan Ljuština"
 description: "Comprehensive guides on Dart programming, null safety, and programming paradigms. Learn software development concepts with practical examples and real-world analogies."
-author: "Srđan Ljustina"
+author: "Srđan Ljuština"
 url: "https://projekt.github.io"
 baseurl: "/articles"
 lang: "en"
@@ -11,7 +11,7 @@ keywords: "Dart programming, null safety, programming paradigms, software develo
 
 # Social Links
 social:
-  name: "Srđan Ljustina"
+  name: "Srđan Ljuština"
   links:
     - "https://srdapp.rs"
     - "https://www.linkedin.com/in/srdjanljustina/"
@@ -33,7 +33,7 @@ defaults:
       path: ""
     values:
       layout: default
-      author: "Srđan Ljustina"
+      author: "Srđan Ljuština"
       image: /assets/images/og-image.png
 
 # Exclude from processing
