@@ -44,6 +44,10 @@ A comprehensive 7-part series exploring different programming paradigms with pra
 
 ## 📖 Standalone Articles
 
+### Git & GitHub
+
+- **[Mastering Git & GitHub: A Complete Guide to Modern Version Control](web/git_github_complete_guide.md)** - A comprehensive guide to Git and GitHub covering version control fundamentals, branching strategies, collaboration workflows, and best practices for developers.
+
 ### Dart Null Safety
 
 - **[Building Robust and High-Performance Applications](web/dart_null_safety_FINAL_with_TOC.md)** - A comprehensive guide to Dart's sound null safety system, covering non-nullable types, flow analysis, migration strategies, and real-world implementation examples.
