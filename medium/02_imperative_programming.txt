@@ -1,73 +1,56 @@
-This article was originally published on my website.
-For the latest version and more articles, visit: https://projekt.github.io/articles/
+<!-- Original article: https://projekt.github.io/articles/ -->
+<div style="background: #f0f0f0; padding: 15px; border-left: 4px solid #333; margin-bottom: 30px;">
+<p><strong>Note:</strong> This article was originally published on my website. For the latest version and more articles, visit <a href="https://projekt.github.io/articles/">https://projekt.github.io/articles/</a></p>
+</div>
 
----
-
-
-# Programming Paradigms Series - Article 2: Imperative Programming
-
-**Series Navigation:** [← What Are Programming Paradigms?](01_what_are_programming_paradigms.md) | Article 2 of 7 | Next: [Object-Oriented Programming →](03_oop.md)
-
----
-
-**About This Series**
-
-This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.
-
----
-
-## Table of Contents
-
-1. [Concept](#concept)
-2. [Real-Life Analogy](#real-life-analogy)
-3. [Dart Example](#dart-example)
-4. [Imperative Flow Diagram](#imperative-flow-diagram)
-
----
-
-## Concept
-
-Imperative programming is like following a recipe step-by-step. You give the computer explicit instructions about what to do and in what order, focusing on *how* to achieve a result.
-
-## Real-Life Analogy
-
-Imagine you're teaching someone to make a sandwich:
+<h1 id="programming-paradigms-series-article-2-imperative-programming">Programming Paradigms Series - Article 2: Imperative Programming</h1>
+<p><strong>⏱️ Quick 4-Minute Read</strong></p>
+<p><strong>Series Navigation:</strong> <a href="01_what_are_programming_paradigms.md">← What Are Programming Paradigms?</a> | Article 2 of 7 | Next: <a href="03_oop.md">Object-Oriented Programming →</a></p>
+<hr />
+<p><strong>About This Series</strong></p>
+<p>This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#concept">Concept</a></li>
+<li><a href="#real-life-analogy">Real-Life Analogy</a></li>
+<li><a href="#dart-example">Dart Example</a></li>
+<li><a href="#imperative-flow-diagram">Imperative Flow Diagram</a></li>
+</ol>
+<hr />
+<h2 id="concept">Concept</h2>
+<p>Imperative programming is like following a recipe step-by-step. You give the computer explicit instructions about what to do and in what order, focusing on <em>how</em> to achieve a result.</p>
+<h2 id="real-life-analogy">Real-Life Analogy</h2>
+<p>Imagine you're teaching someone to make a sandwich:
 1. Get two slices of bread
 2. Spread butter on one slice
 3. Add cheese on the buttered slice
 4. Place the second slice on top
-5. Cut the sandwich diagonally
-
-Each step modifies the state (the sandwich being built) until you reach the final result.
-
-## Dart Example
-
-```dart
-void main() {
+5. Cut the sandwich diagonally</p>
+<p>Each step modifies the state (the sandwich being built) until you reach the final result.</p>
+<h2 id="dart-example">Dart Example</h2>
+<pre class="codehilite"><code class="language-dart">void main() {
   // Imperative approach to calculate sum of squares
-  List<int> numbers = [1, 2, 3, 4, 5];
+  List&lt;int&gt; numbers = [1, 2, 3, 4, 5];
   int sum = 0;
 
   // Step-by-step instructions
-  for (int i = 0; i < numbers.length; i++) {
+  for (int i = 0; i &lt; numbers.length; i++) {
     int square = numbers[i] * numbers[i];
     sum = sum + square;
   }
 
   print('Sum of squares: $sum'); // Output: 55
 }
-```
+</code></pre>
 
-In this example, we explicitly tell the computer to:
+<p>In this example, we explicitly tell the computer to:
 - Initialize a sum variable
 - Loop through each number
 - Calculate the square
-- Add it to the sum
-
-## Imperative Flow Diagram
-
-```
-╔══════════════════════════════════════════════════════════╗
+- Add it to the sum</p>
+<h2 id="imperative-flow-diagram">Imperative Flow Diagram</h2>
+<pre class="codehilite"><code>╔══════════════════════════════════════════════════════════╗
 ║         🔄 IMPERATIVE EXECUTION FLOW 🔄                 ║
 ╚══════════════════════════════════════════════════════════╝
 
@@ -85,7 +68,7 @@ In this example, we explicitly tell the computer to:
                            ▼
                     ┌──────────────┐
               ┌─────┤ ❓ CONDITION │
-              │     │  i < length? │
+              │     │  i &lt; length? │
               │     └──────┬───────┘
               │         YES│  │NO
               │            │  └─────────────┐
@@ -127,43 +110,31 @@ In this example, we explicitly tell the computer to:
                         END 🏁
 
 Legend: 📋 Init | ❓ Decision | 🔢 Compute | ➕ Update | 🔄 Loop | 🖨️ Output
-```
+</code></pre>
 
-Imperative programming gives you explicit control over the execution flow, making it ideal for algorithms and scripts where you need precise control over how operations are performed. The trade-off is that you must specify every detail of the process, which can make code more verbose compared to other paradigms.
-
----
-
-## Further Reading
-
-**Imperative Programming:**
-- [Imperative vs Declarative Programming](https://ui.dev/imperative-vs-declarative-programming) - Clear comparison
-- [Control Flow in Dart](https://dart.dev/guides/language/language-tour#control-flow-statements) - Official guide
-
-**Algorithms and Control Flow:**
-- [Introduction to Algorithms](https://mitpress.mit.edu/books/introduction-algorithms-third-edition) - Classic reference
-- [Big-O Notation](https://www.bigocheatsheet.com/) - Algorithm complexity
-
-**Practice:**
-- [LeetCode](https://leetcode.com/) - Algorithm practice problems
-- [HackerRank](https://www.hackerrank.com/domains/algorithms) - Coding challenges
-
----
-
-## 👤 About the Author
-
-**Srđan Ljuština** - Software Developer & Technical Writer
-
-🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
-
----
-
-**Series Navigation:** [← What Are Programming Paradigms?](01_what_are_programming_paradigms.md) | Article 2 of 7 | Next: [Object-Oriented Programming →](03_oop.md)
-
-**Other Articles in This Series:**
-- [Article 1: What Are Programming Paradigms?](01_what_are_programming_paradigms.md)
-- **Article 2: Imperative Programming** (Current)
-- [Article 3: Object-Oriented Programming (OOP)](03_oop.md)
-- [Article 4: Functional Programming](04_functional_programming.md)
-- [Article 5: Declarative Programming](05_declarative_programming.md)
-- [Article 6: Procedural Programming](06_procedural_programming.md)
-- [Article 7: Choosing the Right Paradigm - Summary and Best Practices](07_summary.md)
+<p>Imperative programming gives you explicit control over the execution flow, making it ideal for algorithms and scripts where you need precise control over how operations are performed. The trade-off is that you must specify every detail of the process, which can make code more verbose compared to other paradigms.</p>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<p><strong>Imperative Programming:</strong>
+- <a href="https://ui.dev/imperative-vs-declarative-programming">Imperative vs Declarative Programming</a> - Clear comparison
+- <a href="https://dart.dev/guides/language/language-tour#control-flow-statements">Control Flow in Dart</a> - Official guide</p>
+<p><strong>Algorithms and Control Flow:</strong>
+- <a href="https://mitpress.mit.edu/books/introduction-algorithms-third-edition">Introduction to Algorithms</a> - Classic reference
+- <a href="https://www.bigocheatsheet.com/">Big-O Notation</a> - Algorithm complexity</p>
+<p><strong>Practice:</strong>
+- <a href="https://leetcode.com/">LeetCode</a> - Algorithm practice problems
+- <a href="https://www.hackerrank.com/domains/algorithms">HackerRank</a> - Coding challenges</p>
+<hr />
+<h2 id="about-the-author">👤 About the Author</h2>
+<p><strong>Srđan Ljuština</strong> - Software Developer &amp; Technical Writer</p>
+<p>🌐 <a href="https://srdapp.rs">Website</a> | 💼 <a href="https://www.linkedin.com/in/srdjanljustina/">LinkedIn</a> | 💻 <a href="https://github.com/projekt">GitHub</a></p>
+<hr />
+<p><strong>Series Navigation:</strong> <a href="01_what_are_programming_paradigms.md">← What Are Programming Paradigms?</a> | Article 2 of 7 | Next: <a href="03_oop.md">Object-Oriented Programming →</a></p>
+<p><strong>Other Articles in This Series:</strong>
+- <a href="01_what_are_programming_paradigms.md">Article 1: What Are Programming Paradigms?</a>
+- <strong>Article 2: Imperative Programming</strong> (Current)
+- <a href="03_oop.md">Article 3: Object-Oriented Programming (OOP)</a>
+- <a href="04_functional_programming.md">Article 4: Functional Programming</a>
+- <a href="05_declarative_programming.md">Article 5: Declarative Programming</a>
+- <a href="06_procedural_programming.md">Article 6: Procedural Programming</a>
+- <a href="07_summary.md">Article 7: Choosing the Right Paradigm - Summary and Best Practices</a></p>

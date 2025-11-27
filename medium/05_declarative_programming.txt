@@ -1,48 +1,34 @@
-This article was originally published on my website.
-For the latest version and more articles, visit: https://projekt.github.io/articles/
+<!-- Original article: https://projekt.github.io/articles/ -->
+<div style="background: #f0f0f0; padding: 15px; border-left: 4px solid #333; margin-bottom: 30px;">
+<p><strong>Note:</strong> This article was originally published on my website. For the latest version and more articles, visit <a href="https://projekt.github.io/articles/">https://projekt.github.io/articles/</a></p>
+</div>
 
----
-
-
-# Programming Paradigms Series - Article 5: Declarative Programming
-
-**Series Navigation:** [← Functional Programming](04_functional_programming.md) | Article 5 of 7 | Next: [Procedural Programming →](06_procedural_programming.md)
-
----
-
-**About This Series**
-
-This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.
-
----
-
-## Table of Contents
-
-1. [Concept](#concept)
-2. [Real-Life Analogy](#real-life-analogy)
-3. [Dart Example](#dart-example)
-4. [Declarative vs Imperative Comparison](#declarative-vs-imperative-comparison)
-5. [Real-World Examples](#real-world-examples)
-
----
-
-## Concept
-
-Declarative programming focuses on *what* you want to achieve rather than *how* to achieve it. You describe the desired result, and the system figures out the steps.
-
-## Real-Life Analogy
-
-When you order food at a restaurant, you use declarative style:
-- **Declarative**: "I want a medium pepperoni pizza"
-- **Imperative**: "Take dough, spread sauce, add cheese, add pepperoni, bake at 450°F for 12 minutes"
-
-You declare what you want; the chef handles the how.
-
-## Dart Example
-
-```dart
-void main() {
-  List<Map<String, dynamic>> users = [
+<h1 id="programming-paradigms-series-article-5-declarative-programming">Programming Paradigms Series - Article 5: Declarative Programming</h1>
+<p><strong>⏱️ 6-Minute Read</strong></p>
+<p><strong>Series Navigation:</strong> <a href="04_functional_programming.md">← Functional Programming</a> | Article 5 of 7 | Next: <a href="06_procedural_programming.md">Procedural Programming →</a></p>
+<hr />
+<p><strong>About This Series</strong></p>
+<p>This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#concept">Concept</a></li>
+<li><a href="#real-life-analogy">Real-Life Analogy</a></li>
+<li><a href="#dart-example">Dart Example</a></li>
+<li><a href="#declarative-vs-imperative-comparison">Declarative vs Imperative Comparison</a></li>
+<li><a href="#real-world-examples">Real-World Examples</a></li>
+</ol>
+<hr />
+<h2 id="concept">Concept</h2>
+<p>Declarative programming focuses on <em>what</em> you want to achieve rather than <em>how</em> to achieve it. You describe the desired result, and the system figures out the steps.</p>
+<h2 id="real-life-analogy">Real-Life Analogy</h2>
+<p>When you order food at a restaurant, you use declarative style:
+- <strong>Declarative</strong>: "I want a medium pepperoni pizza"
+- <strong>Imperative</strong>: "Take dough, spread sauce, add cheese, add pepperoni, bake at 450°F for 12 minutes"</p>
+<p>You declare what you want; the chef handles the how.</p>
+<h2 id="dart-example">Dart Example</h2>
+<pre class="codehilite"><code class="language-dart">void main() {
+  List&lt;Map&lt;String, dynamic&gt;&gt; users = [
     {'name': 'Alice', 'age': 25, 'country': 'USA'},
     {'name': 'Bob', 'age': 30, 'country': 'UK'},
     {'name': 'Charlie', 'age': 22, 'country': 'USA'},
@@ -51,16 +37,16 @@ void main() {
 
   // Declarative approach: describe what you want
   var usersOver25InUSA = users
-      .where((user) => user['age'] > 25)
-      .where((user) => user['country'] == 'USA')
+      .where((user) =&gt; user['age'] &gt; 25)
+      .where((user) =&gt; user['country'] == 'USA')
       .toList();
 
   print('Users over 25 in USA: $usersOver25InUSA');
 
   // Compare with imperative approach
-  List<Map<String, dynamic>> result = [];
+  List&lt;Map&lt;String, dynamic&gt;&gt; result = [];
   for (var user in users) {
-    if (user['age'] > 25 && user['country'] == 'USA') {
+    if (user['age'] &gt; 25 &amp;&amp; user['country'] == 'USA') {
       result.add(user);
     }
   }
@@ -89,15 +75,13 @@ class UserProfile extends StatelessWidget {
     );
   }
 }
-```
+</code></pre>
 
-## Declarative vs Imperative Comparison
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+<h2 id="declarative-vs-imperative-comparison">Declarative vs Imperative Comparison</h2>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║           💡 IMPERATIVE (How to do it) 💡                    ║
 ╠═══════════════════════════════════════════════════════════════╣
-║  "Tell me HOW to make coffee step by step" ☕                ║
+║  &quot;Tell me HOW to make coffee step by step&quot; ☕                ║
 ║                                                               ║
 ║  1. 🥤 Get a cup                                              ║
 ║  2. ☕ Put coffee grounds in filter                           ║
@@ -114,28 +98,26 @@ class UserProfile extends StatelessWidget {
 ╔═══════════════════════════════════════════════════════════════╗
 ║          📋 DECLARATIVE (What you want) 📋                   ║
 ╠═══════════════════════════════════════════════════════════════╣
-║  "I want a cup of coffee" ☕                                  ║
+║  &quot;I want a cup of coffee&quot; ☕                                  ║
 ║                                                               ║
 ║  Result: You get coffee ☕✨                                   ║
 ║  (Implementation details are abstracted away)                 ║
 ║                                                               ║
 ║  🎯 Focus: Desired outcome, not the process                   ║
 ║  📝 You specify: What you want (the result)                   ║
-║  ⚙️ Control: Low (system handles the "how")                   ║
+║  ⚙️ Control: Low (system handles the &quot;how&quot;)                   ║
 ╚═══════════════════════════════════════════════════════════════╝
-```
+</code></pre>
 
-### Code Comparison
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+<h3 id="code-comparison">Code Comparison</h3>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║                    💡 IMPERATIVE CODE 💡                     ║
 ╚═══════════════════════════════════════════════════════════════╝
 
 ┌───────────────────────────────────────────┐
 │ List result = [];                         │  📝 Create empty list
 │ for (user in users) {                     │  🔄 Manual iteration
-│   if (user.age > 25 &&                    │  ❓ Explicit conditions
+│   if (user.age &gt; 25 &amp;&amp;                    │  ❓ Explicit conditions
 │       user.country == 'USA') {            │
 │     result.add(user);                     │  ➕ Manual addition
 │   }                                       │
@@ -156,7 +138,7 @@ class UserProfile extends StatelessWidget {
 
 ┌───────────────────────────────────────────┐
 │ users                                     │  📦 Start with data
-│   .where(age > 25)                        │  🔍 Filter by age
+│   .where(age &gt; 25)                        │  🔍 Filter by age
 │   .where(country == 'USA')                │  🔍 Filter by country
 │                                           │
 │ 🎨 Describe the criteria, not the process │
@@ -167,18 +149,16 @@ class UserProfile extends StatelessWidget {
               ▼
      ✨ What we want, not how
      🎪 System handles implementation
-```
+</code></pre>
 
-## Real-World Examples
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+<h2 id="real-world-examples">Real-World Examples</h2>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║         🌍 DECLARATIVE EXAMPLES IN DAILY LIFE 🌍             ║
 ╚═══════════════════════════════════════════════════════════════╝
 
 📝 HTML:
 ┌─────────────────────────────────────┐
-│ <button>Click Me</button>           │
+│ &lt;button&gt;Click Me&lt;/button&gt;           │
 │                                     │
 │ ↑ What you want (a button)          │
 │   Not how to draw it                │
@@ -186,7 +166,7 @@ class UserProfile extends StatelessWidget {
 
 🗄️ SQL:
 ┌─────────────────────────────────────┐
-│ SELECT * FROM users WHERE age > 25  │
+│ SELECT * FROM users WHERE age &gt; 25  │
 │                                     │
 │ ↑ What data you want                │
 │   Not how to retrieve it            │
@@ -213,55 +193,42 @@ class UserProfile extends StatelessWidget {
 🍕 Restaurant Analogy:
 ┌─────────────────────────────────────┐
 │ DECLARATIVE:                        │
-│ "I want a pepperoni pizza" 🍕       │
+│ &quot;I want a pepperoni pizza&quot; 🍕       │
 │                                     │
 │ IMPERATIVE:                         │
-│ "Take dough, roll it flat, spread   │
+│ &quot;Take dough, roll it flat, spread   │
 │  sauce, add cheese, add pepperoni,  │
-│  bake at 450°F for 12 minutes" 🍕  │
+│  bake at 450°F for 12 minutes&quot; 🍕  │
 └─────────────────────────────────────┘
-```
+</code></pre>
 
-Declarative programming is particularly powerful for UI development, database queries, and configuration. By focusing on what you want rather than how to get it, declarative code tends to be more concise, readable, and easier to maintain. Flutter's widget system is an excellent example of declarative UI programming in Dart.
-
----
-
-## Further Reading
-
-**Declarative Programming:**
-- [Declarative UI](https://docs.flutter.dev/get-started/flutter-for/declarative) - Flutter's approach
-- [Declarative vs Imperative](https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2) - Detailed comparison
-
-**Flutter & Dart:**
-- [Building Layouts in Flutter](https://docs.flutter.dev/development/ui/layout) - Declarative UI tutorial
-- [Widget Catalog](https://docs.flutter.dev/development/ui/widgets) - Flutter widgets reference
-- [State Management](https://docs.flutter.dev/development/data-and-backend/state-mgmt/intro) - Managing app state
-
-**Related Technologies:**
-- [SwiftUI](https://developer.apple.com/xcode/swiftui/) - Apple's declarative UI framework
-- [React](https://reactjs.org/) - Declarative UI for web
-- [SQL Tutorial](https://www.sqltutorial.org/) - Declarative query language
-
-**Articles:**
-- [The Case for Declarative Programming](https://increment.com/frontend/case-for-declarative-programming/) - Benefits explained
-
----
-
-## 👤 About the Author
-
-**Srđan Ljuština** - Software Developer & Technical Writer
-
-🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
-
----
-
-**Series Navigation:** [← Functional Programming](04_functional_programming.md) | Article 5 of 7 | Next: [Procedural Programming →](06_procedural_programming.md)
-
-**Other Articles in This Series:**
-- [Article 1: What Are Programming Paradigms?](01_what_are_programming_paradigms.md)
-- [Article 2: Imperative Programming](02_imperative_programming.md)
-- [Article 3: Object-Oriented Programming (OOP)](03_oop.md)
-- [Article 4: Functional Programming](04_functional_programming.md)
-- **Article 5: Declarative Programming** (Current)
-- [Article 6: Procedural Programming](06_procedural_programming.md)
-- [Article 7: Choosing the Right Paradigm - Summary and Best Practices](07_summary.md)
+<p>Declarative programming is particularly powerful for UI development, database queries, and configuration. By focusing on what you want rather than how to get it, declarative code tends to be more concise, readable, and easier to maintain. Flutter's widget system is an excellent example of declarative UI programming in Dart.</p>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<p><strong>Declarative Programming:</strong>
+- <a href="https://docs.flutter.dev/get-started/flutter-for/declarative">Declarative UI</a> - Flutter's approach
+- <a href="https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2">Declarative vs Imperative</a> - Detailed comparison</p>
+<p><strong>Flutter &amp; Dart:</strong>
+- <a href="https://docs.flutter.dev/development/ui/layout">Building Layouts in Flutter</a> - Declarative UI tutorial
+- <a href="https://docs.flutter.dev/development/ui/widgets">Widget Catalog</a> - Flutter widgets reference
+- <a href="https://docs.flutter.dev/development/data-and-backend/state-mgmt/intro">State Management</a> - Managing app state</p>
+<p><strong>Related Technologies:</strong>
+- <a href="https://developer.apple.com/xcode/swiftui/">SwiftUI</a> - Apple's declarative UI framework
+- <a href="https://reactjs.org/">React</a> - Declarative UI for web
+- <a href="https://www.sqltutorial.org/">SQL Tutorial</a> - Declarative query language</p>
+<p><strong>Articles:</strong>
+- <a href="https://increment.com/frontend/case-for-declarative-programming/">The Case for Declarative Programming</a> - Benefits explained</p>
+<hr />
+<h2 id="about-the-author">👤 About the Author</h2>
+<p><strong>Srđan Ljuština</strong> - Software Developer &amp; Technical Writer</p>
+<p>🌐 <a href="https://srdapp.rs">Website</a> | 💼 <a href="https://www.linkedin.com/in/srdjanljustina/">LinkedIn</a> | 💻 <a href="https://github.com/projekt">GitHub</a></p>
+<hr />
+<p><strong>Series Navigation:</strong> <a href="04_functional_programming.md">← Functional Programming</a> | Article 5 of 7 | Next: <a href="06_procedural_programming.md">Procedural Programming →</a></p>
+<p><strong>Other Articles in This Series:</strong>
+- <a href="01_what_are_programming_paradigms.md">Article 1: What Are Programming Paradigms?</a>
+- <a href="02_imperative_programming.md">Article 2: Imperative Programming</a>
+- <a href="03_oop.md">Article 3: Object-Oriented Programming (OOP)</a>
+- <a href="04_functional_programming.md">Article 4: Functional Programming</a>
+- <strong>Article 5: Declarative Programming</strong> (Current)
+- <a href="06_procedural_programming.md">Article 6: Procedural Programming</a>
+- <a href="07_summary.md">Article 7: Choosing the Right Paradigm - Summary and Best Practices</a></p>

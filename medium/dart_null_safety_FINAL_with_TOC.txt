@@ -1,288 +1,284 @@
-This article was originally published on my website.
-For the latest version and more articles, visit: https://projekt.github.io/articles/
+<!-- Original article: https://projekt.github.io/articles/ -->
+<div style="background: #f0f0f0; padding: 15px; border-left: 4px solid #333; margin-bottom: 30px;">
+<p><strong>Note:</strong> This article was originally published on my website. For the latest version and more articles, visit <a href="https://projekt.github.io/articles/">https://projekt.github.io/articles/</a></p>
+</div>
 
----
-
-
-# Mastering Dart's Sound Null Safety: Building Robust and High-Performance Applications
-
-A Comprehensive Guide with Visual Diagrams and Real-World Examples
-
----
-
-**About This Article**
-
-This article represents my journey of learning and applying Dart's sound null safety system. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring this transformative language feature.
-
----
-
-## Table of Contents
-
-1. [Executive Summary](#executive-summary)
-   - [Overview](#overview)
-   - [Key Takeaways](#key-takeaways)
-   - [What You'll Learn](#what-youll-learn)
-   - [Visual Aids Included](#visual-aids-included)
-   - [Who Should Read This](#who-should-read-this)
-2. [Abstract](#abstract)
-3. [Introduction](#introduction)
-4. [Understanding the Null Reference Problem](#understanding-the-null-reference-problem)
-   - [The Traditional Approach](#the-traditional-approach)
-   - [Real-World Impact](#real-world-impact)
-5. [Core Principles of Sound Null Safety](#core-principles-of-sound-null-safety)
-   - [Principle 1: Non-Nullable by Default](#principle-1-non-nullable-by-default)
-   - [Principle 2: Full Soundness](#principle-2-full-soundness)
-6. [Essential Syntax and Operators](#essential-syntax-and-operators)
-   - [Nullable Type Declaration](#nullable-type-declaration)
-   - [The Null Assertion Operator](#the-null-assertion-operator)
-   - [The Null-Coalescing Operator](#the-null-coalescing-operator)
-   - [The Late Keyword](#the-late-keyword)
-7. [Flow Analysis and Type Promotion](#flow-analysis-and-type-promotion)
-   - [Automatic Type Promotion](#automatic-type-promotion)
-   - [Smart Null Checking](#smart-null-checking)
-8. [Real-World Applications](#real-world-applications)
-   - [Example 1: E-commerce Shopping Cart](#example-1-e-commerce-shopping-cart)
-   - [Example 2: User Authentication System](#example-2-user-authentication-system)
-   - [Example 3: API Response Handling](#example-3-api-response-handling)
-9. [Visual Representations](#visual-representations)
-   - [Diagram 1: Null Safety Decision Flow](#diagram-1-null-safety-decision-flow)
-   - [Diagram 2: Before and After Null Safety](#diagram-2-before-and-after-null-safety)
-   - [Diagram 3: Type System Hierarchy](#diagram-3-type-system-hierarchy)
-   - [Diagram 4: Flow Analysis and Compilation](#diagram-4-flow-analysis-and-compilation)
-   - [Summary Tables](#summary-tables)
-10. [Best Practices and Design Patterns](#best-practices-and-design-patterns)
-    - [Minimize Null Assertion Usage](#minimize-null-assertion-usage)
-    - [Design Clear API Contracts](#design-clear-api-contracts)
-    - [Prefer Null-Coalescing for Defaults](#prefer-null-coalescing-for-defaults)
-    - [Handle Edge Cases Explicitly](#handle-edge-cases-explicitly)
-11. [Migration Strategy](#migration-strategy)
-    - [Migration Process](#migration-process)
-    - [Common Migration Challenges](#common-migration-challenges)
-12. [Performance Optimization](#performance-optimization)
-    - [Eliminated Runtime Checks](#eliminated-runtime-checks)
-    - [Smaller Binary Size](#smaller-binary-size)
-13. [Conclusion](#conclusion)
-14. [Further Reading](#further-reading)
-
-## Executive Summary
-
-### Overview
-
-This comprehensive guide explores Dart's sound null safety system, a
+<h1 id="mastering-darts-sound-null-safety-building-robust-and-high-performance-applications">Mastering Dart's Sound Null Safety: Building Robust and High-Performance Applications</h1>
+<p><strong>⏱️ 20-Minute Deep Dive</strong></p>
+<p>A Comprehensive Guide with Visual Diagrams and Real-World Examples</p>
+<hr />
+<p><strong>About This Article</strong></p>
+<p>This article represents my journey of learning and applying Dart's sound null safety system. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring this transformative language feature.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#executive-summary">Executive Summary</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#key-takeaways">Key Takeaways</a></li>
+<li><a href="#what-youll-learn">What You'll Learn</a></li>
+<li><a href="#visual-aids-included">Visual Aids Included</a></li>
+<li><a href="#who-should-read-this">Who Should Read This</a></li>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#understanding-the-null-reference-problem">Understanding the Null Reference Problem</a></li>
+<li><a href="#the-traditional-approach">The Traditional Approach</a></li>
+<li><a href="#real-world-impact">Real-World Impact</a></li>
+<li><a href="#core-principles-of-sound-null-safety">Core Principles of Sound Null Safety</a></li>
+<li><a href="#principle-1-non-nullable-by-default">Principle 1: Non-Nullable by Default</a></li>
+<li><a href="#principle-2-full-soundness">Principle 2: Full Soundness</a></li>
+<li><a href="#essential-syntax-and-operators">Essential Syntax and Operators</a></li>
+<li><a href="#nullable-type-declaration">Nullable Type Declaration</a></li>
+<li><a href="#the-null-assertion-operator">The Null Assertion Operator</a></li>
+<li><a href="#the-null-coalescing-operator">The Null-Coalescing Operator</a></li>
+<li><a href="#the-late-keyword">The Late Keyword</a></li>
+<li><a href="#flow-analysis-and-type-promotion">Flow Analysis and Type Promotion</a></li>
+<li><a href="#automatic-type-promotion">Automatic Type Promotion</a></li>
+<li><a href="#smart-null-checking">Smart Null Checking</a></li>
+<li><a href="#real-world-applications">Real-World Applications</a></li>
+<li><a href="#example-1-e-commerce-shopping-cart">Example 1: E-commerce Shopping Cart</a></li>
+<li><a href="#example-2-user-authentication-system">Example 2: User Authentication System</a></li>
+<li><a href="#example-3-api-response-handling">Example 3: API Response Handling</a></li>
+<li><a href="#visual-representations">Visual Representations</a></li>
+<li><a href="#diagram-1-null-safety-decision-flow">Diagram 1: Null Safety Decision Flow</a></li>
+<li><a href="#diagram-2-before-and-after-null-safety">Diagram 2: Before and After Null Safety</a></li>
+<li><a href="#diagram-3-type-system-hierarchy">Diagram 3: Type System Hierarchy</a></li>
+<li><a href="#diagram-4-flow-analysis-and-compilation">Diagram 4: Flow Analysis and Compilation</a></li>
+<li><a href="#summary-tables">Summary Tables</a></li>
+<li><a href="#best-practices-and-design-patterns">Best Practices and Design Patterns</a><ul>
+<li><a href="#minimize-null-assertion-usage">Minimize Null Assertion Usage</a></li>
+<li><a href="#design-clear-api-contracts">Design Clear API Contracts</a></li>
+<li><a href="#prefer-null-coalescing-for-defaults">Prefer Null-Coalescing for Defaults</a></li>
+<li><a href="#handle-edge-cases-explicitly">Handle Edge Cases Explicitly</a></li>
+</ul>
+</li>
+<li><a href="#migration-strategy">Migration Strategy</a><ul>
+<li><a href="#migration-process">Migration Process</a></li>
+<li><a href="#common-migration-challenges">Common Migration Challenges</a></li>
+</ul>
+</li>
+<li><a href="#performance-optimization">Performance Optimization</a><ul>
+<li><a href="#eliminated-runtime-checks">Eliminated Runtime Checks</a></li>
+<li><a href="#smaller-binary-size">Smaller Binary Size</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#further-reading">Further Reading</a></li>
+</ol>
+<h2 id="executive-summary">Executive Summary</h2>
+<h3 id="overview">Overview</h3>
+<p>This comprehensive guide explores Dart's sound null safety system, a
 transformative feature that eliminates one of programming's most costly
 problems: null reference errors. By shifting null checks from runtime to
 compile-time, Dart provides developers with stronger safety guarantees
-and significant performance improvements.
-
-### Key Takeaways
-
--   **Non-nullable by default:** Variables cannot be null unless
-    explicitly marked with '?', making code safer by default
-
--   **Compile-time safety:** Null reference errors are caught during
-    development, not in production
-
--   **Performance gains:** Eliminated runtime null checks result in
-    smaller binaries and faster execution
-
--   **Flow analysis:** Intelligent type promotion automatically converts
-    nullable types after null checks
-
--   **Real-world applicability:** Practical examples demonstrate null
-    safety in e-commerce, authentication, and API handling
-
--   **Complete migration:** Dart 3 requires full null safety, making
-    migration essential for modern development
-
-### What You'll Learn
-
--   The historical context and billion-dollar mistake of null references
-
--   Two core principles: non-nullable by default and full soundness
-
--   Essential operators: ?, !, ??, and the late keyword
-
--   How flow analysis tracks variable states and promotes types
-
--   Three complete real-world implementation examples
-
--   Best practices for designing null-safe APIs
-
--   Step-by-step migration strategy for existing codebases
-
--   Performance optimization techniques leveraging null safety
-
-### Visual Aids Included
-
-This guide includes four professional diagrams:
-
-1.  **Decision Flow Diagram:** Complete flowchart for choosing the right
-    null safety approach
-
-2.  **Before/After Comparison:** Visual contrast between traditional and
-    modern null handling
-
-3.  **Type Hierarchy:** Complete type system structure with promotion
-    paths
-
-4.  **Compilation Process:** End-to-end workflow showing analysis and
-    optimization
-
-### Who Should Read This
-
--   Dart and Flutter developers transitioning to null safety
-
--   Software architects designing robust type-safe systems
-
--   Technical leads managing null safety migration projects
-
--   Students and educators learning modern programming language design
-
--   Anyone interested in eliminating null reference errors from their
-    code
-
----
-
-## Abstract
-
-Null reference errors have plagued software development for decades,
+and significant performance improvements.</p>
+<h3 id="key-takeaways">Key Takeaways</h3>
+<ul>
+<li>
+<p><strong>Non-nullable by default:</strong> Variables cannot be null unless
+    explicitly marked with '?', making code safer by default</p>
+</li>
+<li>
+<p><strong>Compile-time safety:</strong> Null reference errors are caught during
+    development, not in production</p>
+</li>
+<li>
+<p><strong>Performance gains:</strong> Eliminated runtime null checks result in
+    smaller binaries and faster execution</p>
+</li>
+<li>
+<p><strong>Flow analysis:</strong> Intelligent type promotion automatically converts
+    nullable types after null checks</p>
+</li>
+<li>
+<p><strong>Real-world applicability:</strong> Practical examples demonstrate null
+    safety in e-commerce, authentication, and API handling</p>
+</li>
+<li>
+<p><strong>Complete migration:</strong> Dart 3 requires full null safety, making
+    migration essential for modern development</p>
+</li>
+</ul>
+<h3 id="what-youll-learn">What You'll Learn</h3>
+<ul>
+<li>
+<p>The historical context and billion-dollar mistake of null references</p>
+</li>
+<li>
+<p>Two core principles: non-nullable by default and full soundness</p>
+</li>
+<li>
+<p>Essential operators: ?, !, ??, and the late keyword</p>
+</li>
+<li>
+<p>How flow analysis tracks variable states and promotes types</p>
+</li>
+<li>
+<p>Three complete real-world implementation examples</p>
+</li>
+<li>
+<p>Best practices for designing null-safe APIs</p>
+</li>
+<li>
+<p>Step-by-step migration strategy for existing codebases</p>
+</li>
+<li>
+<p>Performance optimization techniques leveraging null safety</p>
+</li>
+</ul>
+<h3 id="visual-aids-included">Visual Aids Included</h3>
+<p>This guide includes four professional diagrams:</p>
+<ol>
+<li>
+<p><strong>Decision Flow Diagram:</strong> Complete flowchart for choosing the right
+    null safety approach</p>
+</li>
+<li>
+<p><strong>Before/After Comparison:</strong> Visual contrast between traditional and
+    modern null handling</p>
+</li>
+<li>
+<p><strong>Type Hierarchy:</strong> Complete type system structure with promotion
+    paths</p>
+</li>
+<li>
+<p><strong>Compilation Process:</strong> End-to-end workflow showing analysis and
+    optimization</p>
+</li>
+</ol>
+<h3 id="who-should-read-this">Who Should Read This</h3>
+<ul>
+<li>
+<p>Dart and Flutter developers transitioning to null safety</p>
+</li>
+<li>
+<p>Software architects designing robust type-safe systems</p>
+</li>
+<li>
+<p>Technical leads managing null safety migration projects</p>
+</li>
+<li>
+<p>Students and educators learning modern programming language design</p>
+</li>
+<li>
+<p>Anyone interested in eliminating null reference errors from their
+    code</p>
+</li>
+</ul>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>Null reference errors have plagued software development for decades,
 costing billions in debugging time and system failures. Dart addresses
 this fundamental issue through sound null safety, a type system feature
 that transforms potential runtime crashes into compile-time errors. This
 article explores the principles, implementation, and practical
 applications of Dart's null safety system, providing developers with
-comprehensive guidance for writing more reliable code.
-
-# Introduction
-
-In 1965, Tony Hoare introduced the null reference into the ALGOL
+comprehensive guidance for writing more reliable code.</p>
+<h1 id="introduction">Introduction</h1>
+<p>In 1965, Tony Hoare introduced the null reference into the ALGOL
 programming language. Decades later, he referred to it as his
 billion-dollar mistake, acknowledging the countless errors,
 vulnerabilities, and system crashes it caused. Dart's sound null safety
 represents a modern solution to this historical problem, fundamentally
-changing how developers handle potentially absent values.
-
-Introduced as one of the most significant changes since Dart version
+changing how developers handle potentially absent values.</p>
+<p>Introduced as one of the most significant changes since Dart version
 2.0, null safety shifts the burden of preventing null reference errors
 from runtime to compile-time. This transformation enables developers to
 catch mistakes earlier in the development cycle, resulting in more
 reliable applications and improved performance through compiler
-optimizations.
-
-# Understanding the Null Reference Problem
-
-## The Traditional Approach
-
-Before null safety, attempting to call a method on a null object
-resulted in runtime errors. Consider this traditional Dart code:
-
-```dart
-String getUserName(User user) {
+optimizations.</p>
+<h1 id="understanding-the-null-reference-problem">Understanding the Null Reference Problem</h1>
+<h2 id="the-traditional-approach">The Traditional Approach</h2>
+<p>Before null safety, attempting to call a method on a null object
+resulted in runtime errors. Consider this traditional Dart code:</p>
+<pre class="codehilite"><code class="language-dart">String getUserName(User user) {
   return user.name.toUpperCase();
 }
-```
+</code></pre>
 
-If the user parameter is null, this code throws a NoSuchMethodError at
+<p>If the user parameter is null, this code throws a NoSuchMethodError at
 runtime. The application crashes, potentially losing user data and
 damaging the user experience. Worse, these errors often appear in
-production environments where they're most costly.
-
-## Real-World Impact
-
-Consider a mobile banking application processing a transaction:
-
-```dart
-void processTransaction(Transaction txn) {
+production environments where they're most costly.</p>
+<h2 id="real-world-impact">Real-World Impact</h2>
+<p>Consider a mobile banking application processing a transaction:</p>
+<pre class="codehilite"><code class="language-dart">void processTransaction(Transaction txn) {
   double fee = txn.account.calculateFee();
   txn.account.deduct(fee);
   txn.complete();
 }
-```
+</code></pre>
 
-Without null safety, if the transaction account becomes null due to a
+<p>Without null safety, if the transaction account becomes null due to a
 network error or race condition, the application crashes
 mid-transaction. This leaves the system in an inconsistent state,
 potentially debiting the user without completing the transaction. Such
 failures erode user trust and require extensive error recovery
-mechanisms.
-
-# Core Principles of Sound Null Safety
-
-Dart's null safety system is built on two fundamental principles that
-work together to eliminate null reference errors:
-
-## Principle 1: Non-Nullable by Default
-
-Every variable in Dart is non-nullable unless explicitly marked
+mechanisms.</p>
+<h1 id="core-principles-of-sound-null-safety">Core Principles of Sound Null Safety</h1>
+<p>Dart's null safety system is built on two fundamental principles that
+work together to eliminate null reference errors:</p>
+<h2 id="principle-1-non-nullable-by-default">Principle 1: Non-Nullable by Default</h2>
+<p>Every variable in Dart is non-nullable unless explicitly marked
 otherwise. This design decision stems from research showing that
 non-null values are the most common case in real-world APIs. By making
-non-nullability the default, Dart encourages safer code patterns.
-
-```dart
-// Non-nullable - cannot be null
+non-nullability the default, Dart encourages safer code patterns.</p>
+<pre class="codehilite"><code class="language-dart">// Non-nullable - cannot be null
 String name = 'John';
 int age = 30;
 
 // Nullable - explicitly marked with ?
 String? middleName = null;
 int? optionalAge = null;
-```
+</code></pre>
 
-This approach forces developers to consciously decide when null is an
+<p>This approach forces developers to consciously decide when null is an
 acceptable value, making code intent explicit and reducing accidental
-null assignments.
-
-## Principle 2: Full Soundness
-
-Dart's type system provides a guarantee: if a variable has a
+null assignments.</p>
+<h2 id="principle-2-full-soundness">Principle 2: Full Soundness</h2>
+<p>Dart's type system provides a guarantee: if a variable has a
 non-nullable type, it can never be null at runtime. This soundness
 property enables powerful compiler optimizations because the compiler
-can trust type declarations completely.
-
-The benefits of soundness include:
-
--   Smaller binary sizes through eliminated null checks
-
--   Faster execution by skipping unnecessary runtime validations
-
--   Guaranteed safety when calling methods on non-nullable objects
-
--   Better developer tooling through precise type information
-
-This guarantee only applies to fully null-safe code. Mixed-version
+can trust type declarations completely.</p>
+<p>The benefits of soundness include:</p>
+<ul>
+<li>
+<p>Smaller binary sizes through eliminated null checks</p>
+</li>
+<li>
+<p>Faster execution by skipping unnecessary runtime validations</p>
+</li>
+<li>
+<p>Guaranteed safety when calling methods on non-nullable objects</p>
+</li>
+<li>
+<p>Better developer tooling through precise type information</p>
+</li>
+</ul>
+<p>This guarantee only applies to fully null-safe code. Mixed-version
 programs containing legacy code without null safety may still experience
-null reference errors.
-
-# Essential Syntax and Operators
-
-Dart provides several language features for working effectively with
+null reference errors.</p>
+<h1 id="essential-syntax-and-operators">Essential Syntax and Operators</h1>
+<p>Dart provides several language features for working effectively with
 null safety. Understanding these tools is crucial for writing robust
-code.
-
-## Nullable Type Declaration
-
-The question mark operator declares that a variable can hold null
+code.</p>
+<h2 id="nullable-type-declaration">Nullable Type Declaration</h2>
+<p>The question mark operator declares that a variable can hold null
 values. This creates a union type combining the underlying type with the
-Null type.
-
-```dart
-int? nullableNumber;    // Can be int or null
+Null type.</p>
+<pre class="codehilite"><code class="language-dart">int? nullableNumber;    // Can be int or null
 String? optionalText;   // Can be String or null
 User? currentUser;      // Can be User or null
 
 // Without ?, these would be compilation errors:
 // int number;    // Error: must be initialized
 // String text;   // Error: must be initialized
-```
+</code></pre>
 
-## The Null Assertion Operator
-
-The exclamation mark operator casts away nullability, asserting that a
+<h2 id="the-null-assertion-operator">The Null Assertion Operator</h2>
+<p>The exclamation mark operator casts away nullability, asserting that a
 value is definitely not null. Use this operator sparingly and only when
-you can logically guarantee non-nullness.
-
-```dart
-String? getUserEmail() {
+you can logically guarantee non-nullness.</p>
+<pre class="codehilite"><code class="language-dart">String? getUserEmail() {
   return currentUser?.email;
 }
 
@@ -291,16 +287,13 @@ void sendEmail() {
   String email = getUserEmail()!;
   emailService.send(email);
 }
-```
+</code></pre>
 
-**Warning:** If the value is null at runtime, the null assertion
+<p><strong>Warning:</strong> If the value is null at runtime, the null assertion
 operator throws a TypeError. Excessive use of this operator often
-indicates poor design and is considered a code smell.
-
-Better approach using proper null checking:
-
-```dart
-void sendEmail() {
+indicates poor design and is considered a code smell.</p>
+<p>Better approach using proper null checking:</p>
+<pre class="codehilite"><code class="language-dart">void sendEmail() {
   String? email = getUserEmail();
   if (email != null) {
     // email is automatically promoted to String
@@ -309,16 +302,13 @@ void sendEmail() {
     showError('No email available');
   }
 }
-```
+</code></pre>
 
-## The Null-Coalescing Operator
-
-The double question mark operator provides elegant null checking with
+<h2 id="the-null-coalescing-operator">The Null-Coalescing Operator</h2>
+<p>The double question mark operator provides elegant null checking with
 default values. It returns the left expression unless it's null, in
-which case it returns the right expression.
-
-```dart
-String displayName = user.nickname ?? user.fullName ?? 'Guest';
+which case it returns the right expression.</p>
+<pre class="codehilite"><code class="language-dart">String displayName = user.nickname ?? user.fullName ?? 'Guest';
 
 // Equivalent to:
 // String displayName;
@@ -329,48 +319,36 @@ String displayName = user.nickname ?? user.fullName ?? 'Guest';
 // } else {
 //   displayName = 'Guest';
 // }
-```
+</code></pre>
 
-This operator is preferred over ternary operators because it clearly
+<p>This operator is preferred over ternary operators because it clearly
 conveys intent and only evaluates the left expression once, avoiding
-potential side effects from multiple evaluations.
-
-## The Late Keyword
-
-The late modifier enables delayed initialization for non-nullable
+potential side effects from multiple evaluations.</p>
+<h2 id="the-late-keyword">The Late Keyword</h2>
+<p>The late modifier enables delayed initialization for non-nullable
 variables, addressing scenarios where immediate initialization isn't
-possible or desirable.
-
-```dart
-class DatabaseConnection {
+possible or desirable.</p>
+<pre class="codehilite"><code class="language-dart">class DatabaseConnection {
   late Database db;
 
-  
+
 
 ```dart
-Future<void> initialize() async {
+Future&lt;void&gt; initialize() async {
     db = await Database.connect();
- 
+
 }
-```
+</code></pre>
 
-
-
-  
-
-```dart
-void query(String sql) {
+<pre class="codehilite"><code class="language-dart">void query(String sql) {
     // db must be initialized before use
     return db.execute(sql);
- 
-}
-```
-
 
 }
-```
+</code></pre>
 
-The late keyword works in three ways:
+<p>}</p>
+<pre class="codehilite"><code>The late keyword works in three ways:
 
 -   Without initializer: defers initialization and inserts runtime
     checks
@@ -403,18 +381,14 @@ void processUser(String? name) {
     print(name.length);
   }
 }
-```
+</code></pre>
 
-This promotion works for local variables, parameters, and private final
+<p>This promotion works for local variables, parameters, and private final
 fields introduced in Dart version 3.2. The compiler tracks all code
-paths to ensure the variable cannot be null at the point of use.
-
-## Smart Null Checking
-
-Flow analysis detects redundant null checks and issues warnings:
-
-```dart
-void example(String? input) {
+paths to ensure the variable cannot be null at the point of use.</p>
+<h2 id="smart-null-checking">Smart Null Checking</h2>
+<p>Flow analysis detects redundant null checks and issues warnings:</p>
+<pre class="codehilite"><code class="language-dart">void example(String? input) {
   if (input != null) {
     // Warning: unnecessary null check
     String? result = input?.toUpperCase();
@@ -423,29 +397,23 @@ void example(String? input) {
     String result = input.toUpperCase();
   }
 }
-```
+</code></pre>
 
-This intelligent analysis transforms dynamic runtime correctness into
+<p>This intelligent analysis transforms dynamic runtime correctness into
 provable static correctness, allowing most existing Dart null-checking
-code to work seamlessly under null safety.
-
-# Real-World Applications
-
-Understanding null safety theory is essential, but seeing it applied in
-realistic scenarios demonstrates its practical value.
-
-## Example 1: E-commerce Shopping Cart
-
-An online shopping application must handle various optional data safely:
-
-```dart
-class ShoppingCart {
-  List<Product> items = [];
+code to work seamlessly under null safety.</p>
+<h1 id="real-world-applications">Real-World Applications</h1>
+<p>Understanding null safety theory is essential, but seeing it applied in
+realistic scenarios demonstrates its practical value.</p>
+<h2 id="example-1-e-commerce-shopping-cart">Example 1: E-commerce Shopping Cart</h2>
+<p>An online shopping application must handle various optional data safely:</p>
+<pre class="codehilite"><code class="language-dart">class ShoppingCart {
+  List&lt;Product&gt; items = [];
   String? promoCode;
   Address? shippingAddress;
 
   double calculateTotal() {
-    double subtotal = items.fold(0, (sum, item) => sum + item.price);
+    double subtotal = items.fold(0, (sum, item) =&gt; sum + item.price);
 
     // Apply discount if promo code exists
     double discount = promoCode != null
@@ -464,21 +432,17 @@ class ShoppingCart {
         : 'Please add a delivery address';
   }
 }
-```
+</code></pre>
 
-This design makes optional data explicit. The compiler prevents
+<p>This design makes optional data explicit. The compiler prevents
 accessing nullable properties without checks, eliminating entire classes
-of bugs where missing addresses or promo codes cause crashes.
-
-## Example 2: User Authentication System
-
-Authentication systems commonly deal with optional user states:
-
-```dart
-class AuthenticationService {
+of bugs where missing addresses or promo codes cause crashes.</p>
+<h2 id="example-2-user-authentication-system">Example 2: User Authentication System</h2>
+<p>Authentication systems commonly deal with optional user states:</p>
+<pre class="codehilite"><code class="language-dart">class AuthenticationService {
   User? _currentUser;
 
-  bool get isAuthenticated => _currentUser != null;
+  bool get isAuthenticated =&gt; _currentUser != null;
 
   User get currentUser {
     final user = _currentUser;
@@ -488,7 +452,7 @@ class AuthenticationService {
     return user;
   }
 
-  Future<void> login(String email, String password) async {
+  Future&lt;void&gt; login(String email, String password) async {
     final user = await authApi.authenticate(email, password);
     _currentUser = user;
   }
@@ -501,19 +465,15 @@ class AuthenticationService {
     return _currentUser?.fullName ?? 'Guest User';
   }
 }
-```
+</code></pre>
 
-The nullable currentUser field makes the authentication state explicit.
+<p>The nullable currentUser field makes the authentication state explicit.
 The getter provides safe access by throwing a clear error when accessed
 incorrectly, while getUserDisplayName gracefully handles unauthenticated
-states with a default value.
-
-## Example 3: API Response Handling
-
-Network APIs often return partial or optional data:
-
-```dart
-class UserProfile {
+states with a default value.</p>
+<h2 id="example-3-api-response-handling">Example 3: API Response Handling</h2>
+<p>Network APIs often return partial or optional data:</p>
+<pre class="codehilite"><code class="language-dart">class UserProfile {
   final String id;
   final String username;
   final String? bio;          // Optional biography
@@ -537,30 +497,24 @@ class UserProfile {
     if (lastSeen == null) return 'Activity unknown';
 
     final difference = DateTime.now().difference(lastSeen);
-    if (difference.inMinutes < 5) return 'Active now';
-    if (difference.inHours < 1) return 'Active recently';
+    if (difference.inMinutes &lt; 5) return 'Active now';
+    if (difference.inHours &lt; 1) return 'Active recently';
     return 'Last seen ${difference.inDays} days ago';
   }
 }
-```
+</code></pre>
 
-This pattern clearly documents which fields are optional in the API
+<p>This pattern clearly documents which fields are optional in the API
 contract. The type system ensures every access to optional data includes
 appropriate null handling, preventing crashes when the API returns
-incomplete profiles.
-
-# Visual Representations
-
-The following diagrams illustrate key concepts in Dart's null safety
-system.
-
-## Diagram 1: Null Safety Decision Flow
-
-The following diagram illustrates the decision-making process when
-working with Dart's null safety system:
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+incomplete profiles.</p>
+<h1 id="visual-representations">Visual Representations</h1>
+<p>The following diagrams illustrate key concepts in Dart's null safety
+system.</p>
+<h2 id="diagram-1-null-safety-decision-flow">Diagram 1: Null Safety Decision Flow</h2>
+<p>The following diagram illustrates the decision-making process when
+working with Dart's null safety system:</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║          🎯 NULL SAFETY DECISION FLOWCHART 🎯                ║
 ╚═══════════════════════════════════════════════════════════════╝
 
@@ -625,19 +579,15 @@ Legend:
   ✅ = Safe, recommended approach (compile-time checked)
   ⚠️ = Use with caution (requires careful consideration)
   ❓ = Decision point
-```
+</code></pre>
 
-This flowchart shows how to determine the appropriate approach based on
+<p>This flowchart shows how to determine the appropriate approach based on
 whether a value can be absent and how you need to access it. Safe paths
-are marked with ✅, while approaches requiring extra caution are marked with ⚠️.
-
-## Diagram 2: Before and After Null Safety
-
-This comparison demonstrates the fundamental difference between
-traditional null handling and Dart's null safety approach:
-
-```
-╔═══════════════════════════════════════════════════════════════════════════════════╗
+are marked with ✅, while approaches requiring extra caution are marked with ⚠️.</p>
+<h2 id="diagram-2-before-and-after-null-safety">Diagram 2: Before and After Null Safety</h2>
+<p>This comparison demonstrates the fundamental difference between
+traditional null handling and Dart's null safety approach:</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════════════════════════╗
 ║                    🔴 BEFORE NULL SAFETY vs ✅ WITH NULL SAFETY                  ║
 ╚═══════════════════════════════════════════════════════════════════════════════════╝
 
@@ -715,19 +665,15 @@ traditional null handling and Dart's null safety approach:
         │  • Mark nullable types with ?                  │
         │  • Enjoy compile-time safety! ✅               │
         └───────────────────────────────────────────────┘
-```
+</code></pre>
 
-Notice how runtime crashes on the left are transformed into compile-time
+<p>Notice how runtime crashes on the left are transformed into compile-time
 guarantees on the right, with the added benefit of faster execution
-through eliminated runtime checks.
-
-## Diagram 3: Type System Hierarchy
-
-Understanding Dart's type hierarchy is essential for working
-effectively with null safety:
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+through eliminated runtime checks.</p>
+<h2 id="diagram-3-type-system-hierarchy">Diagram 3: Type System Hierarchy</h2>
+<p>Understanding Dart's type hierarchy is essential for working
+effectively with null safety:</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║            🏗️ DART TYPE SYSTEM HIERARCHY 🏗️                 ║
 ╚═══════════════════════════════════════════════════════════════╝
 
@@ -760,10 +706,10 @@ Non-Nullable Type:                 Nullable Type:
 ┌─────────────┐                   ┌──────────────────────┐
 │   String    │                   │      String?         │
 │             │                   │                      │
-│  "Hello"    │                   │   String | Null      │
-│  "World"    │                   │  ──────────────────  │
-│  "Dart"     │                   │   "Hello"            │
-│             │                   │   "World"            │
+│  &quot;Hello&quot;    │                   │   String | Null      │
+│  &quot;World&quot;    │                   │  ──────────────────  │
+│  &quot;Dart&quot;     │                   │   &quot;Hello&quot;            │
+│             │                   │   &quot;World&quot;            │
 │             │                   │   null  ←            │
 └─────────────┘                   └──────────────────────┘
      Cannot                           Can be null ✓
@@ -803,8 +749,8 @@ Step 3: Type promoted to non-nullable
 ╚═══════════════════════════════════════════════════════════════╝
 
 Valid Assignments:
-✅ String name = "Hello";        // Non-null to non-null
-✅ String? maybeName = "Hello";  // Non-null to nullable
+✅ String name = &quot;Hello&quot;;        // Non-null to non-null
+✅ String? maybeName = &quot;Hello&quot;;  // Non-null to nullable
 ✅ String? empty = null;         // null to nullable
 
 Invalid Assignments:
@@ -853,18 +799,14 @@ Example:
 │   print(localName.length);  // ✅ Promotes!     │
 │ }                                               │
 └─────────────────────────────────────────────────┘
-```
+</code></pre>
 
-This diagram illustrates how nullable types are unions of their base
+<p>This diagram illustrates how nullable types are unions of their base
 type and Null, and how type promotion allows safe conversion from
-nullable to non-nullable types after null checks.
-
-## Diagram 4: Flow Analysis and Compilation
-
-The compilation process with flow analysis ensures type safety:
-
-```
-╔═══════════════════════════════════════════════════════════════════════════════╗
+nullable to non-nullable types after null checks.</p>
+<h2 id="diagram-4-flow-analysis-and-compilation">Diagram 4: Flow Analysis and Compilation</h2>
+<p>The compilation process with flow analysis ensures type safety:</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════════════════════╗
 ║              ⚙️ DART NULL SAFETY COMPILATION PIPELINE ⚙️                     ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
 
@@ -890,7 +832,7 @@ The compilation process with flow analysis ensures type safety:
                                 │
                                 ▼
                     ┌─────────────────────────────────────┐
-                    │   3️⃣ TYPE ANALYSIS & INFERENCE      │
+                    │   3️⃣ TYPE ANALYSIS &amp; INFERENCE      │
                     │   ──────────────────────────────────  │
                     │   • Assign types to expressions      │
                     │   • Verify type compatibility        │
@@ -920,7 +862,7 @@ The compilation process with flow analysis ensures type safety:
         ║  Analysis Tracks:                                  ║
         ║  ✅ Null checks (if, assert)                       ║
         ║  ✅ Early returns                                  ║
-        ║  ✅ Logical operators (&&, ||)                     ║
+        ║  ✅ Logical operators (&amp;&amp;, ||)                     ║
         ║  ✅ Conditional expressions (?:)                   ║
         ║  ✅ Switch statements                              ║
         ║  ✅ Exception handling (try/catch)                 ║
@@ -1012,72 +954,148 @@ Results:
 • Zero null reference errors
 • Better IDE support
 • Improved developer confidence
-```
+</code></pre>
 
-This process diagram shows how Dart's analyzer uses flow analysis to
+<p>This process diagram shows how Dart's analyzer uses flow analysis to
 track variable states, promote types, and generate optimized code.
 Errors are caught at compile-time, while successful compilation produces
-efficient, runtime-safe code.
-
-## Summary Tables
-
-### Core Concepts
-
-| Concept               | Description                                                          | Example                          |
-|:----------------------|:---------------------------------------------------------------------|:---------------------------------|
-| **Non-Nullable Type** | Default type that cannot hold null values                           | `String name = 'John';`          |
-| **Nullable Type**     | Type marked with `?` that can hold null                             | `String? nickname = null;`       |
-| **Type Promotion**    | Automatic conversion from nullable to non-nullable after null check | `if (name != null) { ... }`      |
-| **Null Union**        | A nullable type is a union of Type and Null                         | `int? = int \| Null`             |
-
-## Diagram 2: Null Safety Decision Flow
-
-### Decision Guide
-
-| Question                    | Answer               | Recommended Action                        |
-|:----------------------------|:---------------------|:------------------------------------------|
-| Can this value be absent?   | No                   | Use non-nullable type (`String`)          |
-| Can this value be absent?   | Yes                  | Use nullable type (`String?`)             |
-| Need immediate access?      | Yes, with check      | Use if-null check + promotion             |
-| Need immediate access?      | Yes, guaranteed safe | Use null assertion (`!`)                  |
-| Need default value?         | Yes                  | Use null-coalescing (`??`)                |
-| Delayed initialization?     | Yes                  | Use `late` keyword                        |
-
-## Diagram 3: Operator Comparison
-
-### Null Safety Operators Quick Reference
-
-| Operator   | Example Usage        | Safety Level | Use Case                       |
-|:----------:|:---------------------|:------------:|:-------------------------------|
-| `?`        | `String? name`       | ✅ Safe      | Declare nullable types         |
-| `!`        | `name!`              | ⚠️ Unsafe    | Assert non-null (use sparingly)|
-| `??`       | `name ?? 'Guest'`    | ✅ Safe      | Provide default values         |
-| `?.`       | `user?.email`        | ✅ Safe      | Safe member access             |
-| `late`     | `late String config` | 🟡 Moderate  | Delayed initialization         |
-
-# Best Practices and Design Patterns
-
-Adopting null safety effectively requires understanding proven patterns
-and avoiding common pitfalls.
-
-## Minimize Null Assertion Usage
-
-Repeated use of the null assertion operator throughout code indicates
-design problems:
-
-```dart
-// Poor design - repeated assertions
+efficient, runtime-safe code.</p>
+<h2 id="summary-tables">Summary Tables</h2>
+<h3 id="core-concepts">Core Concepts</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Non-Nullable Type</strong></td>
+<td style="text-align: left;">Default type that cannot hold null values</td>
+<td style="text-align: left;"><code>String name = 'John';</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Nullable Type</strong></td>
+<td style="text-align: left;">Type marked with <code>?</code> that can hold null</td>
+<td style="text-align: left;"><code>String? nickname = null;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type Promotion</strong></td>
+<td style="text-align: left;">Automatic conversion from nullable to non-nullable after null check</td>
+<td style="text-align: left;"><code>if (name != null) { ... }</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Null Union</strong></td>
+<td style="text-align: left;">A nullable type is a union of Type and Null</td>
+<td style="text-align: left;"><code>int? = int \| Null</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagram-2-null-safety-decision-flow">Diagram 2: Null Safety Decision Flow</h2>
+<h3 id="decision-guide">Decision Guide</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Question</th>
+<th style="text-align: left;">Answer</th>
+<th style="text-align: left;">Recommended Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Can this value be absent?</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Use non-nullable type (<code>String</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Can this value be absent?</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Use nullable type (<code>String?</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Need immediate access?</td>
+<td style="text-align: left;">Yes, with check</td>
+<td style="text-align: left;">Use if-null check + promotion</td>
+</tr>
+<tr>
+<td style="text-align: left;">Need immediate access?</td>
+<td style="text-align: left;">Yes, guaranteed safe</td>
+<td style="text-align: left;">Use null assertion (<code>!</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Need default value?</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Use null-coalescing (<code>??</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Delayed initialization?</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Use <code>late</code> keyword</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagram-3-operator-comparison">Diagram 3: Operator Comparison</h2>
+<h3 id="null-safety-operators-quick-reference">Null Safety Operators Quick Reference</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Operator</th>
+<th style="text-align: left;">Example Usage</th>
+<th style="text-align: center;">Safety Level</th>
+<th style="text-align: left;">Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>?</code></td>
+<td style="text-align: left;"><code>String? name</code></td>
+<td style="text-align: center;">✅ Safe</td>
+<td style="text-align: left;">Declare nullable types</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>!</code></td>
+<td style="text-align: left;"><code>name!</code></td>
+<td style="text-align: center;">⚠️ Unsafe</td>
+<td style="text-align: left;">Assert non-null (use sparingly)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>??</code></td>
+<td style="text-align: left;"><code>name ?? 'Guest'</code></td>
+<td style="text-align: center;">✅ Safe</td>
+<td style="text-align: left;">Provide default values</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>?.</code></td>
+<td style="text-align: left;"><code>user?.email</code></td>
+<td style="text-align: center;">✅ Safe</td>
+<td style="text-align: left;">Safe member access</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>late</code></td>
+<td style="text-align: left;"><code>late String config</code></td>
+<td style="text-align: center;">🟡 Moderate</td>
+<td style="text-align: left;">Delayed initialization</td>
+</tr>
+</tbody>
+</table>
+<h1 id="best-practices-and-design-patterns">Best Practices and Design Patterns</h1>
+<p>Adopting null safety effectively requires understanding proven patterns
+and avoiding common pitfalls.</p>
+<h2 id="minimize-null-assertion-usage">Minimize Null Assertion Usage</h2>
+<p>Repeated use of the null assertion operator throughout code indicates
+design problems:</p>
+<pre class="codehilite"><code class="language-dart">// Poor design - repeated assertions
 void processOrder() {
   print(auth.user!.name);
   sendEmail(auth.user!.email);
   logActivity(auth.user!.id);
 }
-```
+</code></pre>
 
-Better approach using local variable with type promotion:
-
-```dart
-// Good design - single check with promotion
+<p>Better approach using local variable with type promotion:</p>
+<pre class="codehilite"><code class="language-dart">// Good design - single check with promotion
 void processOrder() {
   final user = auth.user;
   if (user == null) {
@@ -1090,15 +1108,12 @@ void processOrder() {
   sendEmail(user.email);
   logActivity(user.id);
 }
-```
+</code></pre>
 
-## Design Clear API Contracts
-
-Consider whether accessing a property when null should be fatal or fail
-gracefully:
-
-```dart
-// Option 1: Individual nullable properties
+<h2 id="design-clear-api-contracts">Design Clear API Contracts</h2>
+<p>Consider whether accessing a property when null should be fatal or fail
+gracefully:</p>
+<pre class="codehilite"><code class="language-dart">// Option 1: Individual nullable properties
 class Auth {
   User? user;
   String? token;
@@ -1116,19 +1131,15 @@ class Auth {
   Auth({required this.user, required this.token});
 }
 Auth? currentAuth; // null when not authenticated
-```
+</code></pre>
 
-Choose option 1 when partial states are valid. Choose option 2 when
+<p>Choose option 1 when partial states are valid. Choose option 2 when
 authentication is all-or-nothing. The second approach provides stronger
-guarantees but less flexibility.
-
-## Prefer Null-Coalescing for Defaults
-
-When a nullable value must produce a non-null result, the
-null-coalescing operator is the safest and most idiomatic choice:
-
-```dart
-// Clear intent, safe, and concise
+guarantees but less flexibility.</p>
+<h2 id="prefer-null-coalescing-for-defaults">Prefer Null-Coalescing for Defaults</h2>
+<p>When a nullable value must produce a non-null result, the
+null-coalescing operator is the safest and most idiomatic choice:</p>
+<pre class="codehilite"><code class="language-dart">// Clear intent, safe, and concise
 String title = article.customTitle ?? article.generatedTitle ?? 'Untitled';
 
 // Equivalent but verbose
@@ -1140,19 +1151,15 @@ if (article.customTitle != null) {
 } else {
   title = 'Untitled';
 }
-```
+</code></pre>
 
-The null-coalescing operator chains elegantly and evaluates
-left-to-right, stopping at the first non-null value.
-
-## Handle Edge Cases Explicitly
-
-Rather than suppressing null safety with assertions, handle edge cases
-with clear logic:
-
-```dart
-class PaymentProcessor {
-  Future<void> processPayment(Order order) async {
+<p>The null-coalescing operator chains elegantly and evaluates
+left-to-right, stopping at the first non-null value.</p>
+<h2 id="handle-edge-cases-explicitly">Handle Edge Cases Explicitly</h2>
+<p>Rather than suppressing null safety with assertions, handle edge cases
+with clear logic:</p>
+<pre class="codehilite"><code class="language-dart">class PaymentProcessor {
+  Future&lt;void&gt; processPayment(Order order) async {
     final paymentMethod = order.paymentMethod;
 
     if (paymentMethod == null) {
@@ -1166,44 +1173,43 @@ class PaymentProcessor {
     await paymentMethod.charge(order.total);
   }
 }
-```
+</code></pre>
 
-This approach documents assumptions, provides clear error messages, and
-maintains null safety without assertions.
-
-# Migration Strategy
-
-Transitioning existing codebases to null safety requires careful
+<p>This approach documents assumptions, provides clear error messages, and
+maintains null safety without assertions.</p>
+<h1 id="migration-strategy">Migration Strategy</h1>
+<p>Transitioning existing codebases to null safety requires careful
 planning and execution. Dart version 3 requires full null safety
-support, making migration essential for modern development.
-
-## Migration Process
-
-Follow these steps for successful migration:
-
--   Update all dependencies to null-safe versions
-
--   Set minimum SDK constraint to 2.12.0 or higher in pubspec.yaml
-
--   Run static analysis to identify required changes
-
--   Use dart migrate tool for automated assistance (supported through
-    Dart 2.19)
-
--   Manually review and adjust automated changes
-
--   Thoroughly test all code paths
-
-Package authors should prioritize migration to support the ecosystem.
+support, making migration essential for modern development.</p>
+<h2 id="migration-process">Migration Process</h2>
+<p>Follow these steps for successful migration:</p>
+<ul>
+<li>
+<p>Update all dependencies to null-safe versions</p>
+</li>
+<li>
+<p>Set minimum SDK constraint to 2.12.0 or higher in pubspec.yaml</p>
+</li>
+<li>
+<p>Run static analysis to identify required changes</p>
+</li>
+<li>
+<p>Use dart migrate tool for automated assistance (supported through
+    Dart 2.19)</p>
+</li>
+<li>
+<p>Manually review and adjust automated changes</p>
+</li>
+<li>
+<p>Thoroughly test all code paths</p>
+</li>
+</ul>
+<p>Package authors should prioritize migration to support the ecosystem.
 The Dart team strongly encouraged migration to enable the complete
-transition to a fully sound language.
-
-## Common Migration Challenges
-
-Several patterns require special attention during migration:
-
-```dart
-// Before null safety
+transition to a fully sound language.</p>
+<h2 id="common-migration-challenges">Common Migration Challenges</h2>
+<p>Several patterns require special attention during migration:</p>
+<pre class="codehilite"><code class="language-dart">// Before null safety
 class Configuration {
   String serverUrl;
   int timeout;
@@ -1232,131 +1238,101 @@ class Configuration {
     timeout = int.parse(readConfig('timeout'));
   }
 }
-```
+</code></pre>
 
-The late keyword bridges scenarios where initialization happens in
+<p>The late keyword bridges scenarios where initialization happens in
 helper methods rather than at declaration. However, consider refactoring
-to direct initialization when possible for clearer code.
-
-# Performance Optimization
-
-Sound null safety enables significant performance improvements through
+to direct initialization when possible for clearer code.</p>
+<h1 id="performance-optimization">Performance Optimization</h1>
+<p>Sound null safety enables significant performance improvements through
 compiler optimizations. These benefits accumulate throughout application
-execution, especially in performance-critical code paths.
-
-## Eliminated Runtime Checks
-
-Without null safety, every property access potentially requires a null
-check:
-
-```dart
-// Without null safety - implicit null checks
+execution, especially in performance-critical code paths.</p>
+<h2 id="eliminated-runtime-checks">Eliminated Runtime Checks</h2>
+<p>Without null safety, every property access potentially requires a null
+check:</p>
+<pre class="codehilite"><code class="language-dart">// Without null safety - implicit null checks
 String processName(User user) {
   // Runtime must verify user is not null
   // Runtime must verify user.name is not null
   return user.name.toUpperCase();
 }
-```
+</code></pre>
 
-```dart
-// With null safety - checks eliminated
+<pre class="codehilite"><code class="language-dart">// With null safety - checks eliminated
 String processName(User user) {
   // Compiler guarantees both user and user.name are non-null
   // Generated code skips null checks entirely
   return user.name.toUpperCase();
 }
-```
+</code></pre>
 
-In tight loops or frequently-called methods, eliminating these checks
+<p>In tight loops or frequently-called methods, eliminating these checks
 produces measurable performance improvements through reduced instruction
-count and improved branch prediction.
-
-## Smaller Binary Size
-
-Fewer runtime checks translate directly to smaller compiled binaries.
+count and improved branch prediction.</p>
+<h2 id="smaller-binary-size">Smaller Binary Size</h2>
+<p>Fewer runtime checks translate directly to smaller compiled binaries.
 This benefits mobile applications where app size impacts download times
 and device storage. Applications with extensive business logic see the
-most significant size reductions.
-
-The combination of smaller binaries and faster execution makes null
+most significant size reductions.</p>
+<p>The combination of smaller binaries and faster execution makes null
 safety particularly valuable for Flutter applications, where performance
-and package size directly affect user experience.
-
-## Conclusion
-
-Dart's sound null safety represents a fundamental advancement in
+and package size directly affect user experience.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Dart's sound null safety represents a fundamental advancement in
 programming language design. By transforming potential runtime crashes
 into compile-time errors, it shifts the burden of correctness from
-runtime debugging to design-time decision-making.
-
-The system's two core principles work synergistically: non-nullable by
+runtime debugging to design-time decision-making.</p>
+<p>The system's two core principles work synergistically: non-nullable by
 default ensures safer defaults, while full soundness enables compiler
 optimizations and stronger guarantees. Together with flow analysis and
 type promotion, these features create a development experience that is
-both safer and more productive.
-
-Real-world applications demonstrate null safety's practical value
+both safer and more productive.</p>
+<p>Real-world applications demonstrate null safety's practical value
 across diverse domains. From e-commerce shopping carts to authentication
 systems to API response handling, the explicit handling of optional
 values prevents entire categories of bugs while making code intent
-clearer.
-
-The performance benefits compound these advantages. Eliminated null
+clearer.</p>
+<p>The performance benefits compound these advantages. Eliminated null
 checks result in faster execution and smaller binaries, particularly
 important for mobile applications where resources are constrained and
-user experience is paramount.
-
-As the Dart ecosystem fully adopts null safety, developers gain access
+user experience is paramount.</p>
+<p>As the Dart ecosystem fully adopts null safety, developers gain access
 to a more robust and efficient platform for building reliable
 applications. The journey from Tony Hoare's billion-dollar mistake to
 Dart's comprehensive solution demonstrates the evolution of programming
 language design toward systems that prevent errors by construction
-rather than detection.
-
-For developers beginning their null safety journey, the investment in
+rather than detection.</p>
+<p>For developers beginning their null safety journey, the investment in
 understanding these concepts pays immediate dividends through fewer
 bugs, clearer code, and better performance. The combination of strict
 compile-time checks and intelligent flow analysis creates a development
 experience that guides developers toward correct solutions while
-maintaining the expressiveness that makes Dart productive and enjoyable.
-
----
-
-## Further Reading
-
-**Official Dart Documentation:**
--   [Sound Null Safety](https://dart.dev/null-safety) - Official null safety guide
--   [Understanding Null Safety](https://dart.dev/null-safety/understanding-null-safety) - Deep dive into the type system
--   [Migrating to Null Safety](https://dart.dev/null-safety/migration-guide) - Step-by-step migration guide
--   [Null Safety FAQ](https://dart.dev/null-safety/faq) - Common questions and patterns
-
-**Language Specification:**
--   [Dart Language Specification](https://dart.dev/guides/language/spec) - Technical specification
--   [Effective Dart](https://dart.dev/guides/language/effective-dart) - Best practices
-
-**Articles & Tutorials:**
--   [Announcing Sound Null Safety](https://medium.com/dartlang/announcing-sound-null-safety-defd2216a6f3) - Official announcement
--   [Null Safety Codelab](https://dart.dev/codelabs/null-safety) - Interactive tutorial
--   [Null Safety in Practice](https://dart.dev/null-safety/understanding-null-safety#working-with-nullable-types) - Practical examples
-
-**Community Resources:**
--   [Dart on Stack Overflow](https://stackoverflow.com/questions/tagged/dart+null-safety) - Q&A for null safety
--   [r/dartlang](https://www.reddit.com/r/dartlang/) - Community discussions
--   [Flutter Community](https://flutter.dev/community) - Get involved
-
-**Advanced Topics:**
--   [Type Promotion](https://dart.dev/null-safety/understanding-null-safety#flow-analysis) - Flow analysis deep dive
--   [Unsound Null Safety](https://dart.dev/null-safety/unsound-null-safety) - Migration strategies
--   [Null Safety Internals](https://github.com/dart-lang/language/blob/master/accepted/2.12/nnbd/feature-specification.md) - Technical specification
-
----
-
-## 👤 About the Author
-
-**Srđan Ljuština** - Software Developer & Technical Writer
-
-🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
-
----
-
-**Happy coding with null safety! 🎯✨**
+maintaining the expressiveness that makes Dart productive and enjoyable.</p>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<p><strong>Official Dart Documentation:</strong>
+-   <a href="https://dart.dev/null-safety">Sound Null Safety</a> - Official null safety guide
+-   <a href="https://dart.dev/null-safety/understanding-null-safety">Understanding Null Safety</a> - Deep dive into the type system
+-   <a href="https://dart.dev/null-safety/migration-guide">Migrating to Null Safety</a> - Step-by-step migration guide
+-   <a href="https://dart.dev/null-safety/faq">Null Safety FAQ</a> - Common questions and patterns</p>
+<p><strong>Language Specification:</strong>
+-   <a href="https://dart.dev/guides/language/spec">Dart Language Specification</a> - Technical specification
+-   <a href="https://dart.dev/guides/language/effective-dart">Effective Dart</a> - Best practices</p>
+<p><strong>Articles &amp; Tutorials:</strong>
+-   <a href="https://medium.com/dartlang/announcing-sound-null-safety-defd2216a6f3">Announcing Sound Null Safety</a> - Official announcement
+-   <a href="https://dart.dev/codelabs/null-safety">Null Safety Codelab</a> - Interactive tutorial
+-   <a href="https://dart.dev/null-safety/understanding-null-safety#working-with-nullable-types">Null Safety in Practice</a> - Practical examples</p>
+<p><strong>Community Resources:</strong>
+-   <a href="https://stackoverflow.com/questions/tagged/dart+null-safety">Dart on Stack Overflow</a> - Q&amp;A for null safety
+-   <a href="https://www.reddit.com/r/dartlang/">r/dartlang</a> - Community discussions
+-   <a href="https://flutter.dev/community">Flutter Community</a> - Get involved</p>
+<p><strong>Advanced Topics:</strong>
+-   <a href="https://dart.dev/null-safety/understanding-null-safety#flow-analysis">Type Promotion</a> - Flow analysis deep dive
+-   <a href="https://dart.dev/null-safety/unsound-null-safety">Unsound Null Safety</a> - Migration strategies
+-   <a href="https://github.com/dart-lang/language/blob/master/accepted/2.12/nnbd/feature-specification.md">Null Safety Internals</a> - Technical specification</p>
+<hr />
+<h2 id="about-the-author">👤 About the Author</h2>
+<p><strong>Srđan Ljuština</strong> - Software Developer &amp; Technical Writer</p>
+<p>🌐 <a href="https://srdapp.rs">Website</a> | 💼 <a href="https://www.linkedin.com/in/srdjanljustina/">LinkedIn</a> | 💻 <a href="https://github.com/projekt">GitHub</a></p>
+<hr />
+<p><strong>Happy coding with null safety! 🎯✨</strong></p>

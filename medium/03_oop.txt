@@ -1,48 +1,35 @@
-This article was originally published on my website.
-For the latest version and more articles, visit: https://projekt.github.io/articles/
+<!-- Original article: https://projekt.github.io/articles/ -->
+<div style="background: #f0f0f0; padding: 15px; border-left: 4px solid #333; margin-bottom: 30px;">
+<p><strong>Note:</strong> This article was originally published on my website. For the latest version and more articles, visit <a href="https://projekt.github.io/articles/">https://projekt.github.io/articles/</a></p>
+</div>
 
----
-
-
-# Programming Paradigms Series - Article 3: Object-Oriented Programming (OOP)
-
-**Series Navigation:** [← Imperative Programming](02_imperative_programming.md) | Article 3 of 7 | Next: [Functional Programming →](04_functional_programming.md)
-
----
-
-**About This Series**
-
-This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.
-
----
-
-## Table of Contents
-
-1. [Concept](#concept)
-2. [Real-Life Analogy](#real-life-analogy)
-3. [Dart Example](#dart-example)
-4. [OOP Class Hierarchy Diagram](#oop-class-hierarchy-diagram)
-5. [OOP Core Principles](#oop-core-principles)
-
----
-
-## Concept
-
-Object-Oriented Programming organizes code around objects that bundle data (properties) and behavior (methods) together. It's based on concepts like encapsulation, inheritance, and polymorphism.
-
-## Real-Life Analogy
-
-Think of a car manufacturing plant. Each car is an object with:
-- **Properties**: color, model, speed, fuel level
-- **Methods**: accelerate(), brake(), refuel()
-- **Encapsulation**: The driver doesn't need to know how the engine works internally
-- **Inheritance**: A SportsCar inherits features from Car but adds turbo boost
-- **Polymorphism**: Both Car and Motorcycle can move(), but they do it differently
-
-## Dart Example
-
-```dart
-// Base class
+<h1 id="programming-paradigms-series-article-3-object-oriented-programming-oop">Programming Paradigms Series - Article 3: Object-Oriented Programming (OOP)</h1>
+<p><strong>⏱️ 5-Minute Read</strong></p>
+<p><strong>Series Navigation:</strong> <a href="02_imperative_programming.md">← Imperative Programming</a> | Article 3 of 7 | Next: <a href="04_functional_programming.md">Functional Programming →</a></p>
+<hr />
+<p><strong>About This Series</strong></p>
+<p>This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#concept">Concept</a></li>
+<li><a href="#real-life-analogy">Real-Life Analogy</a></li>
+<li><a href="#dart-example">Dart Example</a></li>
+<li><a href="#oop-class-hierarchy-diagram">OOP Class Hierarchy Diagram</a></li>
+<li><a href="#oop-core-principles">OOP Core Principles</a></li>
+</ol>
+<hr />
+<h2 id="concept">Concept</h2>
+<p>Object-Oriented Programming organizes code around objects that bundle data (properties) and behavior (methods) together. It's based on concepts like encapsulation, inheritance, and polymorphism.</p>
+<h2 id="real-life-analogy">Real-Life Analogy</h2>
+<p>Think of a car manufacturing plant. Each car is an object with:
+- <strong>Properties</strong>: color, model, speed, fuel level
+- <strong>Methods</strong>: accelerate(), brake(), refuel()
+- <strong>Encapsulation</strong>: The driver doesn't need to know how the engine works internally
+- <strong>Inheritance</strong>: A SportsCar inherits features from Car but adds turbo boost
+- <strong>Polymorphism</strong>: Both Car and Motorcycle can move(), but they do it differently</p>
+<h2 id="dart-example">Dart Example</h2>
+<pre class="codehilite"><code class="language-dart">// Base class
 class Vehicle {
   String brand;
   int speed;
@@ -97,17 +84,15 @@ void main() {
   myBike.move();     // Harley motorcycle without sidecar is riding at 100 km/h
 
   // Polymorphism in action
-  List<Vehicle> vehicles = [myCar, myBike];
+  List&lt;Vehicle&gt; vehicles = [myCar, myBike];
   for (var vehicle in vehicles) {
     vehicle.move();  // Each calls its own version of move()
   }
 }
-```
+</code></pre>
 
-## OOP Class Hierarchy Diagram
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+<h2 id="oop-class-hierarchy-diagram">OOP Class Hierarchy Diagram</h2>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║              🏛️ OOP CLASS HIERARCHY 🏛️                      ║
 ╚═══════════════════════════════════════════════════════════════╝
 
@@ -144,12 +129,10 @@ void main() {
         └──────────────────┘
 
    ✨ = Polymorphism: Same method name, different implementation
-```
+</code></pre>
 
-## OOP Core Principles
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+<h2 id="oop-core-principles">OOP Core Principles</h2>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║                🎯 OOP FOUR PILLARS 🎯                        ║
 ╚═══════════════════════════════════════════════════════════════╝
 
@@ -183,8 +166,8 @@ void main() {
    Same Interface → Different Implementations
 
    vehicle.move()
-        ├─► Car.move()        → 🚗 "Driving..."
-        └─► Motorcycle.move() → 🏍️ "Riding..."
+        ├─► Car.move()        → 🚗 &quot;Driving...&quot;
+        └─► Motorcycle.move() → 🏍️ &quot;Riding...&quot;
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ 4️⃣ ABSTRACTION 🎨      ┃
@@ -195,44 +178,32 @@ void main() {
               🔧 Transmission
               ⛽ Fuel injection
               🔩 Internal mechanics
-```
+</code></pre>
 
-Object-Oriented Programming excels at modeling complex systems with many interrelated components. By organizing code around objects that represent real-world entities, OOP makes large codebases more maintainable, reusable, and easier to understand.
-
----
-
-## Further Reading
-
-**Object-Oriented Programming:**
-- [Object-Oriented Programming in Dart](https://dart.dev/guides/language/language-tour#classes) - Official documentation
-- [Design Patterns](https://refactoring.guru/design-patterns) - Gang of Four patterns explained
-- [SOLID Principles](https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) - OOP best practices
-
-**Dart OOP Features:**
-- [Mixins in Dart](https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins) - Code reuse technique
-- [Extension Methods](https://dart.dev/guides/language/extension-methods) - Extending existing classes
-
-**Books:**
-- [Head First Design Patterns](https://www.oreilly.com/library/view/head-first-design/0596007124/) - Beginner-friendly approach
-- [Clean Code](https://www.oreilly.com/library/view/clean-code-a/9780136083238/) - Robert C. Martin
-
----
-
-## 👤 About the Author
-
-**Srđan Ljuština** - Software Developer & Technical Writer
-
-🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
-
----
-
-**Series Navigation:** [← Imperative Programming](02_imperative_programming.md) | Article 3 of 7 | Next: [Functional Programming →](04_functional_programming.md)
-
-**Other Articles in This Series:**
-- [Article 1: What Are Programming Paradigms?](01_what_are_programming_paradigms.md)
-- [Article 2: Imperative Programming](02_imperative_programming.md)
-- **Article 3: Object-Oriented Programming (OOP)** (Current)
-- [Article 4: Functional Programming](04_functional_programming.md)
-- [Article 5: Declarative Programming](05_declarative_programming.md)
-- [Article 6: Procedural Programming](06_procedural_programming.md)
-- [Article 7: Choosing the Right Paradigm - Summary and Best Practices](07_summary.md)
+<p>Object-Oriented Programming excels at modeling complex systems with many interrelated components. By organizing code around objects that represent real-world entities, OOP makes large codebases more maintainable, reusable, and easier to understand.</p>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<p><strong>Object-Oriented Programming:</strong>
+- <a href="https://dart.dev/guides/language/language-tour#classes">Object-Oriented Programming in Dart</a> - Official documentation
+- <a href="https://refactoring.guru/design-patterns">Design Patterns</a> - Gang of Four patterns explained
+- <a href="https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">SOLID Principles</a> - OOP best practices</p>
+<p><strong>Dart OOP Features:</strong>
+- <a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins">Mixins in Dart</a> - Code reuse technique
+- <a href="https://dart.dev/guides/language/extension-methods">Extension Methods</a> - Extending existing classes</p>
+<p><strong>Books:</strong>
+- <a href="https://www.oreilly.com/library/view/head-first-design/0596007124/">Head First Design Patterns</a> - Beginner-friendly approach
+- <a href="https://www.oreilly.com/library/view/clean-code-a/9780136083238/">Clean Code</a> - Robert C. Martin</p>
+<hr />
+<h2 id="about-the-author">👤 About the Author</h2>
+<p><strong>Srđan Ljuština</strong> - Software Developer &amp; Technical Writer</p>
+<p>🌐 <a href="https://srdapp.rs">Website</a> | 💼 <a href="https://www.linkedin.com/in/srdjanljustina/">LinkedIn</a> | 💻 <a href="https://github.com/projekt">GitHub</a></p>
+<hr />
+<p><strong>Series Navigation:</strong> <a href="02_imperative_programming.md">← Imperative Programming</a> | Article 3 of 7 | Next: <a href="04_functional_programming.md">Functional Programming →</a></p>
+<p><strong>Other Articles in This Series:</strong>
+- <a href="01_what_are_programming_paradigms.md">Article 1: What Are Programming Paradigms?</a>
+- <a href="02_imperative_programming.md">Article 2: Imperative Programming</a>
+- <strong>Article 3: Object-Oriented Programming (OOP)</strong> (Current)
+- <a href="04_functional_programming.md">Article 4: Functional Programming</a>
+- <a href="05_declarative_programming.md">Article 5: Declarative Programming</a>
+- <a href="06_procedural_programming.md">Article 6: Procedural Programming</a>
+- <a href="07_summary.md">Article 7: Choosing the Right Paradigm - Summary and Best Practices</a></p>

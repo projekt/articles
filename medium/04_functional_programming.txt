@@ -1,55 +1,42 @@
-This article was originally published on my website.
-For the latest version and more articles, visit: https://projekt.github.io/articles/
+<!-- Original article: https://projekt.github.io/articles/ -->
+<div style="background: #f0f0f0; padding: 15px; border-left: 4px solid #333; margin-bottom: 30px;">
+<p><strong>Note:</strong> This article was originally published on my website. For the latest version and more articles, visit <a href="https://projekt.github.io/articles/">https://projekt.github.io/articles/</a></p>
+</div>
 
----
-
-
-# Programming Paradigms Series - Article 4: Functional Programming
-
-**Series Navigation:** [← Object-Oriented Programming](03_oop.md) | Article 4 of 7 | Next: [Declarative Programming →](05_declarative_programming.md)
-
----
-
-**About This Series**
-
-This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.
-
----
-
-## Table of Contents
-
-1. [Concept](#concept)
-2. [Real-Life Analogy](#real-life-analogy)
-3. [Dart Example](#dart-example)
-4. [Functional Programming Pipeline](#functional-programming-pipeline)
-5. [Pure vs Impure Functions](#pure-vs-impure-functions)
-6. [Immutability Concept](#immutability-concept)
-7. [Higher-Order Functions](#higher-order-functions)
-
----
-
-## Concept
-
-Functional programming treats computation as the evaluation of mathematical functions. It emphasizes immutability (data that doesn't change) and avoids side effects (changes to state outside the function).
-
-## Real-Life Analogy
-
-Think of a vending machine for drinks. You put in money and a selection code, and you get a drink out. The machine doesn't remember your previous purchases or change its behavior based on past interactions. Each transaction is independent:
-- **Input**: money + selection
-- **Output**: drink
-- **No side effects**: The machine's core function doesn't change based on history
-
-## Dart Example
-
-```dart
-void main() {
+<h1 id="programming-paradigms-series-article-4-functional-programming">Programming Paradigms Series - Article 4: Functional Programming</h1>
+<p><strong>⏱️ 7-Minute Read</strong></p>
+<p><strong>Series Navigation:</strong> <a href="03_oop.md">← Object-Oriented Programming</a> | Article 4 of 7 | Next: <a href="05_declarative_programming.md">Declarative Programming →</a></p>
+<hr />
+<p><strong>About This Series</strong></p>
+<p>This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#concept">Concept</a></li>
+<li><a href="#real-life-analogy">Real-Life Analogy</a></li>
+<li><a href="#dart-example">Dart Example</a></li>
+<li><a href="#functional-programming-pipeline">Functional Programming Pipeline</a></li>
+<li><a href="#pure-vs-impure-functions">Pure vs Impure Functions</a></li>
+<li><a href="#immutability-concept">Immutability Concept</a></li>
+<li><a href="#higher-order-functions">Higher-Order Functions</a></li>
+</ol>
+<hr />
+<h2 id="concept">Concept</h2>
+<p>Functional programming treats computation as the evaluation of mathematical functions. It emphasizes immutability (data that doesn't change) and avoids side effects (changes to state outside the function).</p>
+<h2 id="real-life-analogy">Real-Life Analogy</h2>
+<p>Think of a vending machine for drinks. You put in money and a selection code, and you get a drink out. The machine doesn't remember your previous purchases or change its behavior based on past interactions. Each transaction is independent:
+- <strong>Input</strong>: money + selection
+- <strong>Output</strong>: drink
+- <strong>No side effects</strong>: The machine's core function doesn't change based on history</p>
+<h2 id="dart-example">Dart Example</h2>
+<pre class="codehilite"><code class="language-dart">void main() {
   // Functional approach to calculate sum of squares
-  List<int> numbers = [1, 2, 3, 4, 5];
+  List&lt;int&gt; numbers = [1, 2, 3, 4, 5];
 
   // Using functional methods: map and reduce
   int sum = numbers
-      .map((n) => n * n)           // Transform each number to its square
-      .reduce((a, b) => a + b);    // Combine all squares into sum
+      .map((n) =&gt; n * n)           // Transform each number to its square
+      .reduce((a, b) =&gt; a + b);    // Combine all squares into sum
 
   print('Sum of squares: $sum');   // Output: 55
 
@@ -59,11 +46,11 @@ void main() {
   }
 
   // Higher-order function (function that takes functions as parameters)
-  List<int> applyOperation(List<int> numbers, int Function(int) operation) {
+  List&lt;int&gt; applyOperation(List&lt;int&gt; numbers, int Function(int) operation) {
     return numbers.map(operation).toList();
   }
 
-  List<int> doubled = applyOperation(numbers, (n) => n * 2);
+  List&lt;int&gt; doubled = applyOperation(numbers, (n) =&gt; n * 2);
   print('Doubled: $doubled');  // [2, 4, 6, 8, 10]
 
   // Immutability example
@@ -84,18 +71,16 @@ int counter = 0;
 void incrementCounter() {
   counter++;  // Side effect: modifies external variable
 }
-```
+</code></pre>
 
-## Functional Programming Pipeline
-
-```
-╔═══════════════════════════════════════════════════════════╗
+<h2 id="functional-programming-pipeline">Functional Programming Pipeline</h2>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════╗
 ║         🧮 FUNCTIONAL TRANSFORMATION PIPELINE 🧮         ║
 ╚═══════════════════════════════════════════════════════════╝
 
 Input Data: [1, 2, 3, 4, 5] 📥
      │
-     │ map(n => n²)
+     │ map(n =&gt; n²)
      ▼
 ┌─────────────────────┐
 │  🔄 TRANSFORM       │
@@ -103,7 +88,7 @@ Input Data: [1, 2, 3, 4, 5] 📥
 │  [1, 4, 9, 16, 25]  │  ← Each element squared
 └──────────┬──────────┘
            │
-           │ reduce((a, b) => a + b)
+           │ reduce((a, b) =&gt; a + b)
            ▼
 ┌─────────────────────┐
 │  ➕ AGGREGATE       │
@@ -118,12 +103,10 @@ Input Data: [1, 2, 3, 4, 5] 📥
     Result: 55 ✨ 📤
 
 🎯 Pure functions → Predictable results → No side effects
-```
+</code></pre>
 
-## Pure vs Impure Functions
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+<h2 id="pure-vs-impure-functions">Pure vs Impure Functions</h2>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║                  ✅ PURE FUNCTION ✅                         ║
 ╠═══════════════════════════════════════════════════════════════╣
 ║                                                               ║
@@ -160,12 +143,10 @@ Input Data: [1, 2, 3, 4, 5] 📥
 ║                                                               ║
 ║  Example: increment() returns different values each time      ║
 ╚═══════════════════════════════════════════════════════════════╝
-```
+</code></pre>
 
-## Immutability Concept
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+<h2 id="immutability-concept">Immutability Concept</h2>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║           🔄 MUTABLE vs 🔒 IMMUTABLE 🔒                      ║
 ╚═══════════════════════════════════════════════════════════════╝
 
@@ -199,12 +180,10 @@ Input Data: [1, 2, 3, 4, 5] 📥
 
 ✅ Benefit: Predictable, safe, no surprises!
    Original data is preserved, easier to reason about.
-```
+</code></pre>
 
-## Higher-Order Functions
-
-```
-╔═══════════════════════════════════════════════════════════════╗
+<h2 id="higher-order-functions">Higher-Order Functions</h2>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════════╗
 ║            🎯 HIGHER-ORDER FUNCTIONS 🎯                      ║
 ╚═══════════════════════════════════════════════════════════════╝
 
@@ -222,7 +201,7 @@ A Higher-Order Function is a function that:
 └─────────┬───────────────┬──────────────────────────────┘
           │               │
           ▼               ▼
-    [1,2,3,4,5]      (n) => n * 2
+    [1,2,3,4,5]      (n) =&gt; n * 2
           │               │
           └───────┬───────┘
                   │
@@ -237,55 +216,42 @@ A Higher-Order Function is a function that:
 
 Benefits:
 ✓ Code reusability (same function, different operations)
-✓ Abstraction (separate "what to do" from "how to do it")
+✓ Abstraction (separate &quot;what to do&quot; from &quot;how to do it&quot;)
 ✓ Composability (combine functions to build complex logic)
 
 Example operations you can pass:
-• (n) => n * 2        (double)
-• (n) => n * n        (square)
-• (n) => n + 10       (add 10)
-```
+• (n) =&gt; n * 2        (double)
+• (n) =&gt; n * n        (square)
+• (n) =&gt; n + 10       (add 10)
+</code></pre>
 
-Functional programming shines in data processing and transformation tasks. Its emphasis on pure functions and immutability makes code more predictable, testable, and suitable for parallel execution.
-
----
-
-## Further Reading
-
-**Functional Programming:**
-- [Functional Programming in Dart](https://dart.dev/guides/language/effective-dart/usage#prefer-using-higher-order-methods) - Official guidelines
-- [Functional Programming Principles](https://www.freecodecamp.org/news/functional-programming-principles-in-javascript-1b8fc6c3563f/) - Core concepts
-- [Why Functional Programming Matters](https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf) - Classic paper
-
-**Dart Functional Features:**
-- [Iterable Collections](https://dart.dev/codelabs/iterables) - map, where, reduce
-- [Functions in Dart](https://dart.dev/guides/language/language-tour#functions) - First-class functions
-
-**Advanced Topics:**
-- [Immutability in Practice](https://www.sitepoint.com/immutability-javascript/) - Benefits and techniques
-- [Function Composition](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0) - Building complex functions
-
-**Books:**
-- [Functional Programming in JavaScript](https://www.manning.com/books/functional-programming-in-javascript) - Practical approach
-- [Professor Frisby's Mostly Adequate Guide to FP](https://mostly-adequate.gitbook.io/mostly-adequate-guide/) - Free online book
-
----
-
-## 👤 About the Author
-
-**Srđan Ljuština** - Software Developer & Technical Writer
-
-🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
-
----
-
-**Series Navigation:** [← Object-Oriented Programming](03_oop.md) | Article 4 of 7 | Next: [Declarative Programming →](05_declarative_programming.md)
-
-**Other Articles in This Series:**
-- [Article 1: What Are Programming Paradigms?](01_what_are_programming_paradigms.md)
-- [Article 2: Imperative Programming](02_imperative_programming.md)
-- [Article 3: Object-Oriented Programming (OOP)](03_oop.md)
-- **Article 4: Functional Programming** (Current)
-- [Article 5: Declarative Programming](05_declarative_programming.md)
-- [Article 6: Procedural Programming](06_procedural_programming.md)
-- [Article 7: Choosing the Right Paradigm - Summary and Best Practices](07_summary.md)
+<p>Functional programming shines in data processing and transformation tasks. Its emphasis on pure functions and immutability makes code more predictable, testable, and suitable for parallel execution.</p>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<p><strong>Functional Programming:</strong>
+- <a href="https://dart.dev/guides/language/effective-dart/usage#prefer-using-higher-order-methods">Functional Programming in Dart</a> - Official guidelines
+- <a href="https://www.freecodecamp.org/news/functional-programming-principles-in-javascript-1b8fc6c3563f/">Functional Programming Principles</a> - Core concepts
+- <a href="https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf">Why Functional Programming Matters</a> - Classic paper</p>
+<p><strong>Dart Functional Features:</strong>
+- <a href="https://dart.dev/codelabs/iterables">Iterable Collections</a> - map, where, reduce
+- <a href="https://dart.dev/guides/language/language-tour#functions">Functions in Dart</a> - First-class functions</p>
+<p><strong>Advanced Topics:</strong>
+- <a href="https://www.sitepoint.com/immutability-javascript/">Immutability in Practice</a> - Benefits and techniques
+- <a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0">Function Composition</a> - Building complex functions</p>
+<p><strong>Books:</strong>
+- <a href="https://www.manning.com/books/functional-programming-in-javascript">Functional Programming in JavaScript</a> - Practical approach
+- <a href="https://mostly-adequate.gitbook.io/mostly-adequate-guide/">Professor Frisby's Mostly Adequate Guide to FP</a> - Free online book</p>
+<hr />
+<h2 id="about-the-author">👤 About the Author</h2>
+<p><strong>Srđan Ljuština</strong> - Software Developer &amp; Technical Writer</p>
+<p>🌐 <a href="https://srdapp.rs">Website</a> | 💼 <a href="https://www.linkedin.com/in/srdjanljustina/">LinkedIn</a> | 💻 <a href="https://github.com/projekt">GitHub</a></p>
+<hr />
+<p><strong>Series Navigation:</strong> <a href="03_oop.md">← Object-Oriented Programming</a> | Article 4 of 7 | Next: <a href="05_declarative_programming.md">Declarative Programming →</a></p>
+<p><strong>Other Articles in This Series:</strong>
+- <a href="01_what_are_programming_paradigms.md">Article 1: What Are Programming Paradigms?</a>
+- <a href="02_imperative_programming.md">Article 2: Imperative Programming</a>
+- <a href="03_oop.md">Article 3: Object-Oriented Programming (OOP)</a>
+- <strong>Article 4: Functional Programming</strong> (Current)
+- <a href="05_declarative_programming.md">Article 5: Declarative Programming</a>
+- <a href="06_procedural_programming.md">Article 6: Procedural Programming</a>
+- <a href="07_summary.md">Article 7: Choosing the Right Paradigm - Summary and Best Practices</a></p>
