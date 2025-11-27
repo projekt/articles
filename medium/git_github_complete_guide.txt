@@ -1,163 +1,148 @@
-This article was originally published on my website.
-For the latest version and more articles, visit: https://projekt.github.io/articles/
+<!-- Original article: https://projekt.github.io/articles/ -->
+<div style="background: #f0f0f0; padding: 15px; border-left: 4px solid #333; margin-bottom: 30px;">
+<p><strong>Note:</strong> This article was originally published on my website. For the latest version and more articles, visit <a href="https://projekt.github.io/articles/">https://projekt.github.io/articles/</a></p>
+</div>
 
----
-
-
-# Mastering Git & GitHub: A Complete Guide to Modern Version Control
-
-A Comprehensive Guide with Visual Diagrams, Real-World Examples, and Best Practices
-
----
-
-**About This Article**
-
-This article represents my journey of learning and mastering Git and GitHub, the fundamental tools for modern software development. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring version control and collaborative development.
-
----
-
-## Table of Contents
-
-1. [Executive Summary](#executive-summary)
-   - [Overview](#overview)
-   - [Key Takeaways](#key-takeaways)
-   - [What You'll Learn](#what-youll-learn)
-   - [Who Should Read This](#who-should-read-this)
-2. [Introduction](#introduction)
-3. [Understanding Version Control](#understanding-version-control)
-   - [Why Version Control Matters](#why-version-control-matters)
-   - [Real-World Analogy](#real-world-analogy)
-4. [Git Fundamentals](#git-fundamentals)
-   - [What is Git?](#what-is-git)
-   - [Core Git Concepts](#core-git-concepts)
-   - [The Three States](#the-three-states)
-5. [Essential Git Commands](#essential-git-commands)
-   - [Repository Initialization](#repository-initialization)
-   - [Basic Workflow Commands](#basic-workflow-commands)
-   - [Branching and Merging](#branching-and-merging)
-   - [Remote Operations](#remote-operations)
-6. [GitHub: Git in the Cloud](#github-git-in-the-cloud)
-   - [What is GitHub?](#what-is-github)
-   - [GitHub vs Git](#github-vs-git)
-   - [Key GitHub Features](#key-github-features)
-7. [Branching Strategies](#branching-strategies)
-   - [Feature Branch Workflow](#feature-branch-workflow)
-   - [Git Flow](#git-flow)
-   - [GitHub Flow](#github-flow)
-8. [Collaboration Workflows](#collaboration-workflows)
-   - [Pull Requests](#pull-requests)
-   - [Code Reviews](#code-reviews)
-   - [Resolving Merge Conflicts](#resolving-merge-conflicts)
-9. [Visual Representations](#visual-representations)
-   - [Diagram 1: Git Workflow](#diagram-1-git-workflow)
-   - [Diagram 2: Branching Model](#diagram-2-branching-model)
-   - [Diagram 3: Pull Request Flow](#diagram-3-pull-request-flow)
-10. [Best Practices](#best-practices)
-    - [Commit Messages](#commit-messages)
-    - [Branch Naming](#branch-naming)
-    - [Repository Organization](#repository-organization)
-11. [Common Scenarios and Solutions](#common-scenarios-and-solutions)
-    - [Undoing Changes](#undoing-changes)
-    - [Stashing Work](#stashing-work)
-    - [Cherry-Picking Commits](#cherry-picking-commits)
-12. [Advanced Topics](#advanced-topics)
-    - [Rebasing](#rebasing)
-    - [Git Hooks](#git-hooks)
-    - [Submodules](#submodules)
-13. [Conclusion](#conclusion)
-14. [Further Reading](#further-reading)
-
----
-
-## Executive Summary
-
-### Overview
-
-This comprehensive guide explores Git and GitHub, the essential tools for modern software development. Git provides powerful version control capabilities that track every change to your codebase, while GitHub extends Git with collaboration features, making team development seamless and efficient.
-
-### Key Takeaways
-
-- **Version Control Fundamentals:** Git tracks every change, enabling you to revert mistakes, compare versions, and maintain a complete project history
-
-- **Distributed Architecture:** Every developer has a complete copy of the repository, enabling offline work and reducing single points of failure
-
-- **Branching Power:** Git's lightweight branching enables parallel development, experimentation, and organized feature development
-
-- **Collaboration Made Easy:** GitHub's pull requests, code reviews, and issue tracking facilitate team collaboration and code quality
-
-- **Industry Standard:** Git and GitHub are used by millions of developers and virtually all modern software projects
-
-- **Best Practices Matter:** Following conventions for commits, branches, and workflows leads to maintainable, professional codebases
-
-### What You'll Learn
-
-- **Git Fundamentals:** Core concepts, commands, and workflows
-- **Repository Management:** Initializing, cloning, and maintaining repositories
-- **Branching Strategies:** Feature branches, Git Flow, and GitHub Flow
-- **Collaboration:** Pull requests, code reviews, and team workflows
-- **Problem Solving:** Handling conflicts, undoing changes, and advanced scenarios
-- **Best Practices:** Professional conventions and patterns
-
-### Who Should Read This
-
-- **Beginners:** New to version control or Git
-- **Students:** Learning software development fundamentals
-- **Professional Developers:** Wanting to deepen Git knowledge
-- **Team Leads:** Establishing workflows and best practices
-- **Anyone:** Working on software projects, whether solo or in teams
-
----
-
-## Introduction
-
-Imagine working on a document and accidentally deleting an important paragraph. Or imagine collaborating with teammates on the same file and losing track of who changed what. Now imagine having a time machine that records every change, lets you travel back to any previous version, and seamlessly merges everyone's work together. That's exactly what Git and GitHub provide for software development.
-
-Git has revolutionized how developers work, transforming from chaotic file copying and naming conventions (like `final_version_v2_REALLY_FINAL.txt`) to an organized, powerful system that tracks every change, enables fearless experimentation, and facilitates seamless collaboration.
-
----
-
-## Understanding Version Control
-
-### Why Version Control Matters
-
-Version control solves fundamental problems in software development:
-
-**Problem 1: Change Tracking**
+<h1 id="mastering-git-github-a-complete-guide-to-modern-version-control">Mastering Git &amp; GitHub: A Complete Guide to Modern Version Control</h1>
+<p><strong>⏱️ 25-Minute Deep Dive</strong></p>
+<p>A Comprehensive Guide with Visual Diagrams, Real-World Examples, and Best Practices</p>
+<hr />
+<p><strong>About This Article</strong></p>
+<p>This article represents my journey of learning and mastering Git and GitHub, the fundamental tools for modern software development. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring version control and collaborative development.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#executive-summary">Executive Summary</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#key-takeaways">Key Takeaways</a></li>
+<li><a href="#what-youll-learn">What You'll Learn</a></li>
+<li><a href="#who-should-read-this">Who Should Read This</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#understanding-version-control">Understanding Version Control</a></li>
+<li><a href="#why-version-control-matters">Why Version Control Matters</a></li>
+<li><a href="#real-world-analogy">Real-World Analogy</a></li>
+<li><a href="#git-fundamentals">Git Fundamentals</a></li>
+<li><a href="#what-is-git">What is Git?</a></li>
+<li><a href="#core-git-concepts">Core Git Concepts</a></li>
+<li><a href="#the-three-states">The Three States</a></li>
+<li><a href="#essential-git-commands">Essential Git Commands</a></li>
+<li><a href="#repository-initialization">Repository Initialization</a></li>
+<li><a href="#basic-workflow-commands">Basic Workflow Commands</a></li>
+<li><a href="#branching-and-merging">Branching and Merging</a></li>
+<li><a href="#remote-operations">Remote Operations</a></li>
+<li><a href="#github-git-in-the-cloud">GitHub: Git in the Cloud</a></li>
+<li><a href="#what-is-github">What is GitHub?</a></li>
+<li><a href="#github-vs-git">GitHub vs Git</a></li>
+<li><a href="#key-github-features">Key GitHub Features</a></li>
+<li><a href="#branching-strategies">Branching Strategies</a></li>
+<li><a href="#feature-branch-workflow">Feature Branch Workflow</a></li>
+<li><a href="#git-flow">Git Flow</a></li>
+<li><a href="#github-flow">GitHub Flow</a></li>
+<li><a href="#collaboration-workflows">Collaboration Workflows</a></li>
+<li><a href="#pull-requests">Pull Requests</a></li>
+<li><a href="#code-reviews">Code Reviews</a></li>
+<li><a href="#resolving-merge-conflicts">Resolving Merge Conflicts</a></li>
+<li><a href="#visual-representations">Visual Representations</a></li>
+<li><a href="#diagram-1-git-workflow">Diagram 1: Git Workflow</a></li>
+<li><a href="#diagram-2-branching-model">Diagram 2: Branching Model</a></li>
+<li><a href="#diagram-3-pull-request-flow">Diagram 3: Pull Request Flow</a></li>
+<li><a href="#best-practices">Best Practices</a><ul>
+<li><a href="#commit-messages">Commit Messages</a></li>
+<li><a href="#branch-naming">Branch Naming</a></li>
+<li><a href="#repository-organization">Repository Organization</a></li>
+</ul>
+</li>
+<li><a href="#common-scenarios-and-solutions">Common Scenarios and Solutions</a><ul>
+<li><a href="#undoing-changes">Undoing Changes</a></li>
+<li><a href="#stashing-work">Stashing Work</a></li>
+<li><a href="#cherry-picking-commits">Cherry-Picking Commits</a></li>
+</ul>
+</li>
+<li><a href="#advanced-topics">Advanced Topics</a><ul>
+<li><a href="#rebasing">Rebasing</a></li>
+<li><a href="#git-hooks">Git Hooks</a></li>
+<li><a href="#submodules">Submodules</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#further-reading">Further Reading</a></li>
+</ol>
+<hr />
+<h2 id="executive-summary">Executive Summary</h2>
+<h3 id="overview">Overview</h3>
+<p>This comprehensive guide explores Git and GitHub, the essential tools for modern software development. Git provides powerful version control capabilities that track every change to your codebase, while GitHub extends Git with collaboration features, making team development seamless and efficient.</p>
+<h3 id="key-takeaways">Key Takeaways</h3>
+<ul>
+<li>
+<p><strong>Version Control Fundamentals:</strong> Git tracks every change, enabling you to revert mistakes, compare versions, and maintain a complete project history</p>
+</li>
+<li>
+<p><strong>Distributed Architecture:</strong> Every developer has a complete copy of the repository, enabling offline work and reducing single points of failure</p>
+</li>
+<li>
+<p><strong>Branching Power:</strong> Git's lightweight branching enables parallel development, experimentation, and organized feature development</p>
+</li>
+<li>
+<p><strong>Collaboration Made Easy:</strong> GitHub's pull requests, code reviews, and issue tracking facilitate team collaboration and code quality</p>
+</li>
+<li>
+<p><strong>Industry Standard:</strong> Git and GitHub are used by millions of developers and virtually all modern software projects</p>
+</li>
+<li>
+<p><strong>Best Practices Matter:</strong> Following conventions for commits, branches, and workflows leads to maintainable, professional codebases</p>
+</li>
+</ul>
+<h3 id="what-youll-learn">What You'll Learn</h3>
+<ul>
+<li><strong>Git Fundamentals:</strong> Core concepts, commands, and workflows</li>
+<li><strong>Repository Management:</strong> Initializing, cloning, and maintaining repositories</li>
+<li><strong>Branching Strategies:</strong> Feature branches, Git Flow, and GitHub Flow</li>
+<li><strong>Collaboration:</strong> Pull requests, code reviews, and team workflows</li>
+<li><strong>Problem Solving:</strong> Handling conflicts, undoing changes, and advanced scenarios</li>
+<li><strong>Best Practices:</strong> Professional conventions and patterns</li>
+</ul>
+<h3 id="who-should-read-this">Who Should Read This</h3>
+<ul>
+<li><strong>Beginners:</strong> New to version control or Git</li>
+<li><strong>Students:</strong> Learning software development fundamentals</li>
+<li><strong>Professional Developers:</strong> Wanting to deepen Git knowledge</li>
+<li><strong>Team Leads:</strong> Establishing workflows and best practices</li>
+<li><strong>Anyone:</strong> Working on software projects, whether solo or in teams</li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Imagine working on a document and accidentally deleting an important paragraph. Or imagine collaborating with teammates on the same file and losing track of who changed what. Now imagine having a time machine that records every change, lets you travel back to any previous version, and seamlessly merges everyone's work together. That's exactly what Git and GitHub provide for software development.</p>
+<p>Git has revolutionized how developers work, transforming from chaotic file copying and naming conventions (like <code>final_version_v2_REALLY_FINAL.txt</code>) to an organized, powerful system that tracks every change, enables fearless experimentation, and facilitates seamless collaboration.</p>
+<hr />
+<h2 id="understanding-version-control">Understanding Version Control</h2>
+<h3 id="why-version-control-matters">Why Version Control Matters</h3>
+<p>Version control solves fundamental problems in software development:</p>
+<p><strong>Problem 1: Change Tracking</strong>
 - ❌ Without version control: Which line changed? When? Why?
-- ✅ With version control: Complete history of every change with reasons
-
-**Problem 2: Collaboration**
+- ✅ With version control: Complete history of every change with reasons</p>
+<p><strong>Problem 2: Collaboration</strong>
 - ❌ Without version control: Overwriting each other's changes, email attachments, confusion
-- ✅ With version control: Parallel work with automatic merging
-
-**Problem 3: Backup and Recovery**
+- ✅ With version control: Parallel work with automatic merging</p>
+<p><strong>Problem 3: Backup and Recovery</strong>
 - ❌ Without version control: Lost work, manual backups, no rollback
-- ✅ With version control: Every version saved, easy rollback to any point
-
-**Problem 4: Experimentation**
+- ✅ With version control: Every version saved, easy rollback to any point</p>
+<p><strong>Problem 4: Experimentation</strong>
 - ❌ Without version control: Fear of breaking working code
-- ✅ With version control: Create branches, experiment freely, discard or merge
-
-### Real-World Analogy
-
-Think of Git like a sophisticated **"save game" system in video games**, but for code:
-
-- **Saves (Commits):** Just like saving your progress in a game, commits save your code's state
-- **Multiple Save Slots (Branches):** Try different strategies without losing your main progress
-- **Load Previous Save (Checkout):** Travel back to any previous state
-- **Merge Strategies:** Combine successful experiments into your main game
-- **Multiplayer (GitHub):** Share your save files and collaborate with other players
-
----
-
-## Git Fundamentals
-
-### What is Git?
-
-Git is a **distributed version control system (DVCS)** created by Linus Torvalds in 2005. Unlike older centralized systems, Git gives every developer a complete copy of the repository, including its full history.
-
-```
-╔═══════════════════════════════════════════════════════════╗
+- ✅ With version control: Create branches, experiment freely, discard or merge</p>
+<h3 id="real-world-analogy">Real-World Analogy</h3>
+<p>Think of Git like a sophisticated <strong>"save game" system in video games</strong>, but for code:</p>
+<ul>
+<li><strong>Saves (Commits):</strong> Just like saving your progress in a game, commits save your code's state</li>
+<li><strong>Multiple Save Slots (Branches):</strong> Try different strategies without losing your main progress</li>
+<li><strong>Load Previous Save (Checkout):</strong> Travel back to any previous state</li>
+<li><strong>Merge Strategies:</strong> Combine successful experiments into your main game</li>
+<li><strong>Multiplayer (GitHub):</strong> Share your save files and collaborate with other players</li>
+</ul>
+<hr />
+<h2 id="git-fundamentals">Git Fundamentals</h2>
+<h3 id="what-is-git">What is Git?</h3>
+<p>Git is a <strong>distributed version control system (DVCS)</strong> created by Linus Torvalds in 2005. Unlike older centralized systems, Git gives every developer a complete copy of the repository, including its full history.</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════╗
 ║              🎯 CENTRALIZED VS DISTRIBUTED 🎯            ║
 ╚═══════════════════════════════════════════════════════════╝
 
@@ -173,54 +158,43 @@ CENTRALIZED (Old Way)                DISTRIBUTED (Git)
   ❌ Single point of failure      ✅ Every copy is complete
   ❌ Need network to work          ✅ Work offline
   ❌ Slow operations               ✅ Fast local operations
-```
+</code></pre>
 
-### Core Git Concepts
-
-**1. Repository (Repo)**
-A repository is a directory containing your project files and the complete history of all changes.
-
-```bash
-# A repository contains:
+<h3 id="core-git-concepts">Core Git Concepts</h3>
+<p><strong>1. Repository (Repo)</strong>
+A repository is a directory containing your project files and the complete history of all changes.</p>
+<pre class="codehilite"><code class="language-bash"># A repository contains:
 project/
 ├── .git/              # Git's internal database (DON'T TOUCH!)
 ├── src/               # Your actual files
 ├── README.md
 └── .gitignore
-```
+</code></pre>
 
-**2. Commit**
-A commit is a snapshot of your project at a specific point in time. Think of it as a save point.
-
-```
-Each commit contains:
+<p><strong>2. Commit</strong>
+A commit is a snapshot of your project at a specific point in time. Think of it as a save point.</p>
+<pre class="codehilite"><code>Each commit contains:
 - Snapshot of all files
 - Author information
 - Timestamp
 - Commit message (description)
 - Parent commit reference
 - Unique SHA-1 hash (ID)
-```
+</code></pre>
 
-**3. Branch**
-A branch is an independent line of development. The default branch is usually called `main` or `master`.
-
-```
-        main branch
+<p><strong>3. Branch</strong>
+A branch is an independent line of development. The default branch is usually called <code>main</code> or <code>master</code>.</p>
+<pre class="codehilite"><code>        main branch
     A --- B --- C --- D
                \
                 E --- F (feature branch)
-```
+</code></pre>
 
-**4. Remote**
-A remote is a version of your repository hosted elsewhere (like on GitHub).
-
-### The Three States
-
-Git has three main states that your files can be in:
-
-```
-╔══════════════════════════════════════════════════════════╗
+<p><strong>4. Remote</strong>
+A remote is a version of your repository hosted elsewhere (like on GitHub).</p>
+<h3 id="the-three-states">The Three States</h3>
+<p>Git has three main states that your files can be in:</p>
+<pre class="codehilite"><code>╔══════════════════════════════════════════════════════════╗
 ║              🎯 THE THREE STATES OF GIT 🎯              ║
 ╚══════════════════════════════════════════════════════════╝
 
@@ -230,56 +204,44 @@ Git has three main states that your files can be in:
    📝 file.txt                   📋 Staged                 💾 Saved
    You're editing                Ready to commit           Permanent record
 
-   [Edit files]  ──git add──>  [Stage changes] ──git commit──> [Save to history]
+   [Edit files]  ──git add──&gt;  [Stage changes] ──git commit──&gt; [Save to history]
 
-                 <──git restore──              <──git checkout──
+                 &lt;──git restore──              &lt;──git checkout──
                     [Discard]                    [Time travel]
-```
+</code></pre>
 
-**1. Working Directory:** Your actual files where you make changes
-
-**2. Staging Area (Index):** A preview of your next commit; you choose what to include
-
-**3. Repository (Committed):** Permanent record in Git's database
-
----
-
-## Essential Git Commands
-
-### Repository Initialization
-
-**Creating a New Repository:**
-```bash
-# Start a new Git repository
+<p><strong>1. Working Directory:</strong> Your actual files where you make changes</p>
+<p><strong>2. Staging Area (Index):</strong> A preview of your next commit; you choose what to include</p>
+<p><strong>3. Repository (Committed):</strong> Permanent record in Git's database</p>
+<hr />
+<h2 id="essential-git-commands">Essential Git Commands</h2>
+<h3 id="repository-initialization">Repository Initialization</h3>
+<p><strong>Creating a New Repository:</strong></p>
+<pre class="codehilite"><code class="language-bash"># Start a new Git repository
 git init
 
 # This creates a .git directory containing all Git metadata
-```
+</code></pre>
 
-**Cloning an Existing Repository:**
-```bash
-# Clone from GitHub or other remote
+<p><strong>Cloning an Existing Repository:</strong></p>
+<pre class="codehilite"><code class="language-bash"># Clone from GitHub or other remote
 git clone https://github.com/username/repository.git
 
 # Clone with a custom directory name
 git clone https://github.com/username/repository.git my-project
-```
+</code></pre>
 
-**Checking Repository Status:**
-```bash
-# See which files are modified, staged, or untracked
+<p><strong>Checking Repository Status:</strong></p>
+<pre class="codehilite"><code class="language-bash"># See which files are modified, staged, or untracked
 git status
 
 # Shorter status output
 git status -s
-```
+</code></pre>
 
-### Basic Workflow Commands
-
-**The Basic Git Workflow:**
-
-```
-╔════════════════════════════════════════════════════════╗
+<h3 id="basic-workflow-commands">Basic Workflow Commands</h3>
+<p><strong>The Basic Git Workflow:</strong></p>
+<pre class="codehilite"><code>╔════════════════════════════════════════════════════════╗
 ║           🔄 BASIC GIT WORKFLOW 🔄                    ║
 ╚════════════════════════════════════════════════════════╝
 
@@ -291,15 +253,14 @@ git status -s
    $ git add .                   # Stage all changes
 
 3. Commit staged changes
-   $ git commit -m "Add new feature"
+   $ git commit -m &quot;Add new feature&quot;
 
 4. Push to remote (GitHub)
    $ git push origin main
-```
+</code></pre>
 
-**Adding Files to Staging:**
-```bash
-# Stage a specific file
+<p><strong>Adding Files to Staging:</strong></p>
+<pre class="codehilite"><code class="language-bash"># Stage a specific file
 git add file.txt
 
 # Stage all files in directory
@@ -310,23 +271,21 @@ git add -u
 
 # Interactive staging
 git add -p
-```
+</code></pre>
 
-**Committing Changes:**
-```bash
-# Commit with inline message
-git commit -m "Fix bug in user authentication"
+<p><strong>Committing Changes:</strong></p>
+<pre class="codehilite"><code class="language-bash"># Commit with inline message
+git commit -m &quot;Fix bug in user authentication&quot;
 
 # Commit with detailed message in editor
 git commit
 
 # Stage and commit all tracked files in one command
-git commit -am "Quick fix for styling issue"
-```
+git commit -am &quot;Quick fix for styling issue&quot;
+</code></pre>
 
-**Viewing History:**
-```bash
-# View commit history
+<p><strong>Viewing History:</strong></p>
+<pre class="codehilite"><code class="language-bash"># View commit history
 git log
 
 # Compact one-line view
@@ -340,11 +299,10 @@ git log filename.txt
 
 # View changes in each commit
 git log -p
-```
+</code></pre>
 
-**Viewing Changes:**
-```bash
-# See unstaged changes
+<p><strong>Viewing Changes:</strong></p>
+<pre class="codehilite"><code class="language-bash"># See unstaged changes
 git diff
 
 # See staged changes
@@ -355,14 +313,11 @@ git diff main feature-branch
 
 # See changes in specific commit
 git show commit-hash
-```
+</code></pre>
 
-### Branching and Merging
-
-**Branch Management:**
-
-```bash
-# List all branches
+<h3 id="branching-and-merging">Branching and Merging</h3>
+<p><strong>Branch Management:</strong></p>
+<pre class="codehilite"><code class="language-bash"># List all branches
 git branch
 
 # Create new branch
@@ -386,26 +341,22 @@ git branch -D feature-login
 
 # Rename current branch
 git branch -m new-name
-```
+</code></pre>
 
-**Merging:**
-
-```bash
-# Merge feature branch into current branch
+<p><strong>Merging:</strong></p>
+<pre class="codehilite"><code class="language-bash"># Merge feature branch into current branch
 git checkout main
 git merge feature-login
 
 # Merge with commit message
-git merge feature-login -m "Integrate login feature"
+git merge feature-login -m &quot;Integrate login feature&quot;
 
 # Abort merge if conflicts
 git merge --abort
-```
+</code></pre>
 
-**Merge Types Visualized:**
-
-```
-╔═══════════════════════════════════════════════════════╗
+<p><strong>Merge Types Visualized:</strong></p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║            🎯 MERGE TYPES 🎯                         ║
 ╚═══════════════════════════════════════════════════════╝
 
@@ -432,14 +383,11 @@ THREE-WAY MERGE (diverged histories)
     feature:            D --- E ---
 
     M = Merge commit combining both branches
-```
+</code></pre>
 
-### Remote Operations
-
-**Working with Remotes:**
-
-```bash
-# View remote repositories
+<h3 id="remote-operations">Remote Operations</h3>
+<p><strong>Working with Remotes:</strong></p>
+<pre class="codehilite"><code class="language-bash"># View remote repositories
 git remote -v
 
 # Add a remote
@@ -453,12 +401,10 @@ git remote remove origin
 
 # Rename remote
 git remote rename origin upstream
-```
+</code></pre>
 
-**Pushing and Pulling:**
-
-```bash
-# Push to remote
+<p><strong>Pushing and Pulling:</strong></p>
+<pre class="codehilite"><code class="language-bash"># Push to remote
 git push origin main
 
 # Push and set upstream tracking
@@ -484,23 +430,18 @@ git fetch origin
 
 # View remote branches
 git branch -r
-```
+</code></pre>
 
----
-
-## GitHub: Git in the Cloud
-
-### What is GitHub?
-
-GitHub is a web-based platform that hosts Git repositories and provides collaboration tools:
-
-```
-╔════════════════════════════════════════════════════════╗
+<hr />
+<h2 id="github-git-in-the-cloud">GitHub: Git in the Cloud</h2>
+<h3 id="what-is-github">What is GitHub?</h3>
+<p>GitHub is a web-based platform that hosts Git repositories and provides collaboration tools:</p>
+<pre class="codehilite"><code>╔════════════════════════════════════════════════════════╗
 ║              🎯 GITHUB FEATURES 🎯                    ║
 ╚════════════════════════════════════════════════════════╝
 
 📦 Repository Hosting        🔍 Code Review
-   Store code in the cloud      Pull requests & reviews
+   Store code in the cloud      Pull requests &amp; reviews
 
 👥 Collaboration             📊 Project Management
    Teams, permissions           Issues, boards, milestones
@@ -513,12 +454,10 @@ GitHub is a web-based platform that hosts Git repositories and provides collabor
 
 📈 Analytics                 🤖 Automation
    Insights, traffic            Actions, webhooks, apps
-```
+</code></pre>
 
-### GitHub vs Git
-
-```
-╔═══════════════════════════════════════════════════════╗
+<h3 id="github-vs-git">GitHub vs Git</h3>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║              GIT vs GITHUB                           ║
 ╠═══════════════════════════════════════════════════════╣
 ║ GIT                    │  GITHUB                     ║
@@ -530,16 +469,12 @@ GitHub is a web-based platform that hosts Git repositories and provides collabor
 ║ Free and open-source   │  Free + paid tiers          ║
 ║ Install on computer    │  Account-based service      ║
 ╚════════════════════════╧═════════════════════════════╝
-```
+</code></pre>
 
-### Key GitHub Features
-
-**1. Pull Requests**
-
-A pull request (PR) is a request to merge your changes into another branch:
-
-```
-╔═══════════════════════════════════════════════════════╗
+<h3 id="key-github-features">Key GitHub Features</h3>
+<p><strong>1. Pull Requests</strong></p>
+<p>A pull request (PR) is a request to merge your changes into another branch:</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║           🎯 PULL REQUEST WORKFLOW 🎯                ║
 ╚═══════════════════════════════════════════════════════╝
 
@@ -548,7 +483,7 @@ A pull request (PR) is a request to merge your changes into another branch:
 
 2. Makes changes and commits
    $ git add .
-   $ git commit -m "Add new button component"
+   $ git commit -m &quot;Add new button component&quot;
 
 3. Pushes to GitHub
    $ git push origin feature-new-button
@@ -566,14 +501,11 @@ A pull request (PR) is a request to merge your changes into another branch:
 
 7. Delete feature branch
    🗑️ Clean up merged branch
-```
+</code></pre>
 
-**2. Issues**
-
-Issues track bugs, features, and tasks:
-
-```markdown
-# Example Issue
+<p><strong>2. Issues</strong></p>
+<p>Issues track bugs, features, and tasks:</p>
+<pre class="codehilite"><code class="language-markdown"># Example Issue
 
 Title: Add dark mode support
 
@@ -589,14 +521,11 @@ Acceptance Criteria:
 Labels: enhancement, UI
 Assignees: @developer
 Milestone: v2.0
-```
+</code></pre>
 
-**3. GitHub Actions**
-
-Automate workflows with CI/CD:
-
-```yaml
-# .github/workflows/test.yml
+<p><strong>3. GitHub Actions</strong></p>
+<p>Automate workflows with CI/CD:</p>
+<pre class="codehilite"><code class="language-yaml"># .github/workflows/test.yml
 name: Run Tests
 
 on: [push, pull_request]
@@ -608,18 +537,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run tests
         run: npm test
-```
+</code></pre>
 
----
-
-## Branching Strategies
-
-### Feature Branch Workflow
-
-The simplest workflow for small teams:
-
-```
-╔═══════════════════════════════════════════════════════╗
+<hr />
+<h2 id="branching-strategies">Branching Strategies</h2>
+<h3 id="feature-branch-workflow">Feature Branch Workflow</h3>
+<p>The simplest workflow for small teams:</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║        🎯 FEATURE BRANCH WORKFLOW 🎯                 ║
 ╚═══════════════════════════════════════════════════════╝
 
@@ -635,18 +559,17 @@ Process:
 4. Code review and testing
 5. Merge back to main
 6. Delete feature branch
-```
+</code></pre>
 
-**Commands:**
-```bash
-# Start feature
+<p><strong>Commands:</strong></p>
+<pre class="codehilite"><code class="language-bash"># Start feature
 git checkout main
 git pull origin main
 git checkout -b feature-user-profile
 
 # Develop feature
 git add .
-git commit -m "Add user profile page"
+git commit -m &quot;Add user profile page&quot;
 git push origin feature-user-profile
 
 # After PR approval
@@ -654,14 +577,11 @@ git checkout main
 git merge feature-user-profile
 git push origin main
 git branch -d feature-user-profile
-```
+</code></pre>
 
-### Git Flow
-
-A more structured workflow for larger projects:
-
-```
-╔═══════════════════════════════════════════════════════╗
+<h3 id="git-flow">Git Flow</h3>
+<p>A more structured workflow for larger projects:</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║              🎯 GIT FLOW MODEL 🎯                    ║
 ╚═══════════════════════════════════════════════════════╝
 
@@ -684,14 +604,11 @@ Branch Types:
 - feature/*: New features
 - release/*: Prepare releases
 - hotfix/*: Emergency production fixes
-```
+</code></pre>
 
-### GitHub Flow
-
-A simplified workflow popular for continuous deployment:
-
-```
-╔═══════════════════════════════════════════════════════╗
+<h3 id="github-flow">GitHub Flow</h3>
+<p>A simplified workflow popular for continuous deployment:</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║            🎯 GITHUB FLOW 🎯                         ║
 ╚═══════════════════════════════════════════════════════╝
 
@@ -707,18 +624,13 @@ Rules:
 5. Deploy from branch for testing
 6. Merge only after review
 7. Deploy immediately after merge
-```
+</code></pre>
 
----
-
-## Collaboration Workflows
-
-### Pull Requests
-
-**Creating Effective Pull Requests:**
-
-```markdown
-# Good PR Template
+<hr />
+<h2 id="collaboration-workflows">Collaboration Workflows</h2>
+<h3 id="pull-requests">Pull Requests</h3>
+<p><strong>Creating Effective Pull Requests:</strong></p>
+<pre class="codehilite"><code class="language-markdown"># Good PR Template
 
 ## Description
 Brief summary of changes and why they're needed.
@@ -745,14 +657,11 @@ Related to #456
 - [ ] Documentation updated
 - [ ] No console logs or debugging code
 - [ ] Backward compatible
-```
+</code></pre>
 
-### Code Reviews
-
-**Effective Review Practices:**
-
-```
-╔═══════════════════════════════════════════════════════╗
+<h3 id="code-reviews">Code Reviews</h3>
+<p><strong>Effective Review Practices:</strong></p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║        🎯 CODE REVIEW BEST PRACTICES 🎯              ║
 ╚═══════════════════════════════════════════════════════╝
 
@@ -772,58 +681,49 @@ HOW TO REVIEW:
 ❓ Ask questions rather than commanding
 ✅ Approve when ready, not perfect
 🔍 Review in reasonable chunks
-```
+</code></pre>
 
-**Example Review Comments:**
-
-```
-✅ Good:
-"Consider using a Map here for O(1) lookups instead of
+<p><strong>Example Review Comments:</strong></p>
+<pre class="codehilite"><code>✅ Good:
+&quot;Consider using a Map here for O(1) lookups instead of
 array.find() which is O(n). This could improve performance
-for large datasets."
+for large datasets.&quot;
 
 ❌ Bad:
-"This is wrong. Use a Map."
+&quot;This is wrong. Use a Map.&quot;
 
 ────────────────────────────────────────────────────────
 
 ✅ Good:
-"Nice solution! Have you considered what happens if the
-user input is null? We might want to add validation here."
+&quot;Nice solution! Have you considered what happens if the
+user input is null? We might want to add validation here.&quot;
 
 ❌ Bad:
-"You forgot null checking."
-```
+&quot;You forgot null checking.&quot;
+</code></pre>
 
-### Resolving Merge Conflicts
-
-Conflicts occur when the same part of code is modified in both branches:
-
-```bash
-# Attempting to merge
+<h3 id="resolving-merge-conflicts">Resolving Merge Conflicts</h3>
+<p>Conflicts occur when the same part of code is modified in both branches:</p>
+<pre class="codehilite"><code class="language-bash"># Attempting to merge
 $ git merge feature-branch
 Auto-merging file.txt
 CONFLICT (content): Merge conflict in file.txt
 Automatic merge failed; fix conflicts and then commit the result.
-```
+</code></pre>
 
-**Conflict Markers in File:**
-
-```javascript
-// file.txt
+<p><strong>Conflict Markers in File:</strong></p>
+<pre class="codehilite"><code class="language-javascript">// file.txt
 function calculate(x, y) {
-<<<<<<< HEAD (current branch)
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (current branch)
   return x + y;
 =======
   return x * y;
->>>>>>> feature-branch (incoming branch)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-branch (incoming branch)
 }
-```
+</code></pre>
 
-**Resolving Conflicts:**
-
-```bash
-# 1. View conflicted files
+<p><strong>Resolving Conflicts:</strong></p>
+<pre class="codehilite"><code class="language-bash"># 1. View conflicted files
 git status
 
 # 2. Open and edit conflicted files
@@ -833,16 +733,14 @@ git status
 git add file.txt
 
 # 4. Complete the merge
-git commit -m "Merge feature-branch and resolve conflicts"
+git commit -m &quot;Merge feature-branch and resolve conflicts&quot;
 
 # Alternative: Use merge tool
 git mergetool
-```
+</code></pre>
 
-**Preventing Conflicts:**
-
-```
-╔═══════════════════════════════════════════════════════╗
+<p><strong>Preventing Conflicts:</strong></p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║        🎯 PREVENTING MERGE CONFLICTS 🎯              ║
 ╚═══════════════════════════════════════════════════════╝
 
@@ -863,16 +761,12 @@ git mergetool
 
 6. 🤝 Rebase regularly
    git rebase main (keeps history clean)
-```
+</code></pre>
 
----
-
-## Visual Representations
-
-### Diagram 1: Git Workflow
-
-```
-╔══════════════════════════════════════════════════════════════╗
+<hr />
+<h2 id="visual-representations">Visual Representations</h2>
+<h3 id="diagram-1-git-workflow">Diagram 1: Git Workflow</h3>
+<pre class="codehilite"><code>╔══════════════════════════════════════════════════════════════╗
 ║              🎯 COMPLETE GIT WORKFLOW 🎯                    ║
 ╚══════════════════════════════════════════════════════════════╝
 
@@ -882,20 +776,20 @@ WORKING DIRECTORY          STAGING AREA         LOCAL REPO          REMOTE REPO
   📝 edit files
        │
        │ git add
-       ├─────────────────> 📋 staged
+       ├─────────────────&gt; 📋 staged
        │                      │
        │                      │ git commit
-       │                      ├─────────────> 💾 committed
+       │                      ├─────────────&gt; 💾 committed
        │                      │                    │
        │                      │                    │ git push
-       │                      │                    └──────────> ☁️ GitHub
+       │                      │                    └──────────&gt; ☁️ GitHub
        │                      │                                  │
        │                      │                    git fetch     │
-       │                      │                 <────────────────┘
+       │                      │                 &lt;────────────────┘
        │                      │
        │                      │                    git pull
-       │ git checkout/restore │                 <────────────────
-       <─────────────────────┘
+       │ git checkout/restore │                 &lt;────────────────
+       &lt;─────────────────────┘
 
 COMMANDS:
 • git add: Stage changes
@@ -904,16 +798,14 @@ COMMANDS:
 • git pull: Download and merge from remote
 • git fetch: Download without merging
 • git checkout/restore: Discard changes
-```
+</code></pre>
 
-### Diagram 2: Branching Model
-
-```
-╔══════════════════════════════════════════════════════════════╗
+<h3 id="diagram-2-branching-model">Diagram 2: Branching Model</h3>
+<pre class="codehilite"><code>╔══════════════════════════════════════════════════════════════╗
 ║           🎯 BRANCHING AND MERGING 🎯                       ║
 ╚══════════════════════════════════════════════════════════════╝
 
-Time ──────────────────────────────────────────────────────>
+Time ──────────────────────────────────────────────────────&gt;
 
 main:        A ─── B ─── C ─────────── H ─── I ─── J
              │           │             │
@@ -923,7 +815,7 @@ feature-1:   │     D ─── E ─── F ─────┘
              │     │
           [branch] │
                    │
-feature-2:         └─── G ─────────────────────> (still open)
+feature-2:         └─── G ─────────────────────&gt; (still open)
 
 
 Legend:
@@ -933,12 +825,10 @@ Legend:
 ┘   : Merge point
 
 Each letter (A, B, C...) represents a commit
-```
+</code></pre>
 
-### Diagram 3: Pull Request Flow
-
-```
-╔══════════════════════════════════════════════════════════════╗
+<h3 id="diagram-3-pull-request-flow">Diagram 3: Pull Request Flow</h3>
+<pre class="codehilite"><code>╔══════════════════════════════════════════════════════════════╗
 ║         🎯 PULL REQUEST COLLABORATION 🎯                    ║
 ╚══════════════════════════════════════════════════════════════╝
 
@@ -948,29 +838,29 @@ DEVELOPER                    GITHUB                    TEAM
    git checkout -b
    feature-login
        │
-       ├─────────────────>
+       ├─────────────────&gt;
        │
 2. Make commits              New branch
    git commit                appears
        │                        │
        │                        │
 3. Push branch               ┌───┴───┐
-   git push              ───>│Branch │
+   git push              ───&gt;│Branch │
        │                     └───┬───┘
        │                         │
 4. Open PR               ┌───────┴────────┐
-       │              ───>│  Pull Request  │───>  5. Review
+       │              ───&gt;│  Pull Request  │───&gt;  5. Review
        │                 │   #123          │         code
        │                 │ feature-login   │
        │                 └────────┬────────┘         │
        │                          │                  │
        │                          │        6. Comment/Approve
-       │                          │<──────────────────┘
+       │                          │&lt;──────────────────┘
        │                          │
 7. Address feedback    8. Tests pass?
    git commit              ┌────┴─────┐
        │                   │   ✓ CI   │
-       ├────────────────>  └────┬─────┘
+       ├────────────────&gt;  └────┬─────┘
        │                        │
        │                        │
        │                  9. Merge PR
@@ -983,31 +873,24 @@ DEVELOPER                    GITHUB                    TEAM
        │
 10. Delete branch
     Clean up
-```
+</code></pre>
 
----
-
-## Best Practices
-
-### Commit Messages
-
-**Anatomy of a Good Commit Message:**
-
-```
-Short summary (50 chars or less)
+<hr />
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="commit-messages">Commit Messages</h3>
+<p><strong>Anatomy of a Good Commit Message:</strong></p>
+<pre class="codehilite"><code>Short summary (50 chars or less)
 
 Detailed explanation if needed. Wrap at 72 characters.
 Explain WHAT changed and WHY, not HOW (code shows how).
 
 - Bullet points are okay
-- Use imperative mood: "Add feature" not "Added feature"
+- Use imperative mood: &quot;Add feature&quot; not &quot;Added feature&quot;
 - Reference issues: Fixes #123, Relates to #456
-```
+</code></pre>
 
-**Examples:**
-
-```
-✅ Good:
+<p><strong>Examples:</strong></p>
+<pre class="codehilite"><code>✅ Good:
 Add user authentication with JWT tokens
 
 Implement JWT-based authentication to secure API endpoints.
@@ -1016,19 +899,16 @@ Users can now log in and receive a token that expires after
 causing scaling issues.
 
 Fixes #234
-```
+</code></pre>
 
-```
-❌ Bad:
+<pre class="codehilite"><code>❌ Bad:
 fixed stuff
 
 updated some files and changed things
-```
+</code></pre>
 
-**Conventional Commits Format:**
-
-```
-type(scope): subject
+<p><strong>Conventional Commits Format:</strong></p>
+<pre class="codehilite"><code>type(scope): subject
 
 feat(auth): add JWT token authentication
 fix(ui): correct button alignment on mobile
@@ -1037,18 +917,15 @@ style(css): format code according to style guide
 refactor(api): simplify error handling logic
 test(auth): add unit tests for login flow
 chore(deps): update dependencies to latest versions
-```
+</code></pre>
 
-### Branch Naming
-
-**Branch Naming Conventions:**
-
-```
-╔═══════════════════════════════════════════════════════╗
+<h3 id="branch-naming">Branch Naming</h3>
+<p><strong>Branch Naming Conventions:</strong></p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║          🎯 BRANCH NAMING PATTERNS 🎯                ║
 ╚═══════════════════════════════════════════════════════╝
 
-PATTERN: <type>/<short-description>
+PATTERN: &lt;type&gt;/&lt;short-description&gt;
 
 TYPES:
 feature/    New features
@@ -1069,14 +946,11 @@ EXAMPLES:
 ❌ my-branch
 ❌ test
 ❌ new-feature-branch-v2-final
-```
+</code></pre>
 
-### Repository Organization
-
-**Essential Files:**
-
-```
-project/
+<h3 id="repository-organization">Repository Organization</h3>
+<p><strong>Essential Files:</strong></p>
+<pre class="codehilite"><code>project/
 ├── .gitignore              # Files Git should ignore
 ├── README.md               # Project documentation
 ├── LICENSE                 # License information
@@ -1087,12 +961,10 @@ project/
 ├── docs/                   # Additional documentation
 ├── src/                    # Source code
 └── tests/                  # Test files
-```
+</code></pre>
 
-**.gitignore Example:**
-
-```
-# .gitignore
+<p><strong>.gitignore Example:</strong></p>
+<pre class="codehilite"><code># .gitignore
 
 # Dependencies
 node_modules/
@@ -1124,12 +996,10 @@ logs/
 # Temporary files
 tmp/
 temp/
-```
+</code></pre>
 
-**README.md Template:**
-
-```markdown
-# Project Name
+<p><strong>README.md Template:</strong></p>
+<pre class="codehilite"><code class="language-markdown"># Project Name
 
 Brief description of what this project does.
 
@@ -1158,18 +1028,13 @@ Please read CONTRIBUTING.md for details.
 ## License
 
 This project is licensed under the MIT License.
-```
+</code></pre>
 
----
-
-## Common Scenarios and Solutions
-
-### Undoing Changes
-
-**Scenario 1: Undo Unstaged Changes**
-
-```bash
-# Discard changes in working directory
+<hr />
+<h2 id="common-scenarios-and-solutions">Common Scenarios and Solutions</h2>
+<h3 id="undoing-changes">Undoing Changes</h3>
+<p><strong>Scenario 1: Undo Unstaged Changes</strong></p>
+<pre class="codehilite"><code class="language-bash"># Discard changes in working directory
 git restore file.txt
 
 # Or older syntax
@@ -1177,12 +1042,10 @@ git checkout -- file.txt
 
 # Discard all changes
 git restore .
-```
+</code></pre>
 
-**Scenario 2: Unstage Files**
-
-```bash
-# Unstage specific file (keep changes)
+<p><strong>Scenario 2: Unstage Files</strong></p>
+<pre class="codehilite"><code class="language-bash"># Unstage specific file (keep changes)
 git restore --staged file.txt
 
 # Or older syntax
@@ -1190,12 +1053,10 @@ git reset HEAD file.txt
 
 # Unstage all files
 git restore --staged .
-```
+</code></pre>
 
-**Scenario 3: Undo Last Commit (Keep Changes)**
-
-```bash
-# Undo commit, keep changes staged
+<p><strong>Scenario 3: Undo Last Commit (Keep Changes)</strong></p>
+<pre class="codehilite"><code class="language-bash"># Undo commit, keep changes staged
 git reset --soft HEAD~1
 
 # Undo commit, keep changes unstaged
@@ -1203,39 +1064,32 @@ git reset HEAD~1
 
 # Undo commit, discard changes
 git reset --hard HEAD~1
-```
+</code></pre>
 
-**Scenario 4: Amend Last Commit**
-
-```bash
-# Change last commit message
-git commit --amend -m "New message"
+<p><strong>Scenario 4: Amend Last Commit</strong></p>
+<pre class="codehilite"><code class="language-bash"># Change last commit message
+git commit --amend -m &quot;New message&quot;
 
 # Add forgotten files to last commit
 git add forgotten-file.txt
 git commit --amend --no-edit
-```
+</code></pre>
 
-**Scenario 5: Revert a Commit (Safe for Public Branches)**
-
-```bash
-# Create new commit that undoes changes
+<p><strong>Scenario 5: Revert a Commit (Safe for Public Branches)</strong></p>
+<pre class="codehilite"><code class="language-bash"># Create new commit that undoes changes
 git revert commit-hash
 
 # Revert without committing (review first)
 git revert --no-commit commit-hash
-```
+</code></pre>
 
-### Stashing Work
-
-Save work temporarily without committing:
-
-```bash
-# Stash current changes
+<h3 id="stashing-work">Stashing Work</h3>
+<p>Save work temporarily without committing:</p>
+<pre class="codehilite"><code class="language-bash"># Stash current changes
 git stash
 
 # Stash with description
-git stash save "Work in progress on login feature"
+git stash save &quot;Work in progress on login feature&quot;
 
 # List stashes
 git stash list
@@ -1257,27 +1111,22 @@ git stash clear
 
 # Stash including untracked files
 git stash -u
-```
+</code></pre>
 
-**Use Case:**
-
-```bash
-# Working on feature, need to fix urgent bug
+<p><strong>Use Case:</strong></p>
+<pre class="codehilite"><code class="language-bash"># Working on feature, need to fix urgent bug
 git stash                   # Save current work
 git checkout main           # Switch to main
 git checkout -b hotfix-123  # Create hotfix branch
 # ... fix bug ...
-git commit -m "Fix critical bug"
+git commit -m &quot;Fix critical bug&quot;
 git checkout feature-branch # Back to feature
 git stash pop              # Resume work
-```
+</code></pre>
 
-### Cherry-Picking Commits
-
-Apply specific commits from one branch to another:
-
-```bash
-# Apply specific commit to current branch
+<h3 id="cherry-picking-commits">Cherry-Picking Commits</h3>
+<p>Apply specific commits from one branch to another:</p>
+<pre class="codehilite"><code class="language-bash"># Apply specific commit to current branch
 git cherry-pick commit-hash
 
 # Cherry-pick multiple commits
@@ -1285,12 +1134,10 @@ git cherry-pick commit1 commit2 commit3
 
 # Cherry-pick without committing
 git cherry-pick --no-commit commit-hash
-```
+</code></pre>
 
-**Visual Example:**
-
-```
-main:     A --- B --- C --- E
+<p><strong>Visual Example:</strong></p>
+<pre class="codehilite"><code>main:     A --- B --- C --- E
                    \
 feature:            D --- F --- G
 
@@ -1303,18 +1150,13 @@ main:     A --- B --- C --- E --- F'
 feature:            D --- F --- G
 
 # F' is a copy of F
-```
+</code></pre>
 
----
-
-## Advanced Topics
-
-### Rebasing
-
-Rebase rewrites history by moving commits to a new base:
-
-```
-╔═══════════════════════════════════════════════════════╗
+<hr />
+<h2 id="advanced-topics">Advanced Topics</h2>
+<h3 id="rebasing">Rebasing</h3>
+<p>Rebase rewrites history by moving commits to a new base:</p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║             🎯 MERGE VS REBASE 🎯                    ║
 ╚═══════════════════════════════════════════════════════╝
 
@@ -1339,12 +1181,10 @@ After rebase:
 main:     A --- B --- C --- D' --- E'
 
 Result: Linear history, commits D and E rewritten
-```
+</code></pre>
 
-**Rebasing Commands:**
-
-```bash
-# Rebase feature branch onto main
+<p><strong>Rebasing Commands:</strong></p>
+<pre class="codehilite"><code class="language-bash"># Rebase feature branch onto main
 git checkout feature-branch
 git rebase main
 
@@ -1356,12 +1196,10 @@ git rebase --continue
 
 # Abort rebase
 git rebase --abort
-```
+</code></pre>
 
-**⚠️ Golden Rule of Rebasing:**
-
-```
-╔═══════════════════════════════════════════════════════╗
+<p><strong>⚠️ Golden Rule of Rebasing:</strong></p>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════╗
 ║         ⚠️  NEVER REBASE PUBLIC HISTORY ⚠️           ║
 ╠═══════════════════════════════════════════════════════╣
 ║                                                       ║
@@ -1378,14 +1216,11 @@ git rebase --abort
 ║  Why? Rebasing rewrites commit history,              ║
 ║  causing issues for others who have those commits.   ║
 ╚═══════════════════════════════════════════════════════╝
-```
+</code></pre>
 
-### Git Hooks
-
-Automate workflows with Git hooks:
-
-```bash
-# Hooks are scripts in .git/hooks/
+<h3 id="git-hooks">Git Hooks</h3>
+<p>Automate workflows with Git hooks:</p>
+<pre class="codehilite"><code class="language-bash"># Hooks are scripts in .git/hooks/
 
 # Common hooks:
 .git/hooks/
@@ -1395,20 +1230,18 @@ Automate workflows with Git hooks:
 ├── post-commit       # Run after commit
 ├── pre-push          # Run before push
 └── post-merge        # Run after merge
-```
+</code></pre>
 
-**Example pre-commit hook:**
-
-```bash
-#!/bin/bash
+<p><strong>Example pre-commit hook:</strong></p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
 # .git/hooks/pre-commit
 
 # Run tests before committing
 npm test
 
 # Check for console.log
-if grep -r "console.log" src/; then
-    echo "Error: console.log found in code!"
+if grep -r &quot;console.log&quot; src/; then
+    echo &quot;Error: console.log found in code!&quot;
     exit 1
 fi
 
@@ -1416,14 +1249,11 @@ fi
 npm run format
 
 exit 0
-```
+</code></pre>
 
-### Submodules
-
-Include other Git repositories as subdirectories:
-
-```bash
-# Add submodule
+<h3 id="submodules">Submodules</h3>
+<p>Include other Git repositories as subdirectories:</p>
+<pre class="codehilite"><code class="language-bash"># Add submodule
 git submodule add https://github.com/user/repo.git path/to/submodule
 
 # Clone repo with submodules
@@ -1434,80 +1264,72 @@ git submodule update --init --recursive
 
 # Pull changes in submodules
 git submodule update --remote
-```
+</code></pre>
 
----
-
-## Conclusion
-
-Mastering Git and GitHub is essential for modern software development. From basic version control to advanced collaboration workflows, these tools empower developers to work efficiently, maintain code quality, and collaborate seamlessly with teams worldwide.
-
-### Key Takeaways Recap
-
-**Git Fundamentals:**
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>Mastering Git and GitHub is essential for modern software development. From basic version control to advanced collaboration workflows, these tools empower developers to work efficiently, maintain code quality, and collaborate seamlessly with teams worldwide.</p>
+<h3 id="key-takeaways-recap">Key Takeaways Recap</h3>
+<p><strong>Git Fundamentals:</strong>
 - Git provides complete version history and change tracking
 - The three states (working, staging, committed) give precise control
-- Branches enable parallel development without interference
-
-**Collaboration:**
+- Branches enable parallel development without interference</p>
+<p><strong>Collaboration:</strong>
 - GitHub extends Git with powerful collaboration features
 - Pull requests facilitate code review and team coordination
-- Clear communication and good practices prevent conflicts
-
-**Best Practices:**
+- Clear communication and good practices prevent conflicts</p>
+<p><strong>Best Practices:</strong>
 - Write clear, descriptive commit messages
 - Use meaningful branch names
 - Keep commits small and focused
 - Review code thoughtfully
-- Follow team conventions
-
-**Problem Solving:**
+- Follow team conventions</p>
+<p><strong>Problem Solving:</strong>
 - Git provides tools to undo mistakes safely
 - Conflicts are normal and manageable
 - Stashing helps manage context switching
-- Understanding your workflow prevents issues
-
-### Next Steps
-
-1. **Practice Daily:** Use Git for all projects, even personal ones
-2. **Explore GitHub:** Contribute to open source, read others' code
-3. **Learn Advanced Features:** Rebasing, cherry-picking, bisect
-4. **Establish Workflows:** Define team conventions and processes
-5. **Automate:** Use hooks and CI/CD for efficiency
-
-Remember: Git mastery comes with practice. Don't fear mistakes—Git's entire purpose is to help you recover from them!
-
----
-
-## Further Reading
-
-### Official Documentation
-- [Git Official Documentation](https://git-scm.com/doc) - Comprehensive Git reference
-- [GitHub Guides](https://guides.github.com/) - GitHub feature tutorials
-- [Pro Git Book](https://git-scm.com/book/en/v2) - Free complete Git book
-
-### Interactive Learning
-- [Learn Git Branching](https://learngitbranching.js.org/) - Visual interactive Git tutorial
-- [GitHub Learning Lab](https://lab.github.com/) - Hands-on GitHub courses
-- [Git Immersion](http://gitimmersion.com/) - Step-by-step Git tour
-
-### Best Practices
-- [Conventional Commits](https://www.conventionalcommits.org/) - Commit message convention
-- [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) - Branching model
-- [GitHub Flow](https://guides.github.com/introduction/flow/) - Simplified workflow
-
-### Advanced Topics
-- [Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) - Automation
-- [Git Internals](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain) - How Git works
-- [Atlassian Git Tutorials](https://www.atlassian.com/git/tutorials) - Comprehensive tutorials
-
-### Tools
-- [GitHub Desktop](https://desktop.github.com/) - GUI for Git
-- [GitKraken](https://www.gitkraken.com/) - Visual Git client
-- [tig](https://jonas.github.io/tig/) - Text-mode interface for Git
-
----
-
-**Happy Version Controlling! 🚀**
-
-*This article represents my journey of learning Git and GitHub. I hope it helps you build better software with confidence and collaboration.*
+- Understanding your workflow prevents issues</p>
+<h3 id="next-steps">Next Steps</h3>
+<ol>
+<li><strong>Practice Daily:</strong> Use Git for all projects, even personal ones</li>
+<li><strong>Explore GitHub:</strong> Contribute to open source, read others' code</li>
+<li><strong>Learn Advanced Features:</strong> Rebasing, cherry-picking, bisect</li>
+<li><strong>Establish Workflows:</strong> Define team conventions and processes</li>
+<li><strong>Automate:</strong> Use hooks and CI/CD for efficiency</li>
+</ol>
+<p>Remember: Git mastery comes with practice. Don't fear mistakes—Git's entire purpose is to help you recover from them!</p>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<h3 id="official-documentation">Official Documentation</h3>
+<ul>
+<li><a href="https://git-scm.com/doc">Git Official Documentation</a> - Comprehensive Git reference</li>
+<li><a href="https://guides.github.com/">GitHub Guides</a> - GitHub feature tutorials</li>
+<li><a href="https://git-scm.com/book/en/v2">Pro Git Book</a> - Free complete Git book</li>
+</ul>
+<h3 id="interactive-learning">Interactive Learning</h3>
+<ul>
+<li><a href="https://learngitbranching.js.org/">Learn Git Branching</a> - Visual interactive Git tutorial</li>
+<li><a href="https://lab.github.com/">GitHub Learning Lab</a> - Hands-on GitHub courses</li>
+<li><a href="http://gitimmersion.com/">Git Immersion</a> - Step-by-step Git tour</li>
+</ul>
+<h3 id="best-practices_1">Best Practices</h3>
+<ul>
+<li><a href="https://www.conventionalcommits.org/">Conventional Commits</a> - Commit message convention</li>
+<li><a href="https://nvie.com/posts/a-successful-git-branching-model/">Git Flow</a> - Branching model</li>
+<li><a href="https://guides.github.com/introduction/flow/">GitHub Flow</a> - Simplified workflow</li>
+</ul>
+<h3 id="advanced-topics_1">Advanced Topics</h3>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git Hooks</a> - Automation</li>
+<li><a href="https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain">Git Internals</a> - How Git works</li>
+<li><a href="https://www.atlassian.com/git/tutorials">Atlassian Git Tutorials</a> - Comprehensive tutorials</li>
+</ul>
+<h3 id="tools">Tools</h3>
+<ul>
+<li><a href="https://desktop.github.com/">GitHub Desktop</a> - GUI for Git</li>
+<li><a href="https://www.gitkraken.com/">GitKraken</a> - Visual Git client</li>
+<li><a href="https://jonas.github.io/tig/">tig</a> - Text-mode interface for Git</li>
+</ul>
+<hr />
+<p><strong>Happy Version Controlling! 🚀</strong></p>
+<p><em>This article represents my journey of learning Git and GitHub. I hope it helps you build better software with confidence and collaboration.</em></p>

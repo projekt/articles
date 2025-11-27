@@ -1,42 +1,29 @@
-This article was originally published on my website.
-For the latest version and more articles, visit: https://projekt.github.io/articles/
+<!-- Original article: https://projekt.github.io/articles/ -->
+<div style="background: #f0f0f0; padding: 15px; border-left: 4px solid #333; margin-bottom: 30px;">
+<p><strong>Note:</strong> This article was originally published on my website. For the latest version and more articles, visit <a href="https://projekt.github.io/articles/">https://projekt.github.io/articles/</a></p>
+</div>
 
----
-
-
-# Programming Paradigms Series - Article 1: What Are Programming Paradigms?
-
-**Series Navigation:** Article 1 of 7 | Next: [Imperative Programming →](02_imperative_programming.md)
-
----
-
-**About This Series**
-
-This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.
-
----
-
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [What Are Programming Paradigms?](#what-are-programming-paradigms)
-3. [Programming Paradigms Overview](#programming-paradigms-overview)
-4. [Key Characteristics](#key-characteristics)
-
----
-
-## Introduction
-
-Programming paradigms are fundamental approaches to writing software that shape how developers think about and solve problems. Just as architects might approach building design differently depending on whether they're creating a skyscraper, a bridge, or a home, programmers use different paradigms based on the problem at hand. This article explores the major programming paradigms with practical examples in Dart and relatable real-world analogies.
-
-## What Are Programming Paradigms?
-
-A programming paradigm is a style or methodology for structuring and organizing code. It provides a framework for thinking about program design, determining how you express logic, manage data, and handle the flow of execution. Understanding these paradigms helps you choose the right tool for each job and write more effective, maintainable code.
-
-### Programming Paradigms Overview
-
-```
-╔═══════════════════════════════════════════════════════════╗
+<h1 id="programming-paradigms-series-article-1-what-are-programming-paradigms">Programming Paradigms Series - Article 1: What Are Programming Paradigms?</h1>
+<p><strong>⏱️ Quick 4-Minute Read</strong></p>
+<p><strong>Series Navigation:</strong> Article 1 of 7 | Next: <a href="02_imperative_programming.md">Imperative Programming →</a></p>
+<hr />
+<p><strong>About This Series</strong></p>
+<p>This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#what-are-programming-paradigms">What Are Programming Paradigms?</a></li>
+<li><a href="#programming-paradigms-overview">Programming Paradigms Overview</a></li>
+<li><a href="#key-characteristics">Key Characteristics</a></li>
+</ol>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Programming paradigms are fundamental approaches to writing software that shape how developers think about and solve problems. Just as architects might approach building design differently depending on whether they're creating a skyscraper, a bridge, or a home, programmers use different paradigms based on the problem at hand. This article explores the major programming paradigms with practical examples in Dart and relatable real-world analogies.</p>
+<h2 id="what-are-programming-paradigms">What Are Programming Paradigms?</h2>
+<p>A programming paradigm is a style or methodology for structuring and organizing code. It provides a framework for thinking about program design, determining how you express logic, manage data, and handle the flow of execution. Understanding these paradigms helps you choose the right tool for each job and write more effective, maintainable code.</p>
+<h3 id="programming-paradigms-overview">Programming Paradigms Overview</h3>
+<pre class="codehilite"><code>╔═══════════════════════════════════════════════════════════╗
 ║          🎯 PROGRAMMING PARADIGMS UNIVERSE 🎯            ║
 ╚═══════════════════════════════════════════════════════════╝
                             │
@@ -59,12 +46,10 @@ A programming paradigm is a style or methodology for structuring and organizing 
    │ Reusable  │       │ Describe    │
    │ routines  │       │ the result  │
    └─────────┘         └──────────┘
-```
+</code></pre>
 
-## Key Characteristics
-
-```
-╔════════════╦════════════╦═════════════╦══════════════╦═════════════╗
+<h2 id="key-characteristics">Key Characteristics</h2>
+<pre class="codehilite"><code>╔════════════╦════════════╦═════════════╦══════════════╦═════════════╗
 ║ Paradigm   ║ Main Focus ║ Data        ║ Control Flow ║ Best For    ║
 ║            ║            ║ Handling    ║              ║             ║
 ╠════════════╬════════════╬═════════════╬══════════════╬═════════════╣
@@ -93,43 +78,31 @@ A programming paradigm is a style or methodology for structuring and organizing 
 ║     📊     ║ (Routines) ║    state    ║    calls     ║    tasks    ║
 ║            ║            ║             ║              ║             ║
 ╚════════════╩════════════╩═════════════╩══════════════╩═════════════╝
-```
+</code></pre>
 
-Each paradigm offers a unique perspective on how to structure and solve problems in code. In the following articles, we'll explore each paradigm in depth with real-world analogies and practical Dart examples.
-
----
-
-## Further Reading
-
-**Dart Language Resources:**
-- [Dart Language Tour](https://dart.dev/guides/language/language-tour) - Official Dart documentation
-- [Effective Dart](https://dart.dev/guides/language/effective-dart) - Best practices for Dart code
-
-**Programming Paradigms:**
-- [Wikipedia: Programming Paradigms](https://en.wikipedia.org/wiki/Programming_paradigm) - Comprehensive overview
-- [Paradigms of Computer Programming](https://www.info.ucl.ac.be/~pvr/book.html) - Academic perspective
-
-**Community:**
-- [Dart subreddit](https://www.reddit.com/r/dartlang/) - Community discussions
-- [Dart on Stack Overflow](https://stackoverflow.com/questions/tagged/dart) - Q&A
-
----
-
-## 👤 About the Author
-
-**Srđan Ljuština** - Software Developer & Technical Writer
-
-🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
-
----
-
-**Series Navigation:** Article 1 of 7 | Next: [Imperative Programming →](02_imperative_programming.md)
-
-**Other Articles in This Series:**
-- **Article 1: What Are Programming Paradigms?** (Current)
-- [Article 2: Imperative Programming](02_imperative_programming.md)
-- [Article 3: Object-Oriented Programming (OOP)](03_oop.md)
-- [Article 4: Functional Programming](04_functional_programming.md)
-- [Article 5: Declarative Programming](05_declarative_programming.md)
-- [Article 6: Procedural Programming](06_procedural_programming.md)
-- [Article 7: Choosing the Right Paradigm - Summary and Best Practices](07_summary.md)
+<p>Each paradigm offers a unique perspective on how to structure and solve problems in code. In the following articles, we'll explore each paradigm in depth with real-world analogies and practical Dart examples.</p>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<p><strong>Dart Language Resources:</strong>
+- <a href="https://dart.dev/guides/language/language-tour">Dart Language Tour</a> - Official Dart documentation
+- <a href="https://dart.dev/guides/language/effective-dart">Effective Dart</a> - Best practices for Dart code</p>
+<p><strong>Programming Paradigms:</strong>
+- <a href="https://en.wikipedia.org/wiki/Programming_paradigm">Wikipedia: Programming Paradigms</a> - Comprehensive overview
+- <a href="https://www.info.ucl.ac.be/~pvr/book.html">Paradigms of Computer Programming</a> - Academic perspective</p>
+<p><strong>Community:</strong>
+- <a href="https://www.reddit.com/r/dartlang/">Dart subreddit</a> - Community discussions
+- <a href="https://stackoverflow.com/questions/tagged/dart">Dart on Stack Overflow</a> - Q&amp;A</p>
+<hr />
+<h2 id="about-the-author">👤 About the Author</h2>
+<p><strong>Srđan Ljuština</strong> - Software Developer &amp; Technical Writer</p>
+<p>🌐 <a href="https://srdapp.rs">Website</a> | 💼 <a href="https://www.linkedin.com/in/srdjanljustina/">LinkedIn</a> | 💻 <a href="https://github.com/projekt">GitHub</a></p>
+<hr />
+<p><strong>Series Navigation:</strong> Article 1 of 7 | Next: <a href="02_imperative_programming.md">Imperative Programming →</a></p>
+<p><strong>Other Articles in This Series:</strong>
+- <strong>Article 1: What Are Programming Paradigms?</strong> (Current)
+- <a href="02_imperative_programming.md">Article 2: Imperative Programming</a>
+- <a href="03_oop.md">Article 3: Object-Oriented Programming (OOP)</a>
+- <a href="04_functional_programming.md">Article 4: Functional Programming</a>
+- <a href="05_declarative_programming.md">Article 5: Declarative Programming</a>
+- <a href="06_procedural_programming.md">Article 6: Procedural Programming</a>
+- <a href="07_summary.md">Article 7: Choosing the Right Paradigm - Summary and Best Practices</a></p>
