@@ -1,0 +1,551 @@
+This article was originally published on my website.
+For the latest version and more articles, visit: https://projekt.github.io/articles/
+
+---
+
+
+# Programming Paradigms Series - Article 7: Choosing the Right Paradigm - Summary and Best Practices
+
+**Series Navigation:** [← Procedural Programming](06_procedural_programming.md) | Article 7 of 7
+
+---
+
+**About This Series**
+
+This article series represents my journey of learning and applying fundamental programming concepts to the Dart programming language. These are my detailed notes and insights from the learning process, which I hope will be valuable to others exploring similar topics.
+
+---
+
+## Table of Contents
+
+1. [Comparing Paradigms: Same Problem, Different Approaches](#comparing-paradigms-same-problem-different-approaches)
+2. [Multi-Paradigm Programming in Dart](#multi-paradigm-programming-in-dart)
+3. [Choosing the Right Paradigm](#choosing-the-right-paradigm)
+4. [Best Practices for Multi-Paradigm Development](#best-practices-for-multi-paradigm-development)
+5. [Conclusion](#conclusion)
+
+---
+
+## Comparing Paradigms: Same Problem, Different Approaches
+
+Let's solve the same problem using different paradigms to see how they differ.
+
+**Problem**: Filter a list of products to find items under $50 and calculate their total price.
+
+### Visual Comparison
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║          🎯 SAME PROBLEM, 3 DIFFERENT SOLUTIONS 🎯          ║
+╚═══════════════════════════════════════════════════════════════╝
+
+🎯 Problem: Find products under $50 and sum their prices
+
+📥 Input: [Book:$25, Laptop:$850, Mouse:$15, Keyboard:$45, Monitor:$200]
+
+╔═══════════════════════════════════════════════════════════════╗
+║            💡 IMPERATIVE APPROACH 💡                         ║
+╠═══════════════════════════════════════════════════════════════╣
+║ Step 1: 📝 Create empty list                                  ║
+║ Step 2: 🔢 Create sum variable = 0                            ║
+║ Step 3: 🔄 Loop through products                              ║
+║   └─► ❓ If price < 50                                        ║
+║       ├─► ➕ Add to list                                      ║
+║       └─► 🧮 Add price to sum                                 ║
+║                                                               ║
+║ 🎯 Focus: HOW to do it (explicit control)                    ║
+║ 📊 Lines of code: ~10                                         ║
+║ ⚙️ Control: 🟢🟢🟢🟢🟢 (Maximum - you control everything)     ║
+║ 📖 Readability: 🟡🟡🟡 (Medium - need to trace logic)        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+╔═══════════════════════════════════════════════════════════════╗
+║         🏛️ OBJECT-ORIENTED APPROACH 🏛️                      ║
+╠═══════════════════════════════════════════════════════════════╣
+║ 📦 Product class with:                                        ║
+║   • Properties: name, price                                   ║
+║   • Method: isAffordable() ✓                                  ║
+║                                                               ║
+║ 🛒 ShoppingCart class with:                                   ║
+║   • Method: getAffordableProducts() 🔍                        ║
+║   • Method: calculateTotal() 🧮                               ║
+║                                                               ║
+║ 🎯 Focus: OBJECTS and their behaviors                        ║
+║ 📊 Lines of code: ~25 (but highly reusable!)                 ║
+║ ⚙️ Control: 🟡🟡🟡 (Medium - encapsulated logic)              ║
+║ 📖 Readability: 🟢🟢🟢🟢 (High - self-documenting)           ║
+║ ♻️ Reusability: 🟢🟢🟢🟢🟢 (Excellent!)                      ║
+╚═══════════════════════════════════════════════════════════════╝
+
+╔═══════════════════════════════════════════════════════════════╗
+║           🧮 FUNCTIONAL APPROACH 🧮                           ║
+╠═══════════════════════════════════════════════════════════════╣
+║ products                                                      ║
+║   .where(price < 50)      ← 🔍 Filter                         ║
+║   .map(get price)         ← 🔄 Transform                      ║
+║   .reduce(sum)            ← ➕ Aggregate                       ║
+║                                                               ║
+║ 🎯 Focus: TRANSFORMATION pipeline                            ║
+║ 📊 Lines of code: ~3 (most concise!)                          ║
+║ ⚙️ Control: 🔵 (Low - declarative style)                      ║
+║ 📖 Readability: 🟢🟢🟢🟢🟢 (Excellent - clear intent)        ║
+║ 🧪 Testability: 🟢🟢🟢🟢🟢 (Perfect - pure functions)        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+┌───────────────────────────────────────────────────────────────┐
+│                    📤 OUTPUT (All Approaches) 📤              │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ✅ Affordable Products:                                      │
+│     • Book: $25 📚                                            │
+│     • Mouse: $15 🖱️                                           │
+│     • Keyboard: $45 ⌨️                                        │
+│                                                               │
+│  💰 Total: $85                                                │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+
+🏆 Winner depends on context:
+  • Need speed? → Imperative
+  • Building a system? → OOP
+  • Processing data? → Functional
+```
+
+### Imperative Approach
+
+```dart
+void imperativeExample() {
+  List<Map<String, dynamic>> products = [
+    {'name': 'Book', 'price': 25.0},
+    {'name': 'Laptop', 'price': 850.0},
+    {'name': 'Mouse', 'price': 15.0},
+    {'name': 'Keyboard', 'price': 45.0},
+    {'name': 'Monitor', 'price': 200.0},
+  ];
+
+  // Step-by-step instructions
+  List<Map<String, dynamic>> affordableProducts = [];
+  double totalPrice = 0.0;
+
+  for (int i = 0; i < products.length; i++) {
+    if (products[i]['price'] < 50) {
+      affordableProducts.add(products[i]);
+      totalPrice += products[i]['price'];
+    }
+  }
+
+  print('Affordable products: $affordableProducts');
+  print('Total: \$${totalPrice}');
+}
+```
+
+### Object-Oriented Approach
+
+```dart
+class Product {
+  String name;
+  double price;
+
+  Product(this.name, this.price);
+
+  bool isAffordable() => price < 50;
+
+  @override
+  String toString() => '$name (\$$price)';
+}
+
+class ShoppingCart {
+  List<Product> products = [];
+
+  void addProduct(Product product) {
+    products.add(product);
+  }
+
+  List<Product> getAffordableProducts() {
+    return products.where((p) => p.isAffordable()).toList();
+  }
+
+  double calculateTotal(List<Product> items) {
+    return items.fold(0.0, (sum, product) => sum + product.price);
+  }
+}
+
+void ooExample() {
+  ShoppingCart cart = ShoppingCart();
+  cart.addProduct(Product('Book', 25.0));
+  cart.addProduct(Product('Laptop', 850.0));
+  cart.addProduct(Product('Mouse', 15.0));
+  cart.addProduct(Product('Keyboard', 45.0));
+  cart.addProduct(Product('Monitor', 200.0));
+
+  List<Product> affordable = cart.getAffordableProducts();
+  double total = cart.calculateTotal(affordable);
+
+  print('Affordable products: $affordable');
+  print('Total: \$${total}');
+}
+```
+
+### Functional Approach
+
+```dart
+void functionalExample() {
+  List<Map<String, dynamic>> products = [
+    {'name': 'Book', 'price': 25.0},
+    {'name': 'Laptop', 'price': 850.0},
+    {'name': 'Mouse', 'price': 15.0},
+    {'name': 'Keyboard', 'price': 45.0},
+    {'name': 'Monitor', 'price': 200.0},
+  ];
+
+  // Functional pipeline
+  var affordableProducts = products.where((p) => p['price'] < 50);
+  var totalPrice = affordableProducts
+      .map((p) => p['price'] as double)
+      .reduce((a, b) => a + b);
+
+  print('Affordable products: ${affordableProducts.toList()}');
+  print('Total: \$${totalPrice}');
+}
+```
+
+## Multi-Paradigm Programming in Dart
+
+Dart is a multi-paradigm language, meaning it supports multiple programming styles. This flexibility allows you to choose the best approach for each situation.
+
+```dart
+// Combining paradigms in Dart
+
+// OOP: Define classes
+class Task {
+  String title;
+  bool isCompleted;
+  int priority;
+
+  Task(this.title, {this.isCompleted = false, this.priority = 1});
+
+  void complete() {
+    isCompleted = true;
+  }
+}
+
+class TaskManager {
+  List<Task> tasks = [];
+
+  void addTask(Task task) {
+    tasks.add(task);
+  }
+
+  // Functional: Use functional methods
+  List<Task> getHighPriorityTasks() {
+    return tasks.where((task) => task.priority >= 3).toList();
+  }
+
+  List<Task> getPendingTasks() {
+    return tasks.where((task) => !task.isCompleted).toList();
+  }
+
+  // Declarative: Express what we want
+  void displayTaskSummary() {
+    var pending = tasks.where((t) => !t.isCompleted).length;
+    var completed = tasks.where((t) => t.isCompleted).length;
+
+    print('Tasks Summary:');
+    print('Pending: $pending');
+    print('Completed: $completed');
+  }
+}
+
+void main() {
+  TaskManager manager = TaskManager();
+
+  // Imperative: Step-by-step task creation
+  manager.addTask(Task('Write article', priority: 3));
+  manager.addTask(Task('Review code', priority: 2));
+  manager.addTask(Task('Deploy app', priority: 4));
+  manager.addTask(Task('Team meeting', priority: 1));
+
+  // Complete some tasks imperatively
+  manager.tasks[0].complete();
+  manager.tasks[3].complete();
+
+  // Use functional approach to filter
+  print('High Priority Tasks:');
+  manager.getHighPriorityTasks().forEach((task) {
+    print('- ${task.title} (Priority: ${task.priority})');
+  });
+
+  print('\n');
+  manager.displayTaskSummary();
+}
+```
+
+### Dart's Multi-Paradigm Strengths
+
+```
+              ┌──────────────────────┐
+              │      DART            │
+              │  Multi-Paradigm      │
+              │     Language         │
+              └──────────┬───────────┘
+                         │
+        ┌────────────────┼────────────────┐
+        │                │                │
+        ▼                ▼                ▼
+┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+│     OOP      │  │  FUNCTIONAL  │  │  DECLARATIVE │
+├──────────────┤  ├──────────────┤  ├──────────────┤
+│• Classes     │  │• map()       │  │• Flutter     │
+│• Inheritance │  │• filter()    │  │  widgets     │
+│• Interfaces  │  │• reduce()    │  │• UI builders │
+│• Mixins      │  │• fold()      │  │              │
+│• Abstract    │  │• where()     │  │              │
+└──────────────┘  └──────────────┘  └──────────────┘
+
+All work together seamlessly in Dart!
+```
+
+## Choosing the Right Paradigm
+
+### Decision Tree: Which Paradigm Should You Use?
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║        🤔 PARADIGM DECISION TREE 🤔                          ║
+║        "Which approach should I use?"                         ║
+╚═══════════════════════════════════════════════════════════════╝
+
+                    🎯 Start: Analyze Your Problem
+                              │
+                              ▼
+                  ┌───────────────────────┐
+                  │ ❓ Is it UI-related?  │
+                  │    (Forms, layouts,   │
+                  │     components)       │
+                  └───────┬───────────────┘
+                     YES  │  NO
+                  ┌───────┴──────┐
+                  ▼              ▼
+           ┌──────────┐    ┌─────────────────────┐
+           │📋DECLARATIVE│  │ ❓ Complex system   │
+           │           │    │ with many entities? │
+           │• Flutter  │    │ (Users, products,   │
+           │• HTML/CSS │    │  orders...)         │
+           └──────────┘    └──────┬──────────────┘
+                               YES │  NO
+                            ┌──────┴──────┐
+                            ▼             ▼
+                    ┌────────────┐  ┌──────────────────┐
+                    │ 🏛️ OOP    │  │ ❓ Data processing│
+                    │           │  │ / transformation? │
+                    │• Model    │  │ (Filter, map,     │
+                    │  entities │  │  aggregate)       │
+                    │• Reusable │  └────┬─────────────┘
+                    │  classes  │   YES │  NO
+                    └────────────┘  ┌────┴──────┐
+                                    ▼           ▼
+                              ┌──────────┐  ┌────────────┐
+                              │🧮FUNCTIONAL│ │ ❓ Simple  │
+                              │          │  │ sequential │
+                              │• Pure    │  │ task?      │
+                              │  functions│  └─────┬──────┘
+                              │• Pipelines│   YES │  NO
+                              └──────────┘  ┌─────┴──────┐
+                                            ▼            ▼
+                                     ┌──────────┐  ┌──────────┐
+                                     │📊PROCEDURAL│ │💡IMPERATIVE│
+                                     │          │  │          │
+                                     │• Reusable│  │• Explicit│
+                                     │  routines│  │  control │
+                                     └──────────┘  └──────────┘
+
+Legend: 📋 Declarative | 🏛️ OOP | 🧮 Functional | 📊 Procedural | 💡 Imperative
+```
+
+### When to Use Each Paradigm
+
+**Object-Oriented Programming:**
+- Building complex systems with many interrelated components
+- When you need to model real-world entities
+- When code reusability through inheritance is beneficial
+- Examples: Game development, GUI applications, simulation systems
+
+**Functional Programming:**
+- Data transformation and processing pipelines
+- When immutability and predictability are important
+- Concurrent or parallel processing
+- Examples: Data analysis, stream processing, financial calculations
+
+**Imperative/Procedural Programming:**
+- Simple scripts and utilities
+- Performance-critical sections where explicit control is needed
+- When the algorithm is naturally sequential
+- Examples: System scripts, batch processing, algorithm implementation
+
+**Declarative Programming:**
+- User interface development
+- Database queries
+- Configuration and setup
+- Examples: Flutter UI, HTML/CSS, SQL queries
+
+### Real-World Application Mapping
+
+```
+Mobile App Development
+┌────────────────────────────────┐
+│ UI Layer      → DECLARATIVE    │ (Flutter widgets)
+│ Business Logic → OOP            │ (Classes & objects)
+│ Data Transform → FUNCTIONAL     │ (Map, filter, reduce)
+│ State Updates  → IMPERATIVE     │ (Explicit changes)
+└────────────────────────────────┘
+
+Data Science Pipeline
+┌────────────────────────────────┐
+│ Data Loading   → PROCEDURAL    │ (Step-by-step)
+│ Data Cleaning  → FUNCTIONAL    │ (Transformations)
+│ Analysis      → FUNCTIONAL     │ (Pipelines)
+│ Visualization → DECLARATIVE    │ (Chart configs)
+└────────────────────────────────┘
+
+Game Development
+┌────────────────────────────────┐
+│ Game Entities  → OOP           │ (Player, Enemy classes)
+│ Game Loop     → IMPERATIVE     │ (Update each frame)
+│ AI Behavior   → FUNCTIONAL     │ (Decision trees)
+│ UI Menus      → DECLARATIVE    │ (Menu layouts)
+└────────────────────────────────┘
+
+Web Backend API
+┌────────────────────────────────┐
+│ Models        → OOP            │ (User, Product classes)
+│ Routes        → DECLARATIVE    │ (Route definitions)
+│ Business Logic → FUNCTIONAL    │ (Pure functions)
+│ Database      → DECLARATIVE    │ (SQL queries)
+└────────────────────────────────┘
+```
+
+## Best Practices for Multi-Paradigm Development
+
+1. **Choose based on the problem**: Don't force a paradigm; let the problem guide you
+2. **Be consistent within a module**: Mixing paradigms in the same function can be confusing
+3. **Favor immutability when possible**: It makes code easier to reason about
+4. **Use OOP for structure, functional for logic**: Combine their strengths
+5. **Keep functions pure when you can**: Pure functions are easier to test and debug
+6. **Document paradigm choices**: Help others understand your approach
+
+### Guidelines
+
+```
+✅ DO:
+┌─────────────────────────────────────────────────────┐
+│ • Use OOP to model domain entities (User, Product)  │
+│ • Use functional methods for data transformation    │
+│ • Use declarative style for UI                      │
+│ • Keep functions small and focused                  │
+│ • Choose paradigm based on problem domain           │
+└─────────────────────────────────────────────────────┘
+
+❌ DON'T:
+┌─────────────────────────────────────────────────────┐
+│ • Mix paradigms within a single function            │
+│ • Force OOP when simple functions would work        │
+│ • Make everything mutable in functional code        │
+│ • Create unnecessary class hierarchies              │
+│ • Use imperative style for UI building              │
+└─────────────────────────────────────────────────────┘
+```
+
+### Code Organization Strategy
+
+```
+Project Structure Using Multiple Paradigms:
+
+lib/
+├── models/              (OOP)
+│   ├── user.dart       ← Classes with properties/methods
+│   └── product.dart
+│
+├── utils/              (Functional)
+│   ├── validators.dart ← Pure functions
+│   └── formatters.dart
+│
+├── services/           (Mixed)
+│   ├── api_service.dart     ← OOP structure
+│   └── data_processor.dart  ← Functional logic
+│
+├── ui/                 (Declarative)
+│   ├── screens/        ← Flutter widgets
+│   └── components/
+│
+└── main.dart           (Entry point)
+
+Each layer uses the paradigm that fits best!
+```
+
+## Conclusion
+
+Programming paradigms are not competing philosophies but complementary tools in your development toolkit. Modern languages like Dart embrace multiple paradigms, allowing you to select the most appropriate approach for each challenge.
+
+Just as a craftsperson needs different tools for different jobs, a skilled programmer understands when to use object-oriented design for structure, functional programming for data transformation, imperative programming for precise control, and declarative programming for clarity.
+
+The key to mastery is not choosing one paradigm over others, but understanding the strengths of each and knowing when to apply them. As you continue your programming journey, experiment with different paradigms, recognize patterns in successful code, and develop an intuition for which approach will serve your specific needs best.
+
+Remember: the best code is not the one that rigidly follows a single paradigm, but the one that is clear, maintainable, and solves the problem effectively using the right combination of approaches.
+
+---
+
+## Further Reading
+
+**Multi-Paradigm Programming:**
+- [Dart Language Overview](https://dart.dev/overview) - Understanding Dart's multi-paradigm nature
+- [Programming Paradigms for Dummies](https://www.info.ucl.ac.be/~pvr/paradigmsDIAGRAMeng108.pdf) - Comprehensive comparison
+
+**Software Architecture:**
+- [The Pragmatic Programmer](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/) - Essential reading
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - Robert C. Martin
+- [Software Design Patterns](https://refactoring.guru/design-patterns/catalog) - Practical patterns
+
+**Dart & Flutter:**
+- [Flutter Architecture Samples](https://github.com/brianegan/flutter_architecture_samples) - Different approaches
+- [Effective Dart: Style](https://dart.dev/guides/language/effective-dart/style) - Dart conventions
+- [Flutter Best Practices](https://docs.flutter.dev/perf/best-practices) - Performance and organization
+
+**Advanced Topics:**
+- [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html) - Strategic design
+- [Reactive Programming](https://www.reactivemanifesto.org/) - Modern paradigm
+- [Event-Driven Architecture](https://martinfowler.com/articles/201701-event-driven.html) - System design
+
+**Community & Practice:**
+- [Exercism Dart Track](https://exercism.org/tracks/dart) - Practice problems with mentorship
+- [Dart Academy](https://dart.academy/) - Tutorials and articles
+- [Flutter Community](https://flutter.dev/community) - Get involved
+
+**Books:**
+- [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.oreilly.com/library/view/design-patterns-elements/0201633612/) - Gang of Four
+- [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sites/default/files/sicp/index.html) - SICP (free online)
+- [Programming Language Pragmatics](https://www.cs.rochester.edu/~scott/pragmatics/) - Academic perspective
+
+---
+
+## 👤 About the Author
+
+**Srđan Ljuština** - Software Developer & Technical Writer
+
+🌐 [Website](https://srdapp.rs) | 💼 [LinkedIn](https://www.linkedin.com/in/srdjanljustina/) | 💻 [GitHub](https://github.com/projekt)
+
+---
+
+**Series Navigation:** [← Procedural Programming](06_procedural_programming.md) | Article 7 of 7
+
+**Other Articles in This Series:**
+- [Article 1: What Are Programming Paradigms?](01_what_are_programming_paradigms.md)
+- [Article 2: Imperative Programming](02_imperative_programming.md)
+- [Article 3: Object-Oriented Programming (OOP)](03_oop.md)
+- [Article 4: Functional Programming](04_functional_programming.md)
+- [Article 5: Declarative Programming](05_declarative_programming.md)
+- [Article 6: Procedural Programming](06_procedural_programming.md)
+- **Article 7: Choosing the Right Paradigm - Summary and Best Practices** (Current)
+
+---
+
+**Congratulations!** You've completed the Programming Paradigms series. I hope these articles have provided valuable insights into different approaches to software development with Dart. Happy coding!
