@@ -44,6 +44,10 @@ A comprehensive 7-part series exploring different programming paradigms with pra
 
 ## 📖 Standalone Articles
 
+### SQL Server Table Partitioning
+
+- **[Mastering SQL Server Table Partitioning: Scaling Databases for Performance](web/mssql_table_partitioning_guide.md)** - A comprehensive guide to SQL Server table partitioning covering partition functions, schemes, maintenance strategies, and performance optimization for large-scale databases.
+
 ### Git & GitHub
 
 - **[Mastering Git & GitHub: A Complete Guide to Modern Version Control](web/git_github_complete_guide.md)** - A comprehensive guide to Git and GitHub covering version control fundamentals, branching strategies, collaboration workflows, and best practices for developers.

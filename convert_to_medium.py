@@ -64,6 +64,7 @@ def main():
 
     # List of markdown files to convert
     markdown_files = [
+        'mssql_table_partitioning_guide.md',
         'git_github_complete_guide.md',
         'dart_null_safety_FINAL_with_TOC.md',
         'programming_paradigms_article.md',
